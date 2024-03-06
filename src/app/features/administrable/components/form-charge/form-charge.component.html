@@ -1,0 +1,21 @@
+<form [formGroup]="formCharge" method="post">
+    <h2 class="m-0 mb-1">{{isUpdate?'Actualizar cargo':'Registro de cargos'}}</h2>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Nombre del cargo</mat-label>
+        <input matInput type="text" formControlName="charge_name" maxlength="25">
+        <mat-icon matSuffix>id_card</mat-icon>
+        <mat-error *ngIf="charge_name.hasError('pattern') && !charge_name.hasError('required')"
+                    class="p-error">Digite un nombre del cargo <strong>válido</strong></mat-error>
+        <mat-error *ngIf="charge_name.hasError('maxlength')"
+                    class="p-error">El nombre del cargo debe ser de <strong>25  caracteres como máximo</strong></mat-error>
+        <mat-error *ngIf="charge_name.hasError('required') && charge_name.touched"
+                    class="p-error">El campo nombre del cargo es <strong>requerido</strong></mat-error>
+    </mat-form-field>
+    <div class="mt-1">
+        <button mat-raised-button
+                class="btn-primary" 
+                type="button"
+                (click)="save()">{{isUpdate?'Guardar cambios':'Registrar cargo'}}</button>
+        <button mat-button class="ml-1" (click)="cancelDialogFormCharges()">Cancelar</button>
+    </div>
+</form>

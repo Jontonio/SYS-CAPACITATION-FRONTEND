@@ -79,6 +79,7 @@ export const MY_FORMATS = {
   ],
   declarations: [SelectCheckAllComponent]
 })
+
 export class CustomMaterialModule {
   static forRoot() {
     return {

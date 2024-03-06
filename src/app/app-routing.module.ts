@@ -14,33 +14,19 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'customers',
-    loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule),
+    path: 'projects',
+    loadChildren: () => import('./features/projects/projects.module').then(m => m.projectsModule),
     canActivate: [AuthGuard]
   },
   {
-    path: 'users',
-    loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule),
+    path: 'facilitators',
+    loadChildren: () => import('./features/facilitators/facilitators.module').then(m => m.facilitatorsModule),
     canActivate: [AuthGuard]
   },
   {
-    path: 'account',
-    loadChildren: () => import('./features/account/account.module').then(m => m.AccountModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'icons',
-    loadChildren: () => import('./features/icons/icons.module').then(m => m.IconsModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'typography',
-    loadChildren: () => import('./features/typography/typography.module').then(m => m.TypographyModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'about',
-    loadChildren: () => import('./features/about/about.module').then(m => m.AboutModule),
+    path: 'administrables',
+    loadChildren: () => import('./features/administrable/administrable.module').then(m => m.administrableModule),
+
     canActivate: [AuthGuard]
   },
   {

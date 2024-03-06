@@ -1,9 +1,71 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+:root{
+  --background-color-a:#2A3447;
+  --background-color-b:#333C50;
+  --menu-color:#7B8EAA;
+  --border-color:#444D5D;
+  --header-color:#ababab;
+  --btn-color:#E78B6F;
+  --btn-secondary-color:#03C9D7;
+  --color-secondary:#0DC2CA;
+  --color-primay:#E78B6F;
+  --white-color:#d4d4d4;
+  --border-radius:16px;
+}
+
+html{
+  background: var(--background-color-b) ;
+}
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 14px;
+}
+.text-color-primary{
+  color: var(--color-primay) !important;
+}
+.text-color-secondary{
+  color: var(--color-secondary) !important;
+}
+.d-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15px;
+}
+.m-1{
+  margin: 0.3rem;
+}
+.mt-1{
+  margin-top: 0.3rem;
+}
+.mt-2{
+  margin-top: 1rem;
+}
+.mt-3{
+  margin-top: 1.5rem;
+}
+.ml-1{
+  margin-left: 0.3rem;
+}
+.mr-1{
+  margin-right: 0.3rem;
+}
+.mb-1{
+  margin-bottom: 0.3rem;
+}
+.mb-2{
+  margin-bottom: 0.6rem;
+}
+.m-0{
+  margin: 0;
+}
+.p-0{
+  padding: 0;
+}
+.mb-1{
+  margin-bottom: 0.5rem;
 }
 
 .full-width {
@@ -13,6 +75,8 @@ body {
 .container {
   margin-top: 10px;
   margin-bottom: 10px;
+  background: var(--background-color-b);
+  color: var(--white-color) !important;
 }
 
 .spinner {
@@ -135,6 +199,63 @@ p .mat-icon {
   animation-name: show;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+}
+.spacer-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(125, 125, 125);
+}
+.btn-color{
+  color: var(--btn-color);
+}
+.btn-primary{
+  background-color: var(--btn-color);
+  color: var(--white-color);
+}
+.btn-secondary{
+  background-color: var(--btn-secondary-color) !important;
+  color: var(--white-color) !important;
+}
+mat-card, mat-paginator, .mat-table{
+  background-color: var(--background-color-a) !important;
+  color: var(--white-color) !important;
+  border-radius: var(--border-radius) !important;
+}
+.mat-header-cell{
+  color: var(--header-color);
+}
+mat-paginator, .mat-cell{
+  color: var(--menu-color) !important;
+}
+/* Dialog class*/
+.dialog-class .mat-dialog-container{
+  background-color: var(--background-color-b) !important;
+  color: var(--white-color) !important;
+  border-radius: var(--border-radius) !important;
+}
+.dialog-class-b .mat-dialog-container{
+  background-color: var(--background-color-a) !important;
+  color: var(--white-color) !important;
+  border-radius: var(--border-radius) !important;
+}
+
+/* change color form field*/
+.mat-form-field-label {
+  color: var(--menu-color) !important;
+}
+/* table styles*/
+table {
+  width: 100%;
+}
+/* conatiner flex*/
+.container-flex{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 @keyframes show {

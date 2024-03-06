@@ -1,0 +1,23 @@
+.container-input-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-search::after{
+    content: '';
+    height: 50px;
+    width: 50px;
+    background: rebeccapurple;
+}
+.input-search{
+    width: 300px;
+    height: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: none;
+    padding: 3px;
+    color: var(--white-color);
+    outline: none;
+    font-size: 14px;
+    padding-left: 10px !important;
+}

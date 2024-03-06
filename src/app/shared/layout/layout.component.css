@@ -4,6 +4,8 @@
 
 .navbar {
   z-index: 2;
+  background-color: var(--background-color-a);
+  color: var(--menu-color);
 }
 
 .navbar-brand {
@@ -31,6 +33,7 @@
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
            causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
+  background: var(--background-color-b);
 }
 
 .navbar-is-mobile .navbar-sidenav-container {
@@ -42,12 +45,17 @@
 /*Set sidenav width*/
 
 mat-sidenav {
-  min-width: 180px !important;
-  border-right: 1px solid #eee;
-  box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
-  /* background-color:rgb(63, 81, 181); */
+  min-width: 240px !important;
+  border-right: 1px solid var(--border-color);
+  background: var(--background-color-a);
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
+/* set new font color on option menu */
+.font-color{
+  color: var(--menu-color);
+}
 /* Set height of wrapper to stop content from moving up & down */
 
 .progress-bar-container {
@@ -61,4 +69,21 @@ a.mat-list-item.active {
 #push-bottom {
   position: absolute;
   bottom: 0;
+}
+
+.active{
+  background-color: var(--btn-color) !important;
+  height: 45px !important;
+  border-radius: 50px;
+  color: var(--white-color);
+}
+.menu-item{
+  margin-top: 4px;
+  height: 45px !important;
+}
+.menu-item:hover {
+  background-color: var(--btn-color) !important;
+  border-radius: 50px;
+  transition: 0.5ms;
+  color: var(--white-color);
 }

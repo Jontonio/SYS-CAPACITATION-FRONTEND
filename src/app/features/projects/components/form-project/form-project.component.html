@@ -1,0 +1,32 @@
+<form [formGroup]="formProject" method="post">
+    <h2 class="m-0 mb-1">{{isUpdate?'Actualizar proyecto':'Registro de proyecto'}}</h2>
+    <mat-form-field class="full-width mt-1" appearance="outline">
+        <mat-label>CUI del proyecto</mat-label>
+        <input matInput type="text" formControlName="project_cui" maxlength="15">
+        <mat-icon matSuffix>id_card</mat-icon>
+        <mat-error *ngIf="project_cui.hasError('pattern') && !project_cui.hasError('required')"
+                    class="p-error">Digite un CUI del proyecto <strong>válido</strong></mat-error>
+        <mat-error *ngIf="project_cui.hasError('maxlength')"
+                    class="p-error">El tamaño del CUI del proyecto debe ser de <strong>15  caracteres</strong></mat-error>
+        <mat-error *ngIf="project_cui.hasError('required') && project_cui.touched"
+                    class="p-error">El campo CUI del proyecto <strong>requerido</strong></mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Nombre del proyecto</mat-label>
+        <textarea matInput placeholder="Ex. 100 Main St" formControlName="project_name" maxlength="250" rows="7">1600 Amphitheatre Pkwy</textarea>
+        <mat-icon matSuffix>id_card</mat-icon>
+        <mat-error *ngIf="project_name.hasError('pattern') && !project_name.hasError('required')"
+                    class="p-error">Digite un nombre del proyecto <strong>válido</strong></mat-error>
+        <mat-error *ngIf="project_name.hasError('maxlength')"
+                    class="p-error">El nombre del proyecto debe ser de <strong>250  caracteres</strong></mat-error>
+        <mat-error *ngIf="project_name.hasError('required') && project_name.touched"
+                    class="p-error">El campo nombre del proyecto es <strong>requerido</strong></mat-error>
+    </mat-form-field>
+    <div class="mt-1">
+        <button mat-raised-button
+                class="btn-primary" 
+                type="button"
+                (click)="save()">{{isUpdate?'Guardar cambios':'Registrar proyecto'}}</button>
+        <button mat-button class="ml-1" mat-dialog-close>Cancelar</button>
+    </div>
+</form>

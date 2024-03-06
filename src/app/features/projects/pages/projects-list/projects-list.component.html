@@ -1,0 +1,73 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="98%">
+
+    <mat-card class="mb-2">
+      <div class="spacer-flex">
+        <h2 class="text-color-secondary d-flex">
+          <mat-icon>business</mat-icon>
+          <p mat-line class="m-1">Proyectos</p>
+        </h2>
+        <button mat-mini-fab class="btn-secondary" (click)="openDialogRegisProject()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+    
+    <mat-card>
+      <mat-card-content>
+        <div class="spacer-flex">
+          <div></div>
+          <app-input-search></app-input-search>
+        </div>
+        <table mat-table [dataSource]="dataSource" matSort class="mat-table">
+
+          <!-- id project Column -->
+          <ng-container matColumnDef="Id_project">
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> No. </th>
+            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.Id_project}} </td>
+          </ng-container>
+        
+          <!-- project cui Column -->
+          <ng-container matColumnDef="project_cui">
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> project_cui </th>
+            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_cui}} </td>
+          </ng-container>
+        
+          <!-- project_name Column -->
+          <ng-container matColumnDef="project_name">
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> project_name </th>
+            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_name | slice:0:100}}... </td>
+          </ng-container>
+        
+          <!-- action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> action </th>
+            <td mat-cell class="mat-cell" *matCellDef="let element">
+              <button mat-icon-button (click)="edit(element)" class="btn-color">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="delete(element)" color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button (click)="goEvents(element)" color="primary">
+                <mat-icon>event</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       showFirstLastButtons="false"
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+        
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
