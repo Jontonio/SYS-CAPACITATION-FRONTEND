@@ -2,19 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormChargeComponent } from '../form-charge/form-charge.component';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
+import { Charges } from 'src/app/features/projects/class/Attendance';
 
-export interface Charge {
-  Id_charge?: number;
-  charge_name: string;
-}
 
-const ELEMENT_DATA: Charge[] = [
-  {Id_charge: 1, charge_name: 'Hydrogen hola mundo como estas??'},
-  {Id_charge: 2, charge_name: 'cargo nuevo'},
-  {Id_charge: 3, charge_name: 'Lithium'},
-  {Id_charge: 4, charge_name: 'Beryllium'},
-  {Id_charge: 5, charge_name: 'Boron'},
-];
 
 @Component({
   selector: 'app-list-charges',
@@ -23,13 +13,13 @@ const ELEMENT_DATA: Charge[] = [
 })
 export class ListChargesComponent {
 
+  dataSource:Charges[] = []
   displayedColumns: string[] = ['Id_charge', 'charge_name', 'symbol'];
-  dataSource = ELEMENT_DATA;
 
   constructor(private dialog:MatDialog,
               private dialogRef: MatDialogRef<ListChargesComponent>) { }
 
-  edit(charge:Charge){
+  edit(charge:Charges){
     
     this.dialogRef.close();
 
@@ -45,7 +35,7 @@ export class ListChargesComponent {
     });
   }
 
-  delete(charge:Charge){
+  delete(charge:Charges){
     
     this.dialogRef.close();
 
@@ -71,7 +61,7 @@ export class ListChargesComponent {
 
   }
 
-  openDialog({ charge_name }:Charge){
+  openDialog({ charge_name }:Charges){
     return this.dialog.open(ConfirmDialogComponent,{
       disableClose:true,
       panelClass:'dialog-class',

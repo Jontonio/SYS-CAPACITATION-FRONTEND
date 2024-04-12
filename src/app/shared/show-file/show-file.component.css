@@ -1,0 +1,14 @@
+.embed-file{
+    width: 1000px;
+    height: 500px;
+}
+.content-iframe{
+    overflow: hidden !important;
+    position: relative;
+}
+@media only screen and (min-width: 1200px) {
+    /* Estilos para escritorio grande aquí */
+    .iframe{
+      height: 430px;
+    }
+}

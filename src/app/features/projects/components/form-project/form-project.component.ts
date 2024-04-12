@@ -2,6 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Project } from '../../class/Project';
+import { BdService } from 'src/app/core/services/bd.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
+import { LoaddingService } from 'src/app/core/services/Loadding.service';
 
 @Component({
   standalone:false,
@@ -15,6 +18,9 @@ export class FormProjectComponent implements OnInit {
   isUpdate:boolean=false;
 
   constructor(private fb:FormBuilder, 
+              private dbService:BdService,
+              private _notify:NotificationService,
+              public _loadding:LoaddingService,
               private dialogRef: MatDialogRef<FormProjectComponent>,
               @Inject(MAT_DIALOG_DATA) public data:Project) { }
 
@@ -28,7 +34,7 @@ export class FormProjectComponent implements OnInit {
 
   createForm(){
     this.formProject = this.fb.group({
-      project_cui:[null, [Validators.required, Validators.maxLength(15)]],
+      project_cui:[null, [Validators.required, Validators.maxLength(15), Validators.pattern(/^([0-9])*$/)]],
       project_name:[null, [Validators.required, Validators.maxLength(250)]]
     })
   }
@@ -47,24 +53,47 @@ export class FormProjectComponent implements OnInit {
   }
 
   save(){
-
     if(this.formProject.invalid){
       Object.keys( this.formProject.controls )
-            .forEach( input => this.formProject.controls[input].markAsTouched() )
+      .forEach( input => this.formProject.controls[input].markAsTouched() )
       return;
     }
-
+    
     if(this.isUpdate){
-      console.log("Datos actualizados")
-      this.formProject.reset();
-      this.dialogRef.close();
+      this.editProject();
       return;
     }
+    
+    this.createProject();
+    
+  }
+  
+  createProject(){
 
-    this.formProject.reset();
-    this.dialogRef.close();
-    console.table("Datos guardados")
+    this._loadding.setLoadding(true);
 
+    this.dbService.createProject(this.formProject.value).subscribe({
+      next:({ message }) => {
+        this.formProject.reset();
+        this.dialogRef.close(true);
+        this._notify.success('Registro de proyecto', message)
+        this._loadding.setLoadding(false);
+      }
+    })
+  }
+
+  editProject(){
+
+    this._loadding.setLoadding(true);
+    const { id_project } = this.data;
+    this.dbService.editProject(id_project!, this.formProject.value).subscribe({
+      next:({ message }) => {
+        this.formProject.reset();
+        this.dialogRef.close(true);
+        this._notify.success('Registro de proyecto', message)
+        this._loadding.setLoadding(false);
+      }
+    })
   }
 
 

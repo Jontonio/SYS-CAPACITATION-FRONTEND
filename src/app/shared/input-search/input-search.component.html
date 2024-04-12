@@ -1,4 +1,15 @@
-<div class="container-input-search">
-    <!-- <mat-icon>search</mat-icon> -->
-    <input class="input-search" type="text" name="" id="" placeholder="Buscar proyectos">
-</div>
+<mat-form-field class="full-width mt-1" appearance="outline">
+    <mat-icon matSuffix *ngIf="!word; else iconClear">search</mat-icon>
+    <ng-template #iconClear>
+        <button mat-icon-button (click)="clear()"><mat-icon matSuffix>close</mat-icon></button>
+    </ng-template>
+    <input id="search"
+            name="search" 
+            matInput 
+            type="search" 
+            [placeholder]="placeholder"
+            autocomplete="off"
+            [(ngModel)]="word"
+            (ngModelChange)="modelChange($event)"
+            name="search">
+</mat-form-field>

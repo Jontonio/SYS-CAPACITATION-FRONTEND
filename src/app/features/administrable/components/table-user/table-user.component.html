@@ -1,0 +1,76 @@
+<table mat-table [dataSource]="dataSource" matSort class="mat-table">
+
+    <!-- id project Column -->
+    <ng-container matColumnDef="id_project">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell 
+          class="mat-cell" 
+          *matCellDef="let element; let i = index">
+          <div *ngIf="!_loadding.getLoadding(); else skeletonIndex">{{i+1 + startPage}}</div>
+          <ng-template #skeletonIndex>...</ng-template>
+      </td>
+    </ng-container>
+
+    <!-- user name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> NOMBRES </th>
+      <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.name | uppercase}}</td>
+    </ng-container>
+  
+    <!-- user email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> EMAIL </th>
+      <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- user role Column -->
+    <ng-container matColumnDef="role">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> ROL </th>
+      <td mat-cell class="mat-cell" *matCellDef="let element">
+        <p *ngFor="let role of element.roles">{{role.name | uppercase}}</p>
+      </td>
+    </ng-container>
+
+    <!-- user permitions Column -->
+    <ng-container matColumnDef="permitions">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> ROLES/PERMISOS </th>
+      <td mat-cell class="mat-cell" *matCellDef="let element">
+        <button mat-button color="warn" (click)="dialogPermissions(element)">rol-permisos</button></td>
+    </ng-container>
+  
+    <!-- action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> OPCIONES </th>
+      <td mat-cell class="mat-cell" *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon color="secondary">edit</mat-icon>
+            <span>Editar usuario</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon color="warn">delete</mat-icon>
+            <span>Eliminar usuario</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+  </table>
+
+  <div *ngIf="_loadding.getLoadding() && dataSource.data.length===0">
+    <app-spinner-loadding></app-spinner-loadding>
+  </div>
+  <div *ngIf="!_loadding.getLoadding() && length===0">
+    <app-message-table [msg]="msg"></app-message-table>
+  </div>
+  <mat-paginator  [length]="length"
+                  [pageSize]="10"
+                  [pageIndex]="pageIndex - 1"
+                  (page)="pageEvent($event)"
+                  aria-label="Select page"></mat-paginator>

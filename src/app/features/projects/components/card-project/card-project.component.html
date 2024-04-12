@@ -1,0 +1,46 @@
+<mat-card class="mb-2">
+    <div class="spacer-flex flex justify-content-between">
+
+      <h2 class="text-color-secondary d-flex">
+        <mat-icon>home_work</mat-icon>
+        <p mat-line class="m-1">Proyecto</p>
+      </h2>
+
+      <div class="container-cui" *ngIf="_local.getProject(); else skeletonCUI">
+        <b>CUI - </b>{{_local.getProject().id_project | showNumber}}
+      </div>
+
+      <ng-template #skeletonCUI>
+        <app-skeleton width="100px"></app-skeleton>
+      </ng-template>
+
+    </div>
+    <mat-divider></mat-divider>
+    <div class="mt-3">
+        <div *ngIf="_local.getProject(); else skeletonTitle">
+
+          {{_local.getProject().project_name | uppercase | slice:0:showAllText?_local.getProject().project_name.length:150}}
+          {{showAllText?'':'...'}}
+          <button mat-stroked-button
+                  color="warn" 
+                  (click)="showAllText = !showAllText">{{showAllText?'Ver menos':'Ver mas'}}</button>
+        </div>
+
+        <ng-template #skeletonTitle>
+          <app-skeleton width="100%"></app-skeleton>
+          <app-skeleton width="100%"></app-skeleton>
+          <app-skeleton width="100px" height="30px"></app-skeleton>
+        </ng-template>
+        
+    </div>
+    <mat-card-actions align="end">
+      <button mat-button (click)="editProject()">
+        <mat-icon>edit_note</mat-icon>
+        Editar proyecto
+      </button>
+      <button mat-button (click)="addEvent()">
+        <mat-icon>event</mat-icon>
+        Nuevo evento
+      </button>
+    </mat-card-actions>
+</mat-card>

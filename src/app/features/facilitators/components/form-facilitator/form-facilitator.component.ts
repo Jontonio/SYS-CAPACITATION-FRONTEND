@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Facilitator } from '../../class/Facilitator';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { BdService } from 'src/app/core/services/bd.service';
+import { LoaddingService } from 'src/app/core/services/Loadding.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-form-facilitator',
@@ -14,6 +17,10 @@ export class FormFacilitatorComponent implements OnInit {
   isUpdate:boolean = false;
 
   constructor(private fb:FormBuilder,
+              private _db:BdService,
+              public _loadding:LoaddingService,
+              private _notify:NotificationService,
+              private dialogRef: MatDialogRef<FormFacilitatorComponent>,
               @Inject(MAT_DIALOG_DATA) public data:Facilitator) { 
     this.createForm();
   }
@@ -27,14 +34,14 @@ export class FormFacilitatorComponent implements OnInit {
   }
 
   initializateForm({
-    Id_card_facilitator,
+    id_card_facilitator,
     facilitator_name,
     facilitator_first_name,
     facilitator_last_name,
     facilitator_charge,
     facilitator_profesion,
   }:Facilitator){
-    this.Id_card_facilitator.setValue(Id_card_facilitator)
+    this.id_card_facilitator.setValue(id_card_facilitator)
     this.facilitator_name.setValue(facilitator_name)
     this.facilitator_first_name.setValue(facilitator_first_name)
     this.facilitator_last_name.setValue(facilitator_last_name)
@@ -44,7 +51,7 @@ export class FormFacilitatorComponent implements OnInit {
 
   createForm(){
     this.formFacilitator = this.fb.group({
-      Id_card_facilitator:[null, [Validators.required, Validators.maxLength(8), Validators.minLength(8)]],
+      id_card_facilitator:[null, [Validators.required, Validators.maxLength(8), Validators.minLength(8)]],
       facilitator_name:[null,[Validators.required, Validators.maxLength(20)]],
       facilitator_first_name:[null,[Validators.required, Validators.maxLength(20)]],
       facilitator_last_name:[null,[Validators.required, Validators.maxLength(20)]],
@@ -53,8 +60,14 @@ export class FormFacilitatorComponent implements OnInit {
     })
   }
 
-  get Id_card_facilitator(){
-    return this.formFacilitator.controls['Id_card_facilitator'];
+  completeForm({ facilitator_name, facilitator_first_name, facilitator_last_name }:Facilitator){
+    this.facilitator_name.setValue( facilitator_name )
+    this.facilitator_first_name.setValue( facilitator_first_name )
+    this.facilitator_last_name.setValue( facilitator_last_name )
+  }
+
+  get id_card_facilitator(){
+    return this.formFacilitator.controls['id_card_facilitator'];
   }
   get facilitator_name(){
     return this.formFacilitator.controls['facilitator_name'];
@@ -73,10 +86,65 @@ export class FormFacilitatorComponent implements OnInit {
   }
 
   save(){
+
     if(this.formFacilitator.invalid){
       Object.keys( this.formFacilitator.controls ).forEach( input => this.formFacilitator.controls[input].markAllAsTouched());
       return;
     }
+
+    const data = this.formFacilitator.value;
+
+    if(this.isUpdate){
+      this.editFacilitator(data);
+      return;
+    }
+
+    this.createFacilitator(data);
+
+  }
+
+  createFacilitator(data:Facilitator){
+    this._loadding.setLoadding(true);
+    this._db.createFacilitadors(data).subscribe({
+      next:({ message }) => {
+        this._notify.success('Registro facilitador', message);
+        this.dialogRef.close(true);
+        this._loadding.setLoadding(false);
+      }
+    })
+  }
+
+  editFacilitator(data:Facilitator){
+    this._loadding.setLoadding(true);
+    const { id_card_facilitator } = data;
+    this._db.editFacilitadors(id_card_facilitator, data).subscribe({
+      next:({ message }) => {
+        this._notify.success('Actualización de datos facilitador', message);
+        this.dialogRef.close(true);
+        this._loadding.setLoadding(false);
+      }
+    })
+  }
+
+  queryAPI(){
+    
+    if(this.id_card_facilitator.invalid) return;
+    this._loadding.setLoadding(true);
+    this._db.apiReniec(this.id_card_facilitator.value).subscribe({
+      next:({message, data}) => {
+
+        const faciltador = {
+          id_card_facilitator:data.id_card,
+          facilitator_name:data.name,
+          facilitator_first_name:data.first_name,
+          facilitator_last_name:data.last_name
+        }
+
+        this.completeForm(faciltador as Facilitator);
+        this._loadding.setLoadding(false);
+        this._notify.success('Consulta de datos API', message);
+      }
+    })
   }
 
 }

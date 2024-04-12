@@ -1,19 +1,23 @@
 <div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
     <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
-        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
         <mat-card>
-            <mat-card-title>SISTEMA</mat-card-title>
-            <mat-card-subtitle>Inice sesión para continuar</mat-card-subtitle>
+            <mat-card-title>Sistema <b>SIRDEV</b></mat-card-title>
+            <mat-card-subtitle class="text-color-primary">Inice sesión para continuar</mat-card-subtitle>
             <mat-card-content>
 
                 <mat-form-field class="full-width mt-1" appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" type="email">
+                    <input id="email" 
+                            matInput 
+                            formControlName="email" 
+                            type="email" 
+                            autocomplete="off"
+                            name="email">
                     <mat-icon matSuffix>email</mat-icon>
-                    <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
+                    <mat-error id="invalidEmailError" *ngIf="email.hasError('email')">
                         Digite un email válido
                     </mat-error>
-                    <mat-error id="requiredEmailError" *ngIf="loginForm.controls['email'].hasError('required')">
+                    <mat-error id="requiredEmailError" *ngIf="email.hasError('required')">
                         El email es
                         <strong>requerido</strong>
                     </mat-error>
@@ -23,7 +27,7 @@
                     <mat-label>Contraseña</mat-label>
                     <input id="passwordInput" matInput formControlName="password" type="password"
                     autocomplete="current-password">
-                    <mat-error id="requiredPasswordError" *ngIf="loginForm.controls['email'].hasError('required')">
+                    <mat-error id="requiredPasswordError" *ngIf="email.hasError('required') || email.touched">
                         La contraseña es
                         <strong>requerida</strong>
                     </mat-error>
@@ -39,7 +43,6 @@
                 <button mat-raised-button 
                         id="login" 
                         class="btn-primary" 
-                        [disabled]="loginForm.invalid || loading"
                     (click)="login()">Iniciar sesión</button>
                 <button mat-button id="resetPassword" (click)="resetPassword()" type="button">Restablecer contraseña</button>
             </mat-card-actions>

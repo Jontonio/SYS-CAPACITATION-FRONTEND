@@ -1,60 +1,72 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay, map } from 'rxjs/operators';
-import * as jwt_decode from 'jwt-decode';
-import * as moment from 'moment';
+import { delay } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { of, EMPTY } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { CurrentUser, UserAuth } from '../interface/AuthRes';
+import { HttpRes } from '../class/HttpRes';
+import { Router } from '@angular/router';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthenticationService {
 
+    public URL:string;
+    private keyToken;
+    private userAuth!:CurrentUser; 
+    private roles = ['admin','user','viewer'];
+
     constructor(private http: HttpClient,
-        @Inject('LOCALSTORAGE') private localStorage: Storage) {
+                private router:Router,
+                @Inject('LOCALSTORAGE') private localStorage: Storage) {
+            this.URL = environment.URL_BASE;
+            this.keyToken = 'x-token';
     }
 
-    login(email: string, password: string) {
-        return of(true)
-            .pipe(delay(1000),
-                map((/*response*/) => {
-                    // set token property
-                    // const decodedToken = jwt_decode(response['token']);
-
-                    // store email and jwt token in local storage to keep user logged in between page refreshes
-                    this.localStorage.setItem('currentUser', JSON.stringify({
-                        token: 'aisdnaksjdn,axmnczm',
-                        isAdmin: true,
-                        email: 'john.doe@gmail.com',
-                        id: '12312323232',
-                        alias: 'john.doe@gmail.com'.split('@')[0],
-                        expiration: moment().add(1, 'days').toDate(),
-                        fullName: 'John Doe'
-                    }));
-
-                    return true;
-                }));
+    get KetToken(){
+        return this.keyToken;
     }
 
-    logout(): void {
-        // clear token remove user from local storage to log user out
-        this.localStorage.removeItem('currentUser');
+    get getUserAuth(){
+        return this.userAuth;
     }
 
-    getCurrentUser(): any {
-        // TODO: Enable after implementation
-        // return JSON.parse(this.localStorage.getItem('currentUser'));
-        return {
-            token: 'aisdnaksjdn,axmnczm',
-            isAdmin: true,
-            email: 'john.doe@gmail.com',
-            id: '12312323232',
-            alias: 'john.doe@gmail.com'.split('@')[0],
-            expiration: moment().add(1, 'days').toDate(),
-            fullName: 'John Doe'
-        };
+    get getRoles(){
+        return this.roles;
+    }
+
+    setUserAuth(user:CurrentUser){
+        this.userAuth = user; 
+    }
+
+    login(email: string, password: string){
+        return this.http.post(`${this.URL}/login`, { email, password }).pipe(
+          tap((response:any) => {
+            const { data } = response;
+            const { token } = data.authorization;
+            this.saveLocalStorage(this.keyToken, token)
+          })
+        );
+    }
+
+    logout() {
+        return this.http.get<HttpRes>(`${this.URL}/logout`).pipe(
+            tap((response) => {
+                this.removeLocalStorage(this.keyToken);
+            })
+        )
+    }
+
+    redirecToLogin(){
+        this.router.navigate(['auth/login']);
+    }
+
+    getCurrentUser(): Observable<UserAuth> {
+        return this.http.get<UserAuth>(`${this.URL}/user-authenticated`);
     }
 
     passwordResetRequest(email: string) {
@@ -67,5 +79,17 @@ export class AuthenticationService {
 
     passwordReset(email: string, token: string, password: string, confirmPassword: string): any {
         return of(true).pipe(delay(1000));
+    }
+
+    saveLocalStorage(key:string, data:string){
+        this.localStorage.setItem(key, data);
+    }
+
+    removeLocalStorage(key:string){
+        this.localStorage.removeItem(key);
+    }
+
+    getLocalStorage(key:string){
+        return this.localStorage.getItem(key);
     }
 }

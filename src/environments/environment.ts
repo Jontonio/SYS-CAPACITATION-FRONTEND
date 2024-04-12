@@ -8,5 +8,7 @@ import { NgxLoggerLevel } from 'ngx-logger';
 export const environment = {
   production: false,
   logLevel: NgxLoggerLevel.TRACE,
-  serverLogLevel: NgxLoggerLevel.OFF
+  serverLogLevel: NgxLoggerLevel.OFF,
+  URL_API_RENIEC:'https://api.apis.net.pe/v1/dni?numero=',
+  URL_BASE:'http://127.0.0.1:8000/api'
 };

@@ -1,4 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'ngx-toastr/toastr';
+
 :root{
   --background-color-a:#2A3447;
   --background-color-b:#333C50;
@@ -71,7 +73,22 @@ body {
 .full-width {
   width: 100%;
 }
-
+.chip-1{
+  background: rgba(150, 239, 150, 0.415);
+}
+.chip-2{
+  background: rgba(252, 110, 110, 0.452);
+}
+.chip-1, .chip-2{
+  font-size: 10px;
+  border-radius: 20px;
+  padding: 5px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
 .container {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -180,6 +197,23 @@ p .mat-icon {
   bottom: 3%;
 }
 
+.content-chart{
+  height: auto;
+  width: 100% !important;
+  display: flex !important;
+}
+.container-cui{
+  background: rgba(8, 163, 220, 0.78);
+  padding: 3px 10px 3px 10px;
+  border-radius: 20px;
+  width: auto;
+}
+.mat-list-option{
+  color: #FFF !important;
+}
+.mat-list-option:hover{
+  background: #444D5D;
+}
 /* Highlight on hover */
 .submitted-timesheet-day:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
 /* Highlight */
@@ -227,9 +261,14 @@ mat-card, mat-paginator, .mat-table{
 .mat-header-cell{
   color: var(--header-color);
 }
+.mat-cell{
+  /* max-width: 200px;  */
+  word-wrap: break-word; /* Permite que el texto se envuelva */
+}
 mat-paginator, .mat-cell{
   color: var(--menu-color) !important;
 }
+
 /* Dialog class*/
 .dialog-class .mat-dialog-container{
   background-color: var(--background-color-b) !important;
@@ -257,7 +296,14 @@ table {
   gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
-
+.input-date{
+  padding: 0px !important;
+  margin: 0px;
+}
+/*Text rorate*/
+.text-rotate{
+  rotate: 300deg;
+}
 @keyframes show {
   from {
     opacity: 0;

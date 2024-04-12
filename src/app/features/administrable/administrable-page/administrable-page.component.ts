@@ -15,7 +15,7 @@ export class AccountPageComponent implements OnInit {
               private dialog:MatDialog) { }
 
   ngOnInit() {
-    this.titleService.setTitle('angular-material-template - Account');
+    this.titleService.setTitle('SIRDEV - Account');
   }
 
   openDialogAddCharge(){

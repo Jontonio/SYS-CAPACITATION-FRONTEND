@@ -5,6 +5,7 @@ import { LayoutComponent } from 'src/app/shared/layout/layout.component';
 import { CustomerListComponent } from './pages/projects-list/projects-list.component';
 import { ViewProjectComponent } from './pages/view-project/view-project.component';
 import { ListEventsComponent } from './pages/list-events/list-events.component';
+import { ViewEventComponent } from './pages/view-event/view-event.component';
 
 const routes: Routes = [
   {
@@ -13,11 +14,15 @@ const routes: Routes = [
     children: [
       { path: '', component: CustomerListComponent },
       { 
-        path: 'project-id/:id_project', component: ViewProjectComponent,
+        path: 'project/:id_project', component: ViewProjectComponent,
         children:[
           {
             path:'list-events',
             component:ListEventsComponent
+          },
+          {
+            path:'event/:id_event',
+            component:ViewEventComponent
           }
         ]
       },

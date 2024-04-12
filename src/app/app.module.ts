@@ -9,6 +9,7 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
+import { MainModule } from './features/main/main.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MainModule,
     CoreModule,
     SharedModule,
     CustomMaterialModule.forRoot(),

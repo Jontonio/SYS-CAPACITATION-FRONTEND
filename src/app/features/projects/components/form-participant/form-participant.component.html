@@ -1,0 +1,118 @@
+<form [formGroup]="formParticipant" method="post">
+    <h2 class="m-0 mb-1">{{isUpdate?'Actualizar datos del asistente':'Registro de asistente'}}</h2>
+    <div class="grid">
+        <div class="col-6">
+            <mat-form-field class="full-width mt-1" appearance="outline">
+                <mat-label>DNI</mat-label>
+                <input matInput type="text" formControlName="id_card_participant" maxlength="8" (ngModelChange)="queryDBInformation()">
+                <mat-icon matSuffix>id_card</mat-icon>
+                <mat-error *ngIf="id_card_participant.hasError('pattern') && !id_card_participant.hasError('required')"
+                            class="p-error">Digite un DNI <strong>válido</strong></mat-error>
+                <mat-error *ngIf="id_card_participant.hasError('maxlength')"
+                            class="p-error">El tamaño del DNI tiene que tener como máximo <strong>8  caracteres</strong></mat-error>
+                <mat-error *ngIf="id_card_participant.hasError('minlength')"
+                            class="p-error">El tamaño del DNI tiene que tener como mínimo <strong>8  caracteres</strong></mat-error>
+                <mat-error *ngIf="id_card_participant.hasError('required') && id_card_participant.touched"
+                            class="p-error">El campo DNI <strong>requerido</strong></mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Nombres</mat-label>
+                <input matInput type="text" formControlName="participant_name" maxlength="25">
+                <mat-icon matSuffix>id_card</mat-icon>
+                <mat-error *ngIf="participant_name.hasError('pattern') && !participant_name.hasError('required')"
+                            class="p-error">Digite un nombre <strong>válido</strong></mat-error>
+                <mat-error *ngIf="participant_name.hasError('maxlength')"
+                            class="p-error">El nombre debe ser como máximo de <strong>20  caracteres</strong></mat-error>
+                <mat-error *ngIf="participant_name.hasError('required') && participant_name.touched"
+                            class="p-error">El campo nombre es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+            <div class="formgrid grid">
+                <div class="field col m-0">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Apellido paterno</mat-label>
+                        <input matInput type="text" formControlName="participant_first_name" maxlength="25">
+                        <mat-icon matSuffix>id_card</mat-icon>
+                        <mat-error *ngIf="participant_first_name.hasError('pattern') && !participant_first_name.hasError('required')"
+                                    class="p-error">Digite un apellido paterno <strong>válido</strong></mat-error>
+                        <mat-error *ngIf="participant_first_name.hasError('maxlength')"
+                                    class="p-error">El apellido paterno debe ser como máximo de <strong>20  caracteres</strong></mat-error>
+                        <mat-error *ngIf="participant_first_name.hasError('required') && participant_first_name.touched"
+                                    class="p-error">El campo apellido paterno es <strong>requerido</strong></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="field col m-0">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Apellido materno</mat-label>
+                        <input matInput type="text" formControlName="participant_last_name" maxlength="25">
+                        <mat-icon matSuffix>id_card</mat-icon>
+                        <mat-error *ngIf="participant_last_name.hasError('pattern') && !participant_last_name.hasError('required')"
+                                    class="p-error">Digite un apellido materno <strong>válido</strong></mat-error>
+                        <mat-error *ngIf="participant_last_name.hasError('maxlength')"
+                                    class="p-error">El apellido materno ser como máximo de <strong>20  caracteres</strong></mat-error>
+                        <mat-error *ngIf="participant_last_name.hasError('required') && participant_last_name.touched"
+                                    class="p-error">El campo apellido materno es <strong>requerido</strong></mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="participant_sex">
+                    <mat-option *ngFor="let s of sexs" [value]="s">{{s.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="participant_sex.hasError('required') && participant_sex.touched"
+                            class="p-error">El campo sexo es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <div class="m-1"></div>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="participant_email" type="email">
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error id="invalidEmailError" *ngIf="participant_email.hasError('email')">
+                    Digite un email válido
+                </mat-error>
+                <mat-error id="requiredEmailError" *ngIf="participant_email.hasError('required')">
+                    El email es
+                    <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Celular</mat-label>
+                <input matInput type="text" formControlName="participant_phone" maxlength="9">
+                <mat-icon matSuffix>participant_phone</mat-icon>
+                <mat-error id="requiredEmailError" *ngIf="participant_phone.hasError('required')">
+                    El celular es
+                    <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Comunidad / Institución</mat-label>
+                <input matInput type="text" formControlName="participant_location" autocomplete="additional-name" maxlength="25">
+                <mat-icon matSuffix>participant_location</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Cargo</mat-label>
+                <mat-select formControlName="id_charge">
+                    <mat-option *ngFor="let charge of charges"
+                                [value]="charge">{{charge.charge_name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="id_charge.hasError('required') && id_charge.touched"
+                            class="p-error">El campo cargo es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+<mat-dialog-actions align="end">
+    <button mat-raised-button
+    class="btn-primary" 
+    [disabled]="_loadding.getLoadding()"
+    (click)="save()"
+    type="button">{{isUpdate?'Guardar cambios':'Registrar'}}</button>
+    <button mat-button 
+            class="ml-1" 
+            [disabled]="_loadding.getLoadding()"
+            mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>

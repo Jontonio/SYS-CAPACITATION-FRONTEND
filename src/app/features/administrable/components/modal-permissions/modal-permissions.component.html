@@ -1,0 +1,39 @@
+<div *ngIf="!loadding; else showLoading">
+    <form [formGroup]="formPermission" method="post">
+        <mat-dialog-content>
+            <h2 class="m-0 mb-2">Adminisistración de rol y permisos del usuario</h2>
+            <mat-form-field class="full-width">
+                <mat-label>SELECIONE EL NUEVO ROL DEL USUARIO</mat-label>
+                <mat-select formControlName="role" (selectionChange)="selectRol($event)">
+                    <mat-option *ngFor="let role of roles" [value]="role.name">{{role.name | uppercase}}</mat-option>
+                </mat-select>
+                <mat-error id="requiredEmailError" *ngIf="role.hasError('required')">
+                    El rol del usuario es
+                    <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+            <div *ngIf="isSelectedRole">
+                <p>Seleciones los permisos del usuario</p>
+                <div class="grid" formArrayName="permissions">
+                    <section class="col-3" 
+                             *ngFor="let permission of listPermissions; let i=index">
+                        <mat-slide-toggle
+                            class="example-margin"
+                            [formControlName]="i"
+                            (click)="itemPermission(permission, i)"
+                            color="primary">
+                            {{permission.name.replace('-',' ')}}
+                        </mat-slide-toggle>
+                    </section>
+                </div>
+            </div>
+        </mat-dialog-content> 
+        <mat-dialog-actions align="end">
+            <button mat-button [mat-dialog-close]="false">Cancelar</button>
+            <button mat-button cdkFocusInitial type="button" (click)="save()">Guardar</button>
+        </mat-dialog-actions>
+    </form>
+</div>
+<ng-template #showLoading>
+    <app-spinner-loadding msg="Cargando roles y permisos..."></app-spinner-loadding>
+</ng-template>

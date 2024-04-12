@@ -5,6 +5,7 @@
 .navbar {
   z-index: 2;
   background-color: var(--background-color-a);
+  box-shadow:2px 2px 0px var(--background-color-b);
   color: var(--menu-color);
 }
 

@@ -1,0 +1,17 @@
+<div class="grid m-0 mt-2">
+    <div class="col-12">
+      <mat-card>
+        <div class="flex justify-content-between">
+          <p>Usuarios registrados</p>
+          <div>
+            <button mat-icon-button 
+                    (click)="newUser()"
+                    matTooltip="Registrar nuevo usuario">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+        <app-table-user></app-table-user>
+      </mat-card>
+    </div>
+</div>

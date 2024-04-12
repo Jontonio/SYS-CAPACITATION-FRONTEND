@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntypedFormControl, Validators, UntypedFormGroup, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { NotificationService } from 'src/app/core/services/notification.service';
+import { NgxSpinnerService } from "ngx-spinner";
+import { LoaddingService } from 'src/app/core/services/Loadding.service';
+import { Remember } from 'src/app/core/interface/Remember';
 
 @Component({
     selector: 'app-login',
@@ -13,19 +15,36 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 export class LoginComponent implements OnInit {
 
     loginForm!: FormGroup;
-    loading!: boolean;
+    rememberEmail!:boolean;
 
     constructor(private router: Router,
         private titleService: Title,
         private fb:FormBuilder,
-        private notificationService: NotificationService,
+        private spinner:NgxSpinnerService,
+        private loaddingService:LoaddingService,
         private authenticationService: AuthenticationService) {
+        }
+        
+        ngOnInit() {
+            this.titleService.setTitle('SIRDEV - Login');
+            this.authenticationService.logout();
+            this.createForm();
+            this.completeRememberInfo()
     }
 
-    ngOnInit() {
-        this.titleService.setTitle('SISTEMA - Login');
-        this.authenticationService.logout();
-        this.createForm();
+    completeRememberInfo(){
+
+        if(!this.authenticationService.getLocalStorage('rememberMe')){
+            return;
+        }
+
+        const remember = JSON.parse(this.authenticationService.getLocalStorage('rememberMe')||'') as Remember || {} as Remember;
+        if(remember){
+            this.email.setValue(remember.email);
+            this.rememberMe.setValue(remember.rememberMe);
+        }else{
+            this.authenticationService.removeLocalStorage('rememberMe')
+        }
     }
 
     private createForm() {
@@ -33,31 +52,53 @@ export class LoginComponent implements OnInit {
         const savedUserEmail = localStorage.getItem('savedUserEmail');
 
         this.loginForm = this.fb.group({
-            email: [null, [Validators.required, Validators.email ]],
-            password:[null, Validators.required],
+            email: ['', [Validators.required, Validators.email ]],
+            password:['', Validators.required],
             rememberMe:[savedUserEmail !== null]
         });
     }
 
+    get email(){
+        return this.loginForm.controls['email'];
+    }
+    get password(){
+        return this.loginForm.controls['password'];
+    }
+    get rememberMe(){
+        return this.loginForm.controls['rememberMe'];
+    }
+
     login() {
-        console.log(this.loginForm.value)
-        this.loading = true;
-        // this.authenticationService
-        //     .login(email.toLowerCase(), password)
-        //     .subscribe(
-        //         data => {
-        //             if (rememberMe) {
-        //                 localStorage.setItem('savedUserEmail', email);
-        //             } else {
-        //                 localStorage.removeItem('savedUserEmail');
-        //             }
-        //             this.router.navigate(['/']);
-        //         },
-        //         error => {
-        //             this.notificationService.openSnackBar(error.error);
-        //             this.loading = false;
-        //         }
-        //     );
+        
+        if(this.loginForm.invalid){
+            Object.keys( this.loginForm.controls ).forEach( input => this.loginForm.controls[ input ].markAllAsTouched() )
+            return;
+        }
+
+        this.spinner.show();
+        this.loaddingService.setMessage('Iniciando sesión');
+        this.authenticationService
+            .login(this.email.value, this.password.value)
+            .subscribe({
+                next:() => {
+
+                    const remember:Remember = {email:this.email.value, rememberMe:this.rememberMe.value }
+
+                    if(this.rememberMe.value){
+                        this.authenticationService.saveLocalStorage('rememberMe', JSON.stringify(remember));
+                    }else{
+                        this.authenticationService.removeLocalStorage('rememberMe')
+                    }
+
+                    this.spinner.hide();
+                    this.router.navigate(['/main/dashboard'])
+                },
+                error:(e) => {
+                    console.log("first")
+                    this.spinner.hide();   
+                }
+            });
+
     }
 
     resetPassword() {

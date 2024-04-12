@@ -16,57 +16,86 @@
     <mat-card>
       <mat-card-content>
         <div class="spacer-flex">
-          <div></div>
-          <app-input-search></app-input-search>
+          <div>
+            <mat-form-field name="year" appearance="outline">
+              <mat-label>Año</mat-label>
+              <mat-select (selectionChange)="selectedYear($event)" [value]="year">
+                <mat-option *ngFor="let year of _local.getYears()" [value]="year">{{year}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <app-input-search placeholder="Buscar por CUI | NOMBRE" (textSearch)="searchProject($event)"></app-input-search>
+          </div>
         </div>
+
         <table mat-table [dataSource]="dataSource" matSort class="mat-table">
 
           <!-- id project Column -->
-          <ng-container matColumnDef="Id_project">
+          <ng-container matColumnDef="id_project">
             <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> No. </th>
-            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.Id_project}} </td>
+            <td mat-cell 
+                class="mat-cell" 
+                *matCellDef="let element; let i = index">
+                <div *ngIf="!_loadding.getLoadding(); else skeletonIndex">{{i+1 + startPage}}</div>
+                <ng-template #skeletonIndex>...</ng-template>
+            </td>
           </ng-container>
         
           <!-- project cui Column -->
           <ng-container matColumnDef="project_cui">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> project_cui </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> CUI DEL PROYECTO </th>
             <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_cui}} </td>
           </ng-container>
         
           <!-- project_name Column -->
           <ng-container matColumnDef="project_name">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> project_name </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> NOMBRE DEL PROYECTO </th>
             <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_name | slice:0:100}}... </td>
           </ng-container>
         
           <!-- action Column -->
           <ng-container matColumnDef="action">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> action </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> OPCIONES </th>
             <td mat-cell class="mat-cell" *matCellDef="let element">
-              <button mat-icon-button (click)="edit(element)" class="btn-color">
-                <mat-icon>edit</mat-icon>
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
               </button>
-              <button mat-icon-button (click)="delete(element)" color="warn">
-                <mat-icon>delete</mat-icon>
-              </button>
-              <button mat-icon-button (click)="goEvents(element)" color="primary">
-                <mat-icon>event</mat-icon>
-              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="edit(element)">
+                  <mat-icon color="secondary">edit</mat-icon>
+                  <span>Editar proyecto</span>
+                </button>
+                <button mat-menu-item (click)="goEvents(element)" >
+                  <mat-icon color="primary">event</mat-icon>
+                  <span>Eventos del proyecto</span>
+                </button>
+                <button mat-menu-item (click)="delete(element)" >
+                  <mat-icon color="warn">delete</mat-icon>
+                  <span>Eliminar proyecto</span>
+                </button>
+              </mat-menu>
             </td>
           </ng-container>
         
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
+          
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                       showFirstLastButtons
-                       showFirstLastButtons="false"
-                       aria-label="Select page of periodic elements">
-        </mat-paginator>
+        <div *ngIf="_loadding.getLoadding() && dataSource.data.length===0">
+          <app-spinner-loadding></app-spinner-loadding>
+        </div>
+        <div *ngIf="!_loadding.getLoadding() && length===0">
+          <app-message-table [msg]="msg"></app-message-table>
+        </div>
+        <mat-paginator  [length]="length"
+                        [pageSize]="10"
+                        [pageIndex]="pageIndex - 1"
+                        (page)="pageEvent($event)"
+                        aria-label="Select page"></mat-paginator>
+        </mat-card-content>
         
-      </mat-card-content>
     </mat-card>
 
   </div>

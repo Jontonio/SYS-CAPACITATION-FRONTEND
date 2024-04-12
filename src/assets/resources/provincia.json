@@ -1,0 +1,1943 @@
+
+[
+{
+    "id_provincia":"2535",
+    "nombre_provincia":"Chachapoyas",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chachapoyas amazonas",
+    "numero_hijos_ubigeo":"21",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2534"
+},
+{
+    "id_provincia":"2557",
+    "nombre_provincia":"Bagua",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"bagua amazonas",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2534"
+},
+{
+    "id_provincia":"2563",
+    "nombre_provincia":"Bongara",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"bongara amazonas",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2534"
+},
+{
+    "id_provincia":"2576",
+    "nombre_provincia":"Condorcanqui",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"condorcanqui amazonas",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2534"
+},
+{
+    "id_provincia":"2580",
+    "nombre_provincia":"Luya",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"luya amazonas",
+    "numero_hijos_ubigeo":"23",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2534"
+},
+{
+    "id_provincia":"2604",
+    "nombre_provincia":"Rodriguez de Mendoza",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"rodriguez de mendoza amazonas",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2534"
+},
+{
+    "id_provincia":"2617",
+    "nombre_provincia":"Utcubamba",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"utcubamba amazonas",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2534"
+},
+{
+    "id_provincia":"2626",
+    "nombre_provincia":"Huaraz",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huaraz ancash",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2639",
+    "nombre_provincia":"Aija",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"aija ancash",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2645",
+    "nombre_provincia":"Antonio Raymondi",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"antonio raymondi ancash",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2652",
+    "nombre_provincia":"Asuncion",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"asuncion ancash",
+    "numero_hijos_ubigeo":"2",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2655",
+    "nombre_provincia":"Bolognesi",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"bolognesi ancash",
+    "numero_hijos_ubigeo":"15",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2671",
+    "nombre_provincia":"Carhuaz",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"carhuaz ancash",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2683",
+    "nombre_provincia":"Carlos Fermin Fitzcarrald",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"carlos fermin fitzcarrald ancash",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2687",
+    "nombre_provincia":"Casma",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"casma ancash",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2692",
+    "nombre_provincia":"Corongo",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"corongo ancash",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2700",
+    "nombre_provincia":"Huari",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huari ancash",
+    "numero_hijos_ubigeo":"16",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2717",
+    "nombre_provincia":"Huarmey",
+    "etiqueta_ubigeo":"11",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huarmey ancash",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2723",
+    "nombre_provincia":"Huaylas",
+    "etiqueta_ubigeo":"12",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huaylas ancash",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2734",
+    "nombre_provincia":"Mariscal Luzuriaga",
+    "etiqueta_ubigeo":"13",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"mariscal luzuriaga ancash",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2743",
+    "nombre_provincia":"Ocros",
+    "etiqueta_ubigeo":"14",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ocros ancash",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2754",
+    "nombre_provincia":"Pallasca",
+    "etiqueta_ubigeo":"15",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"pallasca ancash",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2766",
+    "nombre_provincia":"Pomabamba",
+    "etiqueta_ubigeo":"16",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"pomabamba ancash",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2771",
+    "nombre_provincia":"Recuay",
+    "etiqueta_ubigeo":"17",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"recuay ancash",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2782",
+    "nombre_provincia":"Santa",
+    "etiqueta_ubigeo":"18",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"santa ancash",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2792",
+    "nombre_provincia":"Sihuas",
+    "etiqueta_ubigeo":"19",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"sihuas ancash",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2803",
+    "nombre_provincia":"Yungay",
+    "etiqueta_ubigeo":"20",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"yungay ancash",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2625"
+},
+{
+    "id_provincia":"2813",
+    "nombre_provincia":"Abancay",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"abancay apurimac",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2812"
+},
+{
+    "id_provincia":"2823",
+    "nombre_provincia":"Andahuaylas",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"andahuaylas apurimac",
+    "numero_hijos_ubigeo":"19",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2812"
+},
+{
+    "id_provincia":"2843",
+    "nombre_provincia":"Antabamba",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"antabamba apurimac",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2812"
+},
+{
+    "id_provincia":"2851",
+    "nombre_provincia":"Aymaraes",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"aymaraes apurimac",
+    "numero_hijos_ubigeo":"17",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2812"
+},
+{
+    "id_provincia":"2869",
+    "nombre_provincia":"Cotabambas",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cotabambas apurimac",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2812"
+},
+{
+    "id_provincia":"2876",
+    "nombre_provincia":"Chincheros",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chincheros apurimac",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2812"
+},
+{
+    "id_provincia":"2885",
+    "nombre_provincia":"Grau",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"grau apurimac",
+    "numero_hijos_ubigeo":"14",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2812"
+},
+{
+    "id_provincia":"2901",
+    "nombre_provincia":"Arequipa",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"arequipa arequipa arequipa",
+    "numero_hijos_ubigeo":"29",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"2931",
+    "nombre_provincia":"Camana",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"camana arequipa",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"2940",
+    "nombre_provincia":"Caraveli",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"caraveli arequipa",
+    "numero_hijos_ubigeo":"13",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"2954",
+    "nombre_provincia":"Castilla",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"castilla arequipa",
+    "numero_hijos_ubigeo":"16",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"2971",
+    "nombre_provincia":"Caylloma",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"caylloma arequipa",
+    "numero_hijos_ubigeo":"20",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"2992",
+    "nombre_provincia":"Condesuyos",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"condesuyos arequipa",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"3001",
+    "nombre_provincia":"Islay",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"islay arequipa",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"3008",
+    "nombre_provincia":"La Union",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"la union arequipa",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"2900"
+},
+{
+    "id_provincia":"3021",
+    "nombre_provincia":"Huamanga",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huamanga ayacucho",
+    "numero_hijos_ubigeo":"15",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3037",
+    "nombre_provincia":"Cangallo",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cangallo ayacucho",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3044",
+    "nombre_provincia":"Huanca Sancos",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huanca sancos ayacucho",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3049",
+    "nombre_provincia":"Huanta",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huanta ayacucho",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3058",
+    "nombre_provincia":"La Mar",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"la mar ayacucho",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3067",
+    "nombre_provincia":"Lucanas",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"lucanas ayacucho",
+    "numero_hijos_ubigeo":"21",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3089",
+    "nombre_provincia":"Parinacochas",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"parinacochas ayacucho",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3098",
+    "nombre_provincia":"Paucar del Sara Sara",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"paucar del sara sara ayacucho",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3109",
+    "nombre_provincia":"Sucre",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"sucre ayacucho",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3121",
+    "nombre_provincia":"Victor Fajardo",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"victor fajardo ayacucho",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3134",
+    "nombre_provincia":"Vilcas Huaman",
+    "etiqueta_ubigeo":"11",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"vilcas huaman ayacucho",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3020"
+},
+{
+    "id_provincia":"3144",
+    "nombre_provincia":"Cajamarca",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cajamarca cajamarca cajamarca",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3157",
+    "nombre_provincia":"Cajabamba",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cajabamba cajamarca",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3162",
+    "nombre_provincia":"Celendin",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"celendin cajamarca",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3175",
+    "nombre_provincia":"Chota",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chota cajamarca",
+    "numero_hijos_ubigeo":"19",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3195",
+    "nombre_provincia":"Contumaza",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"contumaza cajamarca",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3204",
+    "nombre_provincia":"Cutervo",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cutervo cajamarca",
+    "numero_hijos_ubigeo":"15",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3220",
+    "nombre_provincia":"Hualgayoc",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"hualgayoc cajamarca",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3224",
+    "nombre_provincia":"Jaen",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"jaen cajamarca",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3237",
+    "nombre_provincia":"San Ignacio",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"san ignacio cajamarca",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3245",
+    "nombre_provincia":"San Marcos",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"san marcos cajamarca",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3253",
+    "nombre_provincia":"San Miguel",
+    "etiqueta_ubigeo":"11",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"san miguel cajamarca",
+    "numero_hijos_ubigeo":"13",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3267",
+    "nombre_provincia":"San Pablo",
+    "etiqueta_ubigeo":"12",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"san pablo cajamarca",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3272",
+    "nombre_provincia":"Santa Cruz",
+    "etiqueta_ubigeo":"13",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"santa cruz cajamarca",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3143"
+},
+{
+    "id_provincia":"3285",
+    "nombre_provincia":"Callao",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"callao callao lima",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"3293",
+    "nombre_provincia":"Cusco",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cusco cusco cusco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3302",
+    "nombre_provincia":"Acomayo",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"acomayo cusco",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3310",
+    "nombre_provincia":"Anta",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"anta cusco",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3320",
+    "nombre_provincia":"Calca",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"calca cusco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3329",
+    "nombre_provincia":"Canas",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"canas cusco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3338",
+    "nombre_provincia":"Canchis",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"canchis cusco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3347",
+    "nombre_provincia":"Chumbivilcas",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chumbivilcas cusco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3356",
+    "nombre_provincia":"Espinar",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"espinar cusco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3365",
+    "nombre_provincia":"La Convencion",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"la convencion cusco",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3376",
+    "nombre_provincia":"Paruro",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"paruro cusco",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3386",
+    "nombre_provincia":"Paucartambo",
+    "etiqueta_ubigeo":"11",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"paucartambo cusco",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3393",
+    "nombre_provincia":"Quispicanchi",
+    "etiqueta_ubigeo":"12",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"quispicanchi cusco",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3406",
+    "nombre_provincia":"Urubamba",
+    "etiqueta_ubigeo":"13",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"urubamba cusco",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3292"
+},
+{
+    "id_provincia":"3415",
+    "nombre_provincia":"Huancavelica",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huancavelica huancavelica huancavelica",
+    "numero_hijos_ubigeo":"19",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3414"
+},
+{
+    "id_provincia":"3435",
+    "nombre_provincia":"Acobamba",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"acobamba huancavelica",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3414"
+},
+{
+    "id_provincia":"3444",
+    "nombre_provincia":"Angaraes",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"angaraes huancavelica",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3414"
+},
+{
+    "id_provincia":"3457",
+    "nombre_provincia":"Castrovirreyna",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"castrovirreyna huancavelica",
+    "numero_hijos_ubigeo":"13",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3414"
+},
+{
+    "id_provincia":"3471",
+    "nombre_provincia":"Churcampa",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"churcampa huancavelica",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3414"
+},
+{
+    "id_provincia":"3482",
+    "nombre_provincia":"Huaytara",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huaytara huancavelica",
+    "numero_hijos_ubigeo":"16",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3414"
+},
+{
+    "id_provincia":"3499",
+    "nombre_provincia":"Tayacaja",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tayacaja huancavelica",
+    "numero_hijos_ubigeo":"18",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3414"
+},
+{
+    "id_provincia":"3519",
+    "nombre_provincia":"Huanuco",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huanuco huanuco huanuco",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3531",
+    "nombre_provincia":"Ambo",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ambo huanuco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3540",
+    "nombre_provincia":"Dos de Mayo",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"dos de mayo huanuco",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3550",
+    "nombre_provincia":"Huacaybamba",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huacaybamba huanuco",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3555",
+    "nombre_provincia":"Huamalies",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huamalies huanuco",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3567",
+    "nombre_provincia":"Leoncio Prado",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"leoncio prado huanuco",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3574",
+    "nombre_provincia":"Maraqon",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"maraqon huanuco",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3578",
+    "nombre_provincia":"Pachitea",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"pachitea huanuco",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3583",
+    "nombre_provincia":"Puerto Inca",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"puerto inca huanuco",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3589",
+    "nombre_provincia":"Lauricocha",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"lauricocha huanuco",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3597",
+    "nombre_provincia":"Yarowilca",
+    "etiqueta_ubigeo":"11",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"yarowilca huanuco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3518"
+},
+{
+    "id_provincia":"3607",
+    "nombre_provincia":"Ica",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ica ica ica",
+    "numero_hijos_ubigeo":"14",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3606"
+},
+{
+    "id_provincia":"3622",
+    "nombre_provincia":"Chincha",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chincha ica",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3606"
+},
+{
+    "id_provincia":"3634",
+    "nombre_provincia":"Nazca",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"nazca ica",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3606"
+},
+{
+    "id_provincia":"3640",
+    "nombre_provincia":"Palpa",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"palpa ica",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3606"
+},
+{
+    "id_provincia":"3646",
+    "nombre_provincia":"Pisco",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"pisco ica",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3606"
+},
+{
+    "id_provincia":"3656",
+    "nombre_provincia":"Huancayo",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huancayo junin",
+    "numero_hijos_ubigeo":"28",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3685",
+    "nombre_provincia":"Concepcion",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"concepcion junin",
+    "numero_hijos_ubigeo":"15",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3701",
+    "nombre_provincia":"Chanchamayo",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chanchamayo junin",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3708",
+    "nombre_provincia":"Jauja",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"jauja junin",
+    "numero_hijos_ubigeo":"34",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3743",
+    "nombre_provincia":"Junin",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"junin junin junin",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3748",
+    "nombre_provincia":"Satipo",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"satipo junin",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3757",
+    "nombre_provincia":"Tarma",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tarma junin",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3767",
+    "nombre_provincia":"Yauli",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"yauli junin",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3778",
+    "nombre_provincia":"Chupaca",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chupaca junin",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3655"
+},
+{
+    "id_provincia":"3789",
+    "nombre_provincia":"Trujillo",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"trujillo la libertad",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3801",
+    "nombre_provincia":"Ascope",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ascope la libertad",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3810",
+    "nombre_provincia":"Bolivar",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"bolivar la libertad",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3817",
+    "nombre_provincia":"Chepen",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chepen la libertad",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3821",
+    "nombre_provincia":"Julcan",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"julcan la libertad",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3826",
+    "nombre_provincia":"Otuzco",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"otuzco la libertad",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3837",
+    "nombre_provincia":"Pacasmayo",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"pacasmayo la libertad",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3843",
+    "nombre_provincia":"Pataz",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"pataz la libertad",
+    "numero_hijos_ubigeo":"13",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3857",
+    "nombre_provincia":"Sanchez Carrion",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"sanchez carrion la libertad",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3866",
+    "nombre_provincia":"Santiago de Chuco",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"santiago de chuco la libertad",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3875",
+    "nombre_provincia":"Gran Chimu",
+    "etiqueta_ubigeo":"11",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"gran chimu la libertad",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3880",
+    "nombre_provincia":"Viru",
+    "etiqueta_ubigeo":"12",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"viru la libertad",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3788"
+},
+{
+    "id_provincia":"3885",
+    "nombre_provincia":"Chiclayo",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chiclayo lambayeque",
+    "numero_hijos_ubigeo":"20",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3884"
+},
+{
+    "id_provincia":"3906",
+    "nombre_provincia":"Ferreqafe",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ferreqafe lambayeque",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3884"
+},
+{
+    "id_provincia":"3913",
+    "nombre_provincia":"Lambayeque",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"lambayeque lambayeque lambayeque",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3884"
+},
+{
+    "id_provincia":"3927",
+    "nombre_provincia":"Lima",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"lima lima lima",
+    "numero_hijos_ubigeo":"43",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"3971",
+    "nombre_provincia":"Barranca",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"barranca lima",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"3977",
+    "nombre_provincia":"Cajatambo",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cajatambo lima",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"3983",
+    "nombre_provincia":"Canta",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"canta lima",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"3991",
+    "nombre_provincia":"Cañete",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"cañete lima",
+    "numero_hijos_ubigeo":"16",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"4008",
+    "nombre_provincia":"Huaral",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huaral lima",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"4021",
+    "nombre_provincia":"Huarochiri",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huarochiri lima",
+    "numero_hijos_ubigeo":"32",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"4054",
+    "nombre_provincia":"Huaura",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huaura lima",
+    "numero_hijos_ubigeo":"12",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"4067",
+    "nombre_provincia":"Oyon",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"oyon lima",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"4074",
+    "nombre_provincia":"Yauyos",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"yauyos lima",
+    "numero_hijos_ubigeo":"33",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"3926"
+},
+{
+    "id_provincia":"4109",
+    "nombre_provincia":"Maynas",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"maynas loreto",
+    "numero_hijos_ubigeo":"13",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4108"
+},
+{
+    "id_provincia":"4123",
+    "nombre_provincia":"Alto Amazonas",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"alto amazonas loreto",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4108"
+},
+{
+    "id_provincia":"4135",
+    "nombre_provincia":"Loreto",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"loreto loreto",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4108"
+},
+{
+    "id_provincia":"4141",
+    "nombre_provincia":"Mariscal Ramon Castilla",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"mariscal ramon castilla loreto",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4108"
+},
+{
+    "id_provincia":"4146",
+    "nombre_provincia":"Requena",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"requena loreto",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4108"
+},
+{
+    "id_provincia":"4158",
+    "nombre_provincia":"Ucayali",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ucayali loreto",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4108"
+},
+{
+    "id_provincia":"4166",
+    "nombre_provincia":"Tambopata",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tambopata madre de dios",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4165"
+},
+{
+    "id_provincia":"4171",
+    "nombre_provincia":"Manu",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"manu madre de dios",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4165"
+},
+{
+    "id_provincia":"4176",
+    "nombre_provincia":"Tahuamanu",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tahuamanu madre de dios",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4165"
+},
+{
+    "id_provincia":"4181",
+    "nombre_provincia":"Mariscal Nieto",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"mariscal nieto moquegua",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4180"
+},
+{
+    "id_provincia":"4188",
+    "nombre_provincia":"General Sanchez Cerro",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"general sanchez cerro moquegua",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4180"
+},
+{
+    "id_provincia":"4200",
+    "nombre_provincia":"Ilo",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ilo moquegua",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4180"
+},
+{
+    "id_provincia":"4205",
+    "nombre_provincia":"Pasco",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"pasco pasco",
+    "numero_hijos_ubigeo":"13",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4204"
+},
+{
+    "id_provincia":"4219",
+    "nombre_provincia":"Daniel Alcides Carrion",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"daniel alcides carrion pasco",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4204"
+},
+{
+    "id_provincia":"4228",
+    "nombre_provincia":"Oxapampa",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"oxapampa pasco",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4204"
+},
+{
+    "id_provincia":"4237",
+    "nombre_provincia":"Piura",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"piura piura piura",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4247",
+    "nombre_provincia":"Ayabaca",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"ayabaca piura",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4258",
+    "nombre_provincia":"Huancabamba",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huancabamba piura",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4267",
+    "nombre_provincia":"Morropon",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"morropon piura",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4278",
+    "nombre_provincia":"Paita",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"paita piura",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4286",
+    "nombre_provincia":"Sullana",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"sullana piura",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4295",
+    "nombre_provincia":"Talara",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"talara piura",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4302",
+    "nombre_provincia":"Sechura",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"sechura piura",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4236"
+},
+{
+    "id_provincia":"4310",
+    "nombre_provincia":"Puno",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"puno puno puno",
+    "numero_hijos_ubigeo":"15",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4326",
+    "nombre_provincia":"Azangaro",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"azangaro puno",
+    "numero_hijos_ubigeo":"15",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4342",
+    "nombre_provincia":"Carabaya",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"carabaya puno",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4353",
+    "nombre_provincia":"Chucuito",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"chucuito puno",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4361",
+    "nombre_provincia":"El Collao",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"el collao puno",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4367",
+    "nombre_provincia":"Huancane",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huancane puno",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4376",
+    "nombre_provincia":"Lampa",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"lampa puno",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4387",
+    "nombre_provincia":"Melgar",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"melgar puno",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4397",
+    "nombre_provincia":"Moho",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"moho puno",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4402",
+    "nombre_provincia":"San Antonio de Putina",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"san antonio de putina puno",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4408",
+    "nombre_provincia":"San Roman",
+    "etiqueta_ubigeo":"11",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"san roman puno",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4413",
+    "nombre_provincia":"Sandia",
+    "etiqueta_ubigeo":"12",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"sandia puno",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4423",
+    "nombre_provincia":"Yunguyo",
+    "etiqueta_ubigeo":"13",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"yunguyo puno",
+    "numero_hijos_ubigeo":"7",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4309"
+},
+{
+    "id_provincia":"4432",
+    "nombre_provincia":"Moyobamba",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"moyobamba san martin",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4439",
+    "nombre_provincia":"Bellavista",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"bellavista san martin",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4446",
+    "nombre_provincia":"El Dorado",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"el dorado san martin",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4452",
+    "nombre_provincia":"Huallaga",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"huallaga san martin",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4459",
+    "nombre_provincia":"Lamas",
+    "etiqueta_ubigeo":"5",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"lamas san martin",
+    "numero_hijos_ubigeo":"11",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4471",
+    "nombre_provincia":"Mariscal Caceres",
+    "etiqueta_ubigeo":"6",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"mariscal caceres san martin",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4477",
+    "nombre_provincia":"Picota",
+    "etiqueta_ubigeo":"7",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"picota san martin",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4488",
+    "nombre_provincia":"Rioja",
+    "etiqueta_ubigeo":"8",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"rioja san martin",
+    "numero_hijos_ubigeo":"9",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4498",
+    "nombre_provincia":"San Martin",
+    "etiqueta_ubigeo":"9",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"san martin san martin",
+    "numero_hijos_ubigeo":"14",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4513",
+    "nombre_provincia":"Tocache",
+    "etiqueta_ubigeo":"10",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tocache san martin",
+    "numero_hijos_ubigeo":"5",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4431"
+},
+{
+    "id_provincia":"4520",
+    "nombre_provincia":"Tacna",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tacna tacna tacna",
+    "numero_hijos_ubigeo":"10",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4519"
+},
+{
+    "id_provincia":"4531",
+    "nombre_provincia":"Candarave",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"candarave tacna",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4519"
+},
+{
+    "id_provincia":"4538",
+    "nombre_provincia":"Jorge Basadre",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"jorge basadre tacna",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4519"
+},
+{
+    "id_provincia":"4542",
+    "nombre_provincia":"Tarata",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tarata tacna",
+    "numero_hijos_ubigeo":"8",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4519"
+},
+{
+    "id_provincia":"4552",
+    "nombre_provincia":"Tumbes",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"tumbes tumbes tumbes",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4551"
+},
+{
+    "id_provincia":"4559",
+    "nombre_provincia":"Contralmirante Villar",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"contralmirante villar tumbes",
+    "numero_hijos_ubigeo":"2",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4551"
+},
+{
+    "id_provincia":"4562",
+    "nombre_provincia":"Zarumilla",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"zarumilla tumbes",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4551"
+},
+{
+    "id_provincia":"4568",
+    "nombre_provincia":"Coronel Portillo",
+    "etiqueta_ubigeo":"1",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"coronel portillo ucayali",
+    "numero_hijos_ubigeo":"6",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4567"
+},
+{
+    "id_provincia":"4575",
+    "nombre_provincia":"Atalaya",
+    "etiqueta_ubigeo":"2",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"atalaya ucayali",
+    "numero_hijos_ubigeo":"4",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4567"
+},
+{
+    "id_provincia":"4580",
+    "nombre_provincia":"Padre Abad",
+    "etiqueta_ubigeo":"3",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"padre abad ucayali",
+    "numero_hijos_ubigeo":"3",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4567"
+},
+{
+    "id_provincia":"4584",
+    "nombre_provincia":"Purus",
+    "etiqueta_ubigeo":"4",
+    "codigo_ubigeo":"0",
+    "buscador_ubigeo":"purus ucayali",
+    "numero_hijos_ubigeo":"1",
+    "nivel_ubigeo":"2",
+    "id_padre_ubigeo":"4567"
+}
+]

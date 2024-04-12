@@ -1,0 +1,22 @@
+.skeleton-container {
+    position: relative;
+    margin-top: 5px;
+}
+  
+.skeleton {
+    width: 100%; /* Ancho del esqueleto */
+    height: 100%; /* Altura del esqueleto */
+    border-radius: 5px;
+    background: linear-gradient(90deg, #2f3c56f0 25%, #4a5772 50%, #374361ec 75%); /* Fondo degradado */
+    background-size: 200% 100%; /* Tamaño del fondo */
+    animation: skeleton-loading 1.5s ease-in-out infinite; /* Animación de carga */
+}
+  
+@keyframes skeleton-loading {
+    0% {
+        background-position: 100% 0; /* Inicio de la animación, fondo a la derecha */
+    }
+    100% {
+        background-position: -100% 0; /* Final de la animación, fondo a la izquierda */
+    }
+}

@@ -1,0 +1,12 @@
+/* Estilo para el popup del calendario */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    border: none; /* Quita el borde */
+    border-radius: 50%; /* Hace que el icono del calendario tenga forma circular */
+    color: #333; /* Color del icono del calendario */
+    font-size: 18px; /* Tamaño del icono del calendario */
+}
+  
+/* Estilo para el popup del calendario */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer; /* Cambia el cursor a una mano al pasar el mouse sobre el icono del calendario */
+}

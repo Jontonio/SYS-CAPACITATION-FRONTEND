@@ -8,52 +8,86 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormProjectComponent } from '../../components/form-project/form-project.component';
 import { Project } from '../../class/Project';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
-import { MatPaginator } from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-
-const ELEMENT_DATA: Project[] = [
-  { Id_project:1, project_cui: 1552, project_name: 'MEJORAMIENTO DE LOS SERVICIOS DE INVESTIGACIÓN Y TRANSFERENCIA DE TECNOLOGÍA EN GANADERÍA ALTO ANDINA EN LAS REGIONES DE: APURIMAC, AREQUIPA, AYACUCHO, CUSCO, HUANCAVELICA, JUNÍN, MOQUEGUA, PASCO, PUNO, Y TACNA, 33 DISTRITOS. CUI N°2491159 (PROGAN)',},
-  { Id_project:2, project_cui: 2252, project_name: 'Helium', },
-  { Id_project:3, project_cui: 3324, project_name: 'Proyecto de crianza y fortificación de cuyes distrito de Andahuaylas.', },
-  { Id_project:4, project_cui: 4252, project_name: 'Beryllium', },
-  { Id_project:5, project_cui: 5539, project_name: 'Boron',},
-  { Id_project:6, project_cui: 6725, project_name: 'Carbon',},
-  { Id_project:7, project_cui: 7355, project_name: 'Nitrogen',},
-  { Id_project:8, project_cui: 8775, project_name: 'Oxygen',},
-  { Id_project:9, project_cui: 9378, project_name: 'Fluorine',},
-  { Id_project:10, project_cui: 1055, project_name: 'Neon', },
-];
+import { BdService } from 'src/app/core/services/bd.service';
+import { LoaddingService } from 'src/app/core/services/Loadding.service';
+import { MatSelectChange } from '@angular/material/select';
+import { LocalService } from 'src/app/core/services/local.service';
 
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.css']
 })
-export class CustomerListComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['Id_project','project_cui','project_name','action'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+export class CustomerListComponent implements OnInit {
 
+  displayedColumns: string[] = ['id_project','project_cui','project_name','action'];
+  dataSource = new MatTableDataSource([]);
+  year:number = new Date().getFullYear();
+
+  msg:string = '';
+
+  length:number = 10;
+  pageIndex:number = 0;
+  pageSize:number = 10;
+  startPage:number = 0;
+  endPage:number = 0;
+  
   @ViewChild(MatSort, { static: true })
   sort: MatSort = new MatSort;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
-    private logger: NGXLogger,
-    private notificationService: NotificationService,
     private titleService: Title,
     private dialog:MatDialog,
+    private _notify:NotificationService,
+    private _db:BdService,
+    public _local:LocalService,
+    public _loadding:LoaddingService,
     private router:Router
-  ) { }
+  ) { 
 
+    if(this._db.getLocalStorage('cachePageProject')){
+      this._db.cachePageProject = this._db.getLocalStorage('cachePageProject');
+      this.pageIndex = this._db.cachePageProject.currentPage;
+      this.year = this._db.cachePageProject.year;
+      this.startPage = this._db.cachePageProject.startPage;
+    }
+  }
+  
   ngOnInit() {
-    this.titleService.setTitle('angular-material-template - projects');
-    this.logger.log('projects loaded');
-    this.notificationService.openSnackBar('projects loaded');
-    this.dataSource.sort = this.sort;
+    this.titleService.setTitle('SIRDEV - projects');
+    this.getProjects(this.pageIndex, this.startPage, this.year);
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  pageEvent(evn:PageEvent){
+
+    this.endPage = evn.pageSize;
+    this.startPage = evn.pageIndex * evn.pageSize;
+    this.endPage = this.startPage + evn.pageSize;
+
+    this.pageIndex = evn.pageIndex + 1;
+
+    this.getProjects(this.pageIndex, this.startPage, this.year);
+
+  }
+
+  getProjects(page:number, startPage:number, year:number){
+    this._loadding.setLoadding(true);
+    this._db.getProjects(page, startPage, year).subscribe({
+      next:({ data }) => {
+        this.dataSource.data = data.data; 
+        this.length = data.total;
+        data.total==0?this.msg = 'Lista de proyectos vacia':'';
+        this._loadding.setLoadding(false);
+      }
+    })
+  }
+
+  selectedYear({ value }:MatSelectChange){
+    this.year = value;
+    this.pageIndex = 0;
+    this.getProjects(this.pageIndex, this.startPage, this.year);
   }
 
   openDialogRegisProject() {
@@ -63,8 +97,10 @@ export class CustomerListComponent implements OnInit, AfterViewInit {
       panelClass:'dialog-class',
     });
 
-    dialogRefRegister.afterClosed().subscribe((result:any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRefRegister.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.getProjects(this.pageIndex, this.startPage, this.year);
+      }
     });
 
   }
@@ -77,13 +113,15 @@ export class CustomerListComponent implements OnInit, AfterViewInit {
       data
     });
 
-    dialogRefUpdate.afterClosed().subscribe((result:any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRefUpdate.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.getProjects(this.pageIndex, this.startPage, this.year);
+      }
     });
 
   }
 
-  delete({project_cui}:Project){
+  delete({ id_project, project_cui}:Project){
 
     const dialogRefDelete = this.dialog.open(ConfirmDialogComponent,{
       disableClose:true,
@@ -94,16 +132,42 @@ export class CustomerListComponent implements OnInit, AfterViewInit {
       }
     });
 
-    dialogRefDelete.afterClosed().subscribe((result:any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRefDelete.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.deleteProject(id_project!);
+      }
     });
 
+    
+  }
+  
+  deleteProject(id_project:number){
+    this._db.deleteProject(id_project!).subscribe({
+      next:({ message }) => {
+        this.getProjects(this.pageIndex, this.startPage, this.year);
+        this._notify.success('Eliminación de datos', message);
+      }
+    })
   }
 
-  goEvents({Id_project}:Project){
+  goEvents({id_project}:Project){
     // esconde la url donde cambio
     // this.router.navigateByUrl(`projects/project-id/${Id_project}`, {skipLocationChange:true})
-    this.router.navigateByUrl(`projects/project-id/${Id_project}/list-events`)
+    this.router.navigateByUrl(`main/projects/project/${id_project}/list-events`)
+  }
+
+  searchProject(text:string){
+
+    this._loadding.setLoadding(true);
+    
+    this._db.searchTable('project', text).subscribe({
+      next:({ data }) => {
+        this.dataSource.data = data.data; 
+        this.length = data.total;
+        data.total==0?this.msg = 'Lista de proyectos vacia':'';
+        this._loadding.setLoadding(false);
+      }
+    })
   }
 
 }

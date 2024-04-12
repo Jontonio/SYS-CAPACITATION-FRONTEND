@@ -7,6 +7,10 @@ import { FormProjectComponent } from './components/form-project/form-project.com
 import { ViewProjectComponent } from './pages/view-project/view-project.component';
 import { ListEventsComponent } from './pages/list-events/list-events.component';
 import { FormEventComponent } from './components/form-event/form-event.component';
+import { ViewEventComponent } from './pages/view-event/view-event.component';
+import { FormParticipantComponent } from './components/form-participant/form-participant.component';
+import { BtnActionsEventComponent } from './components/btn-actions-event/btn-actions-event.component';
+import { CardProjectComponent } from './components/card-project/card-project.component';
 
 @NgModule({
     imports: [
@@ -20,6 +24,10 @@ import { FormEventComponent } from './components/form-event/form-event.component
         ViewProjectComponent,
         ListEventsComponent,
         FormEventComponent,
+        ViewEventComponent,
+        FormParticipantComponent,
+        BtnActionsEventComponent,
+        CardProjectComponent,
     ]
 })
 export class projectsModule { }

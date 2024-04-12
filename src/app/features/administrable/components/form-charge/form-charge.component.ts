@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Charge, ListChargesComponent } from '../list-charges/list-charges.component';
+import { ListChargesComponent } from '../list-charges/list-charges.component';
+import { Charges } from 'src/app/features/projects/class/Attendance';
 
 @Component({
   selector: 'app-form-charge',
@@ -14,7 +15,7 @@ export class FormChargeComponent implements OnInit {
   isUpdate:boolean = false;
 
   constructor(private fb:FormBuilder,
-              @Inject(MAT_DIALOG_DATA) public data:Charge,
+              @Inject(MAT_DIALOG_DATA) public data:Charges,
               private dialogRefFormChage: MatDialogRef<FormChargeComponent>,
               private dialogCharges: MatDialog) {
     this.createForm();
@@ -38,7 +39,7 @@ export class FormChargeComponent implements OnInit {
     return this.formCharge.controls['charge_name'];
   }
   
-  initializeForm({charge_name}:Charge){
+  initializeForm({charge_name}:Charges){
     this.charge_name.setValue( charge_name );
   }
 

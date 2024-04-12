@@ -7,7 +7,9 @@
           <mat-icon>face</mat-icon>
           <p mat-line class="m-1">Facilitadores</p>
         </h2>
-        <button mat-mini-fab class="btn-secondary" (click)="addFacilitator()">
+        <button mat-mini-fab 
+                matTooltip="Agregar nuevo facilitador"
+                class="btn-secondary" (click)="addFacilitator()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
@@ -21,39 +23,50 @@
         </div>
         <table mat-table [dataSource]="dataSource" matSort class="mat-table">
 
-          <!-- id project Column -->
-          <ng-container matColumnDef="Id_card_facilitator">
+           <!-- id project Column -->
+           <ng-container matColumnDef="id_index">
             <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> No. </th>
-            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.Id_card_facilitator}} </td>
+            <td mat-cell 
+                class="mat-cell" 
+                *matCellDef="let element; let i = index">
+                <div *ngIf="!_loadding.getLoadding(); else skeletonIndex">{{i+1 + startPage}}</div>
+                <ng-template #skeletonIndex>...</ng-template>
+            </td>
+          </ng-container>
+
+          <!-- id project Column -->
+          <ng-container matColumnDef="id_card_facilitator">
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> DNI </th>
+            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.id_card_facilitator}} </td>
           </ng-container>
         
           <!-- project cui Column -->
           <ng-container matColumnDef="facilitator_name">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> facilitator_name </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> NOMBRES </th>
             <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.facilitator_name}} </td>
           </ng-container>
         
           <!-- facilitator_first_name Column -->
           <ng-container matColumnDef="facilitator_first_name">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> facilitator_first_name </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> APELLIDO PATERNO </th>
             <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.facilitator_first_name}} </td>
           </ng-container>
 
           <!-- facilitator_last_name Column -->
           <ng-container matColumnDef="facilitator_last_name">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> facilitator_last_name </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> APELLIDO MATERNO </th>
             <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.facilitator_last_name}} </td>
           </ng-container>
 
           <!-- facilitator_charge Column -->
           <ng-container matColumnDef="facilitator_charge">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> facilitator_charge </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> CARGO </th>
             <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.facilitator_charge}} </td>
           </ng-container>
 
           <!-- facilitator_profesion Column -->
           <ng-container matColumnDef="facilitator_profesion">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> facilitator_profesion </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> PROFESIÓN </th>
             <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.facilitator_profesion}} </td>
           </ng-container>
         
@@ -75,11 +88,18 @@
 
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                       showFirstLastButtons
-                       showFirstLastButtons="false"
-                       aria-label="Select page of periodic elements">
-        </mat-paginator>
+        <div *ngIf="_loadding.getLoadding() && dataSource.data?.length===0">
+          <app-spinner-loadding></app-spinner-loadding>
+        </div>
+        <div *ngIf="!_loadding.getLoadding() && length===0">
+          <app-message-table [msg]="msg"></app-message-table>
+        </div>
+        
+        <mat-paginator  [length]="length"
+                        [pageSize]="10"
+                        [pageIndex]="pageIndex - 1"
+                        (page)="pageEvent($event)"
+                        aria-label="Select page"></mat-paginator>
         
       </mat-card-content>
     </mat-card>

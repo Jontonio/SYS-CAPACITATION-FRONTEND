@@ -1,0 +1,56 @@
+<mat-dialog-content>
+    <form [formGroup]="formUser">
+        <mat-form-field class="full-width mt-1" appearance="outline">
+            <mat-label>Nombres</mat-label>
+            <input id="name" 
+                    matInput 
+                    formControlName="name" 
+                    type="text" 
+                    autocomplete="off"
+                    name="name">
+            <mat-error id="requiredEmailError" *ngIf="name.hasError('required')">
+                Los nombres son
+                <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="full-width mt-1" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input id="email" 
+                    matInput 
+                    formControlName="email" 
+                    type="email" 
+                    autocomplete="off"
+                    name="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error id="invalidEmailError" *ngIf="email.hasError('email')">
+                Digite un email válido
+            </mat-error>
+            <mat-error id="requiredEmailError" *ngIf="email.hasError('required')">
+                El email es
+                <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="full-width mt-1" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input id="passwordInput" matInput formControlName="password" type="password"
+            autocomplete="current-password">
+            <mat-error id="requiredPasswordError" *ngIf="email.hasError('required') || email.touched">
+                La contraseña es
+                <strong>requerida</strong>
+            </mat-error>
+        </mat-form-field>
+    
+        <button mat-raised-button 
+                id="login" 
+                class="btn-primary" 
+                type="button"
+                [disabled]="loadding"
+                (click)="save()">Registrar</button>
+        <button mat-button 
+                [disabled]="loadding"
+                class="ml-1" 
+                mat-dialog-close>Cancelar</button>
+    </form>
+</mat-dialog-content>

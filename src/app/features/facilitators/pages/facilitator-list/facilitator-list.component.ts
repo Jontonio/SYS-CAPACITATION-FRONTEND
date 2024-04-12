@@ -8,39 +8,22 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 import { FormFacilitatorComponent } from '../../components/form-facilitator/form-facilitator.component';
 import { Facilitator } from '../../class/Facilitator';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-
-
-const ELEMENT_DATA: Facilitator[] = [
-  { 
-    Id_card_facilitator:10, 
-    facilitator_name:'Jose', 
-    facilitator_first_name:'Rojas', 
-    facilitator_last_name:'Cusi',
-    facilitator_charge:'Encargado',
-    facilitator_profesion:'Ing. de sistemas' 
-  },
-  { 
-    Id_card_facilitator:20, 
-    facilitator_name:'Daira', 
-    facilitator_first_name:'Mendoza', 
-    facilitator_last_name:'Yanqui',
-    facilitator_charge:'Encargada',
-    facilitator_profesion:'Ing. de sistemas' 
-  },
-];
-
+import { BdService } from 'src/app/core/services/bd.service';
+import { LoaddingService } from 'src/app/core/services/Loadding.service';
 
 @Component({
   selector: 'app-facilitator-list',
   templateUrl: './facilitator-list.component.html',
   styleUrls: ['./facilitator-list.component.css']
 })
-export class facilitatorListComponent implements OnInit, AfterViewInit {
+export class facilitatorListComponent implements OnInit {
 
+  msg:string = '';
   displayedColumns: string[] = [
-    'Id_card_facilitator',
+    'id_index',
+    'id_card_facilitator',
     'facilitator_name',
     'facilitator_first_name',
     'facilitator_last_name',
@@ -48,25 +31,56 @@ export class facilitatorListComponent implements OnInit, AfterViewInit {
     'facilitator_profesion',
     'action'
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource([]);
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  length:number = 10;
+  pageIndex:number = 0;
+  pageSize:number = 10;
+  startPage:number = 0;
+  endPage:number = 0;
 
   constructor(
-    private logger: NGXLogger,
-    private notificationService: NotificationService,
+    public _loadding: LoaddingService,
+    private _notify: NotificationService,
     private titleService: Title,
+    private _db:BdService,
     private dialog:MatDialog,
     private router:Router
-  ) { }
+  ) {
 
-  ngOnInit() {
-    this.titleService.setTitle('angular-material-template - Users');
-    this.logger.log('Users loaded');
+    if(this._db.getLocalStorage('cachePageFacilitator')){
+      this._db.cachePageFacilitator = this._db.getLocalStorage('cachePageFacilitator');
+      this.pageIndex = this._db.cachePageFacilitator.currentPage;
+    }
+
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  ngOnInit() {
+    this.titleService.setTitle('SIRDEV - Facilitador');
+    this.getFacilitators(this.pageIndex);
+  }
+
+  pageEvent(evn:PageEvent){
+
+    this.endPage = evn.pageSize;
+    this.startPage = evn.pageIndex * evn.pageSize;
+    this.endPage = this.startPage + evn.pageSize;
+
+    this.pageIndex = evn.pageIndex + 1;
+
+    this.getFacilitators(this.pageIndex);
+
+  }
+
+  getFacilitators(page:number){
+    this._loadding.setLoadding(true);
+    this._db.getFacilitators(page).subscribe({
+      next:({ data }) => {
+        this.dataSource.data = data.data;
+        this.length = data.total;
+        this._loadding.setLoadding(false);
+      }
+    })
   }
 
   addFacilitator(){
@@ -76,8 +90,10 @@ export class facilitatorListComponent implements OnInit, AfterViewInit {
       panelClass:'dialog-class',
     });
 
-    dialogRefRegister.afterClosed().subscribe((result:any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRefRegister.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.getFacilitators(this.pageIndex);
+      }
     });
 
   }
@@ -90,24 +106,33 @@ export class facilitatorListComponent implements OnInit, AfterViewInit {
       data:facilitator
     });
 
-    dialogRefUpdate.afterClosed().subscribe((result:any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRefUpdate.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.getFacilitators(this.pageIndex);
+      }
     });
   }
 
-  delete({Id_card_facilitator}:Facilitator){
+  delete({id_card_facilitator}:Facilitator){
 
     const dialogRefDelete = this.dialog.open(ConfirmDialogComponent,{
       disableClose:true,
       panelClass:'dialog-class',
       data:{
         title:'Eliminar proyecto',
-        message:`¿Esta seguro de eliminar al facilitador con DNI ${Id_card_facilitator}?`
+        message:`¿Esta seguro de eliminar al facilitador con DNI ${id_card_facilitator}?`
       }
     });
 
-    dialogRefDelete.afterClosed().subscribe((result:any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRefDelete.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this._db.deleteFacilitador(id_card_facilitator!).subscribe({
+          next:({message}) => {
+            this._notify.success('Elimación de facilitador', message)
+            this.getFacilitators(this.pageIndex);
+          }
+        })
+      }
     });
 
   }
