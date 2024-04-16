@@ -1,0 +1,110 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="98%">
+      <app-card-project [project]="project" (AddEventState)="AddEventState($event)"></app-card-project>
+      <mat-card>
+          <mat-card-content>
+            <div class="spacer-flex">
+              <div>
+                <h2 class="text-plain-secondary">Eventos registrados</h2>
+              </div>
+              <app-input-search (textSearch)="searchEvent($event)" placeholder="Buscar nombre de evento"></app-input-search>
+            </div>
+            <table mat-table [dataSource]="dataSource" matSort class="mat-table">
+    
+              <!-- id events Column -->
+              <ng-container matColumnDef="id_event">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> No. </th>
+                <td mat-cell 
+                    class="mat-cell" 
+                    *matCellDef="let element; let i = index">
+                    <div *ngIf="!_loadding.getLoadding(); else skeletonIndex">{{i+1 + startPage}}</div>
+                    <ng-template #skeletonIndex>...</ng-template>
+                </td>
+              </ng-container>
+
+              <!-- event_topic Column -->
+              <ng-container matColumnDef="event_topic">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> TEMA DEL EVENTO</th>
+                <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.event_topic | lowercase}} </td>
+              </ng-container>
+              <!-- event_topic Column -->
+              <ng-container matColumnDef="event_type">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> TIPO DE EVENTO</th>
+                <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.event_type.event_type_name}} </td>
+              </ng-container>
+
+              <!-- event_region Column -->
+              <ng-container matColumnDef="event_region">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> REGIÓN </th>
+                <td mat-cell class="mat-cell" *matCellDef="let element"><p class="m-1">{{element.event_region | titlecase}}</p></td>
+              </ng-container>
+
+              <!-- event_district Column -->
+              <ng-container matColumnDef="event_provincie">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> PROVINCIA </th>
+                <td mat-cell class="mat-cell" *matCellDef="let element"><p class="m-1">{{element.event_provincie | titlecase}}</p></td>
+              </ng-container>
+
+              <!-- event_district Column -->
+              <ng-container matColumnDef="event_district">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> DISTRITO </th>
+                <td mat-cell class="mat-cell" *matCellDef="let element"><p class="m-1">{{element.event_district | titlecase}}</p></td>
+              </ng-container>
+
+              <!-- event_datetime_start Column -->
+              <ng-container matColumnDef="event_datetime_start">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> FECHA Y HORA</th>
+                <td mat-cell class="mat-cell" *matCellDef="let element"> 
+                  <p class="chip-1">{{element.event_datetime_start | date:'short' }} </p>
+                  <p class="chip-2">{{element.event_datetime_start | date:'short' }} </p>
+                </td>
+              </ng-container>
+            
+              <!-- action Column -->
+              <ng-container matColumnDef="action">
+                <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header>OPCIONES</th>
+                <td mat-cell class="mat-cell justify-content-center" *matCellDef="let element">
+                  <div class="flex justify-content-center aling-items-center">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="editEvent(element)">
+                        <mat-icon color="secondary">edit</mat-icon>
+                        <span>Editar evento</span>
+                      </button>
+                      <button mat-menu-item [routerLink]="['./', element.id_event]">
+                        <mat-icon class="text-color-primary">groups</mat-icon>
+                        <span>Participantes del evento</span>
+                      </button>
+                      <button mat-menu-item (click)="openDialogDelete(element)" >
+                        <mat-icon color="warn">delete</mat-icon>
+                        <span>Eliminar evento</span>
+                      </button>
+                    </mat-menu>
+                  </div>
+                </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+            </table>
+
+            <div *ngIf="_loadding.getLoadding() && dataSource.data.length===0">
+              <app-spinner-loadding></app-spinner-loadding>
+            </div>
+
+            <div *ngIf="!_loadding.getLoadding() && length===0">
+              <app-message-table [msg]="msg"></app-message-table>
+            </div>
+ 
+            <mat-paginator  [length]="length"
+                            [pageSize]="10"
+                            [pageIndex]="pageIndex - 1"
+                            (page)="pageEvent($event)"
+                            aria-label="Select page"></mat-paginator>
+          </mat-card-content>
+      </mat-card>
+    </div>
+</div>

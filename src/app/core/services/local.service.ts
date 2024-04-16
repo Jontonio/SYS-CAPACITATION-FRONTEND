@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { HttpRes } from "../class/HttpRes";
 import { Project } from "src/app/features/projects/class/Project";
 import { EventProject } from "src/app/features/projects/class/Event";
+import { Station } from "src/app/features/station/class/Station";
 
 @Injectable({
     providedIn:'root'
@@ -13,19 +14,15 @@ import { EventProject } from "src/app/features/projects/class/Event";
 export class LocalService{
 
     URL:string;
-    years:number[] = [];
     project!:Project;
     event!:EventProject;
+    station:Station;
+    id_inia_station:number = 0;
 
     constructor(private http:HttpClient){
 
         this.URL = environment.URL_BASE;
-
-        this.getYearsReports().subscribe({
-            next:({ data }) => {
-                this.years = data;
-            }
-        })
+        this.station = new Station();
 
     }
 
@@ -41,12 +38,23 @@ export class LocalService{
         this.event = event;
     }
 
+    setStation(station:Station){
+        this.station = station;
+    }
+
+    getStationID(){
+        return this.id_inia_station;
+    }
+    setStationID(id:number){
+        this.id_inia_station = id;
+    }
+
     getEvent(){
         return this.event;
     }
 
-    getYears(){
-        return this.years;
+    getStation(){
+        return this.station;
     }
 
     getRegions(){

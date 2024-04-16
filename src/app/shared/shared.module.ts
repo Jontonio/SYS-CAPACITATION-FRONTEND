@@ -9,7 +9,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { ContentPlaceholderAnimationComponent } from './content-placeholder-animation/content-placeholder-animation.component';
 import { LocalDatePipe } from './pipes/local-date.pipe';
 import { YesNoPipe } from './pipes/yes-no.pipe';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from '../features/main/layout/layout.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { ShowFileComponent } from './show-file/show-file.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
@@ -23,6 +23,15 @@ import { SpinnerLoaddingComponent } from './spinner-loadding/spinner-loadding.co
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { FieldEmptyPipe } from './pipes/field-empty.pipe';
 import { ShowNumberPipe } from './pipes/show-number.pipe';
+import { LineChartComponent } from "./line-chart/line-chart.component";
+import { PieChartComponent } from "./pie-chart/pie-chart.component";
+import { HorizontalBarChartComponent } from "./horizontal-bar-chart/horizontal-bar-chart.component";
+import { VerticalBarChartComponent } from "./vertical-bar-chart/vertical-bar-chart.component";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { CardProjectComponent } from "./card-project/card-project.component";
+import { FormEventComponent } from "./projects/form-event/form-event.component";
+import { BtnActionsEventComponent } from "./projects/btn-actions-event/btn-actions-event.component";
+import { FormFacilitatorComponent } from "./facilitator/form-facilitator/form-facilitator.component";
 
 
 @NgModule({
@@ -34,6 +43,7 @@ import { ShowNumberPipe } from './pipes/show-number.pipe';
         FlexLayoutModule,
         NgxSpinnerModule,
         ToastrModule.forRoot(),
+        NgxChartsModule
     ],
     declarations: [
         ConfirmDialogComponent,
@@ -51,6 +61,14 @@ import { ShowNumberPipe } from './pipes/show-number.pipe';
         SkeletonComponent,
         FieldEmptyPipe,
         ShowNumberPipe,
+        LineChartComponent,
+        PieChartComponent,
+        HorizontalBarChartComponent,
+        VerticalBarChartComponent,
+        CardProjectComponent,
+        FormEventComponent,
+        BtnActionsEventComponent,
+        FormFacilitatorComponent
     ],
     exports: [
         FormsModule,
@@ -69,7 +87,15 @@ import { ShowNumberPipe } from './pipes/show-number.pipe';
         SpinnerLoaddingComponent,
         SkeletonComponent,
         FieldEmptyPipe,
-        ShowNumberPipe
+        ShowNumberPipe,
+        LineChartComponent,
+        PieChartComponent,
+        HorizontalBarChartComponent,
+        VerticalBarChartComponent,
+        CardProjectComponent,
+        FormEventComponent,
+        BtnActionsEventComponent,
+        FormFacilitatorComponent
     ],
     schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

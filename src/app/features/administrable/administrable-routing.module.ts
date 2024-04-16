@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from 'src/app/shared/layout/layout.component';
+import { LayoutComponent } from 'src/app/features/main/layout/layout.component';
 
 import { AccountPageComponent } from './administrable-page/administrable-page.component';
 

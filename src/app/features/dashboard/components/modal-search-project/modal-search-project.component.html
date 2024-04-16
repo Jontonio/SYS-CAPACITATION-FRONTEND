@@ -19,7 +19,7 @@
            <mat-icon>fact_check</mat-icon> Selecione un evento</p>
           <mat-list-option *ngFor="let event of projectEvents" 
                             class="mat-list-option"
-                            [value]="event">ID {{event.id_event}} - {{event.event_name | slice:0:50}}...</mat-list-option>
+                            [value]="event">ID {{event.id_event}} - {{event.event_topic | slice:0:50}}...</mat-list-option>
         </mat-selection-list>
       </div>
 </mat-dialog-content>

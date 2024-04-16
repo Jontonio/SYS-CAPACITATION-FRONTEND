@@ -7,7 +7,7 @@
     width: 100%; /* Ancho del esqueleto */
     height: 100%; /* Altura del esqueleto */
     border-radius: 5px;
-    background: linear-gradient(90deg, #2f3c56f0 25%, #4a5772 50%, #374361ec 75%); /* Fondo degradado */
+    background: linear-gradient(90deg, #ecececf0 25%, #dadada 50%, #ecececf0 75%); /* Fondo degradado */
     background-size: 200% 100%; /* Tamaño del fondo */
     animation: skeleton-loading 1.5s ease-in-out infinite; /* Animación de carga */
 }

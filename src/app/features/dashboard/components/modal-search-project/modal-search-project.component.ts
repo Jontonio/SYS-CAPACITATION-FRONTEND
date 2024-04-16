@@ -57,7 +57,7 @@ export class ModalSearchProjectComponent implements OnInit {
   }
 
   searchProject(cuuid:string){
-    this._db.searchProjectsReports(cuuid).subscribe({
+    this._db.searchProjectsBycui(cuuid).subscribe({
       next:({ data }) => this.options = data
     })
   }

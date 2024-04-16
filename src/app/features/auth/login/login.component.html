@@ -1,7 +1,7 @@
 <div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
     <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
         <mat-card>
-            <mat-card-title>Sistema <b>SIRDEV</b></mat-card-title>
+            <mat-card-title class="text-plain-secondary">Sistema <b>SIRDEV</b></mat-card-title>
             <mat-card-subtitle class="text-color-primary">Inice sesión para continuar</mat-card-subtitle>
             <mat-card-content>
 
@@ -34,17 +34,20 @@
                 </mat-form-field>
 
                 <div class="full-width mt-1">
-                    <mat-slide-toggle formControlName="rememberMe">Recuerdame el email</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="rememberMe" class="text-plain-secondary">Recuerdame el email</mat-slide-toggle>
                 </div>
 
             </mat-card-content>
 
-            <mat-card-actions class="login-actions">
+            <mat-card-actions class="login-actions mb-1">
                 <button mat-raised-button 
                         id="login" 
                         class="btn-primary" 
                     (click)="login()">Iniciar sesión</button>
-                <button mat-button id="resetPassword" (click)="resetPassword()" type="button">Restablecer contraseña</button>
+                <button mat-button id="resetPassword" 
+                                   (click)="resetPassword()"
+                                   class="btn-link-secondary"
+                                   type="button">Restablecer contraseña</button>
             </mat-card-actions>
 
         </mat-card>

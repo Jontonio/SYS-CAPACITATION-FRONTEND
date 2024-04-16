@@ -1,0 +1,109 @@
+<form [formGroup]="formEvent" method="post">
+    <h2 class="m-0 mb-1">{{isUpdate?'Actualizar datos del evento':'Registro de evento'}}</h2>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Tipo de evento</mat-label>
+        <mat-select formControlName="id_event_type">
+            <mat-option *ngFor="let eventType of eventTypes" [value]="eventType.id_event_type">{{eventType.event_type_name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="id_event_type.hasError('required') && id_event_type.touched"
+                    class="p-error">El tipo evento es <strong>requerido</strong></mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Tema del evento</mat-label>
+        <textarea matInput formControlName="event_topic" maxlength="50" rows="1"></textarea>
+        <mat-icon matSuffix>id_card</mat-icon>
+        <mat-error *ngIf="event_topic.hasError('pattern') && !event_topic.hasError('required')"
+                    class="p-error">Digite un tema de evento <strong>válido</strong></mat-error>
+        <mat-error *ngIf="event_topic.hasError('maxlength')"
+                    class="p-error">El tema de evento debe ser como máximo de <strong>50  caracteres</strong></mat-error>
+        <mat-error *ngIf="event_topic.hasError('required') && event_topic.touched"
+                    class="p-error">El tema de evento es <strong>requerido</strong></mat-error>
+    </mat-form-field>
+    <div class="formgrid grid">
+        <div class="field col m-0">
+            <mat-form-field appearance="outline">
+                <mat-label>Región</mat-label>
+                <mat-select formControlName="id_event_region" name="id_event_region" (ngModelChange)="regionSelected($event)">
+                    <mat-option *ngFor="let region of regions" 
+                                [value]="region">{{region.nombre_departamento}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="event_region.hasError('required') && event_region.touched"
+                            class="p-error">La región es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+        </div>
+        <div class="field col m-0">
+            <mat-form-field appearance="outline">
+                <mat-label>Provincia</mat-label>
+                <mat-select formControlName="id_event_provincie" (ngModelChange)="provincieSelected($event)">
+                    <mat-option *ngFor="let provincie of provincies" [value]="provincie">{{provincie.nombre_provincia}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="event_provincie.hasError('required') && event_provincie.touched"
+                            class="p-error">La provincia es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+        </div>
+        <div class="field col m-0">
+            <mat-form-field appearance="outline">
+                <mat-label>Distrito</mat-label>
+                <mat-select formControlName="id_event_district" (ngModelChange)="districtSelected($event)">
+                    <mat-option *ngFor="let district of districts" [value]="district">{{district.nombre_distrito}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="event_district.hasError('required') && event_district.touched"
+                            class="p-error">El distrito es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Localidad</mat-label>
+        <input matInput formControlName="event_location" maxlength="250">
+        <mat-icon matSuffix>id_card</mat-icon>
+        <mat-error *ngIf="event_location.hasError('pattern') && !event_location.hasError('required')"
+                    class="p-error">Digite un nombre del proyecto <strong>válido</strong></mat-error>
+        <mat-error *ngIf="event_location.hasError('maxlength')"
+                    class="p-error">El nombre del proyecto debe ser de <strong>250  caracteres</strong></mat-error>
+        <mat-error *ngIf="event_location.hasError('required') && event_location.touched"
+                    class="p-error">El campo nombre del proyecto es <strong>requerido</strong></mat-error>
+    </mat-form-field>
+    <div class="formgrid grid">
+        <div class="field col m-0">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Fecha y hora de inicio</mat-label>
+                <input matInput type="datetime-local" placeholder="start date" formControlName="event_datetime_start">
+                <mat-error *ngIf="event_datetime_start.hasError('required') && event_datetime_start.touched"
+                            class="p-error">La fecha y hora de evento es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+        </div>
+        <div class="field col m-0">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Fecha y hora final</mat-label>
+                <input class="input-date" matInput type="datetime-local" placeholder="start date" formControlName="event_datetime_end">
+                <mat-error *ngIf="event_datetime_end.hasError('required') && event_datetime_end.touched"
+                            class="p-error">La fecha y hora de evento es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-form-field class="full-width m-0 p-0" appearance="outline">
+        <mat-label>Buscar CUI proyecto</mat-label>
+        <input type="text" 
+               name="search" 
+               matInput 
+               formControlName="id_project" 
+               [matAutocomplete]="auto" 
+               (ngModelChange)="searchValue($event)">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onOptionSelectedProject($event)">
+          <mat-option *ngFor="let option of projectOptions" [value]="option">{{option.project_cui}} - {{option.project_name}}</mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <div align="end" class="mt-1">
+        <button mat-button 
+                [disabled]="_loadding.getLoadding()"
+                class="mr-1 btn-secondary" 
+                [mat-dialog-close]="false">Cancelar</button>
+        <button mat-raised-button
+                class="btn-primary" 
+                type="button"
+                [disabled]="_loadding.getLoadding()"
+                (click)="save()">{{isUpdate?'Guardar cambios':'Registrar'}}</button>
+    </div>
+</form>

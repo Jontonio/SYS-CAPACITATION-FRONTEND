@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormEventComponent } from '../../components/form-event/form-event.component';
+import { FormEventComponent } from '../../../../shared/projects/form-event/form-event.component';
 import { EventProject } from '../../class/Event';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';

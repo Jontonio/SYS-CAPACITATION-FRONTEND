@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LoaddingService } from '../services/Loadding.service';
-import { NotificationService } from '../services/notification.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
     constructor(private spinner: NgxSpinnerService,
         private loadding:LoaddingService,
-        private notificationService:NotificationService,
         private authService: AuthenticationService) { }
 
     canActivate(): Promise<boolean> {
@@ -24,8 +22,8 @@ export class AuthGuard implements CanActivate {
             this.authService.getCurrentUser().subscribe({
                 next:({ data }) => {
                     this.authService.setUserAuth(data);
-                    resolve(true);
                     this.spinner.hide();
+                    resolve(true);
                 },
                 error:(e) => {
                     this.spinner.hide();

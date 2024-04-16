@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -79,7 +79,8 @@ export const MY_FORMATS = {
     },
     { provide: LOCALE_ID, useValue: 'en-gb' }
   ],
-  declarations: [SelectCheckAllComponent]
+  declarations: [SelectCheckAllComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 
 export class CustomMaterialModule {

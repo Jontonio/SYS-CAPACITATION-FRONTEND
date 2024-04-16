@@ -19,7 +19,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         };
 
         // Log  the error
-        logger.error(err);
+        // logger.error(err);
 
         // Re-throw the error
         throw error;

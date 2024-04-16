@@ -1,0 +1,90 @@
+.navbar-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .navbar {
+    z-index: 2;
+    background-color: var(--background-color-a);
+    box-shadow:2px 2px 0px var(--background-color-b);
+    color: var(--menu-color);
+  }
+  
+  .navbar-brand {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .navbar-is-mobile .navbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  
+  .navbar-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+             causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+    background: var(--background-color-b);
+  }
+  
+  .navbar-is-mobile .navbar-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+             `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+  
+  /*Set sidenav width*/
+  
+  mat-sidenav {
+    min-width: 240px !important;
+    border-right: 1px solid var(--border-color);
+    background: var(--background-color-a);
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* set new font color on option menu */
+  .font-color{
+    color: var(--menu-color);
+  }
+  /* Set height of wrapper to stop content from moving up & down */
+  
+  .progress-bar-container {
+    height: 5px;
+  }
+  
+  a.mat-list-item.active {
+    background: rgba(0, 0, 0, .04);
+  }
+  
+  #push-bottom {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .active{
+    background-color: var(--btn-color) !important;
+    height: 45px !important;
+    border-radius: 50px;
+    color: var(--white-color);
+  }
+  .menu-item{
+    margin-top: 4px;
+    height: 45px !important;
+  }
+  .menu-item:hover {
+    background-color: var(--btn-color) !important;
+    border-radius: 50px;
+    transition: 0.5ms;
+    color: var(--white-color);
+  }

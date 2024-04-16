@@ -1,0 +1,12 @@
+<button class="ml-3 btn-secondary" mat-mini-fab (click)="openDialogFile()" [disabled]="_loadding.getLoadding()" matTooltip="Imprimir lista">
+    <mat-icon>print</mat-icon>
+</button>
+<button class="ml-3 btn-primary" mat-mini-fab color="accent" (click)="addFacilitator()" [disabled]="_loadding.getLoadding()" matTooltip="Nuevo facilitador">
+    <mat-icon>diversity_3</mat-icon>
+</button>
+<button class="ml-3 btn-secondary" mat-mini-fab color="primary" (click)="openDialogEditEvent()" [disabled]="_loadding.getLoadding()" matTooltip="Editar evento">
+    <mat-icon>edit_note</mat-icon>
+</button>
+<button class="ml-3 btn-primary" mat-mini-fab color="primary" (click)="openDialogParticipant()" [disabled]="_loadding.getLoadding()" matTooltip="Registrar nuevo asistente">
+    <mat-icon>person_add</mat-icon>
+</button>

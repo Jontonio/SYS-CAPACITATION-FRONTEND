@@ -1,5 +1,5 @@
 <mat-form-field class="full-width mt-1" appearance="outline">
-    <mat-icon matSuffix *ngIf="!word; else iconClear">search</mat-icon>
+    <mat-icon matSuffix class="text-color-primary" *ngIf="!word; else iconClear">search</mat-icon>
     <ng-template #iconClear>
         <button mat-icon-button (click)="clear()"><mat-icon matSuffix>close</mat-icon></button>
     </ng-template>

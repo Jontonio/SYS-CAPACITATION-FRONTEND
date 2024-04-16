@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay } from 'rxjs/operators';
+import { delay, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { Observable, of } from 'rxjs';
@@ -8,7 +8,6 @@ import { tap } from 'rxjs/operators';
 import { CurrentUser, UserAuth } from '../interface/AuthRes';
 import { HttpRes } from '../class/HttpRes';
 import { Router } from '@angular/router';
-
 
 @Injectable({
     providedIn: 'root'
@@ -18,11 +17,9 @@ export class AuthenticationService {
     public URL:string;
     private keyToken;
     private userAuth!:CurrentUser; 
-    private roles = ['admin','user','viewer'];
 
     constructor(private http: HttpClient,
-                private router:Router,
-                @Inject('LOCALSTORAGE') private localStorage: Storage) {
+                private router:Router) {
             this.URL = environment.URL_BASE;
             this.keyToken = 'x-token';
     }
@@ -35,21 +32,19 @@ export class AuthenticationService {
         return this.userAuth;
     }
 
-    get getRoles(){
-        return this.roles;
-    }
-
     setUserAuth(user:CurrentUser){
         this.userAuth = user; 
     }
 
     login(email: string, password: string){
-        return this.http.post(`${this.URL}/login`, { email, password }).pipe(
+        return this.http.post(`${this.URL}/login`, { email, password })
+        .pipe(
           tap((response:any) => {
             const { data } = response;
             const { token } = data.authorization;
             this.saveLocalStorage(this.keyToken, token)
-          })
+          }),
+          switchMap(res => this.getCurrentUser())
         );
     }
 
@@ -82,14 +77,14 @@ export class AuthenticationService {
     }
 
     saveLocalStorage(key:string, data:string){
-        this.localStorage.setItem(key, data);
+        sessionStorage.setItem(key, data);
     }
 
     removeLocalStorage(key:string){
-        this.localStorage.removeItem(key);
+        sessionStorage.removeItem(key);
     }
 
     getLocalStorage(key:string){
-        return this.localStorage.getItem(key);
+        return sessionStorage.getItem(key);
     }
 }

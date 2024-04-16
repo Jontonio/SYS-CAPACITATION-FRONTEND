@@ -106,13 +106,13 @@
     </div>
 </form>
 <mat-dialog-actions align="end">
+    <button mat-button 
+            class="ml-1 btn-secondary" 
+            [disabled]="_loadding.getLoadding()"
+            mat-dialog-close>Cancelar</button>
     <button mat-raised-button
     class="btn-primary" 
     [disabled]="_loadding.getLoadding()"
     (click)="save()"
     type="button">{{isUpdate?'Guardar cambios':'Registrar'}}</button>
-    <button mat-button 
-            class="ml-1" 
-            [disabled]="_loadding.getLoadding()"
-            mat-dialog-close>Cancelar</button>
 </mat-dialog-actions>

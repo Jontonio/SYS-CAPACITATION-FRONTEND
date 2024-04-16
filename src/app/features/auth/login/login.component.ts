@@ -6,6 +6,12 @@ import { AuthenticationService } from 'src/app/core/services/auth.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { Remember } from 'src/app/core/interface/Remember';
+import { CurrentUser } from 'src/app/core/interface/AuthRes';
+import { PayloadToken } from 'src/app/core/interface/PayloadToken';
+import jwtDecode from 'jwt-decode';
+import { Role } from 'src/app/core/interface/Role';
+import { LocalService } from 'src/app/core/services/local.service';
+
 
 @Component({
     selector: 'app-login',
@@ -20,6 +26,7 @@ export class LoginComponent implements OnInit {
     constructor(private router: Router,
         private titleService: Title,
         private fb:FormBuilder,
+        private _local:LocalService,
         private spinner:NgxSpinnerService,
         private loaddingService:LoaddingService,
         private authenticationService: AuthenticationService) {
@@ -39,6 +46,7 @@ export class LoginComponent implements OnInit {
         }
 
         const remember = JSON.parse(this.authenticationService.getLocalStorage('rememberMe')||'') as Remember || {} as Remember;
+        
         if(remember){
             this.email.setValue(remember.email);
             this.rememberMe.setValue(remember.rememberMe);
@@ -53,7 +61,7 @@ export class LoginComponent implements OnInit {
 
         this.loginForm = this.fb.group({
             email: ['', [Validators.required, Validators.email ]],
-            password:['', Validators.required],
+            password:['password', Validators.required],
             rememberMe:[savedUserEmail !== null]
         });
     }
@@ -80,8 +88,8 @@ export class LoginComponent implements OnInit {
         this.authenticationService
             .login(this.email.value, this.password.value)
             .subscribe({
-                next:() => {
-
+                next:({ data }) => {
+                    
                     const remember:Remember = {email:this.email.value, rememberMe:this.rememberMe.value }
 
                     if(this.rememberMe.value){
@@ -90,18 +98,49 @@ export class LoginComponent implements OnInit {
                         this.authenticationService.removeLocalStorage('rememberMe')
                     }
 
+                    this.redirecToModule(data);
+
                     this.spinner.hide();
-                    this.router.navigate(['/main/dashboard'])
+                    
                 },
-                error:(e) => {
-                    console.log("first")
-                    this.spinner.hide();   
-                }
+                error:(e) => this.spinner.hide()
             });
 
     }
 
     resetPassword() {
         this.router.navigate(['/auth/password-reset-request']);
+    }
+
+    redirecToModule(data:CurrentUser){
+
+    
+        if( data.roles.length == 0){ // user has not a role
+            this.router.navigate(['/has-no-role']);
+        }
+        
+        // Verify roles for routing
+        const role = data.roles[0];
+        
+        switch (role.name) {
+            case Role.root:
+                console.log("root")
+                this.router.navigate(['/root']);
+                break;
+            case Role.admin:
+                this.router.navigate(['/admin']);
+                break;
+            case Role.station:
+                const decoded:PayloadToken = jwtDecode(data.token);
+                this._local.setStationID(decoded.id_inia_station!);
+                this.router.navigate([`/station/${decoded.id_inia_station!}`]);
+                break;
+            case Role.viewer:
+                this.router.navigate(['/viewer']);
+                break;
+            default:
+                this.router.navigate(['/has-not-role']);
+                break;
+        }
     }
 }

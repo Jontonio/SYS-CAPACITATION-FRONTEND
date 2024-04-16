@@ -5,13 +5,13 @@ import { Title } from '@angular/platform-browser';
 
 import { NGXLogger } from 'ngx-logger';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { FormFacilitatorComponent } from '../../components/form-facilitator/form-facilitator.component';
 import { Facilitator } from '../../class/Facilitator';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { BdService } from 'src/app/core/services/bd.service';
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
+import { FormFacilitatorComponent } from 'src/app/shared/facilitator/form-facilitator/form-facilitator.component';
 
 @Component({
   selector: 'app-facilitator-list',

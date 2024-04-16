@@ -21,8 +21,7 @@ export class BdService {
   cachePageProject:CachePageProject;
   cachePageFacilitator:CachePageFacilitator;
 
-  constructor(private http:HttpClient,
-              @Inject('LOCALSTORAGE') private localStorage: Storage) { 
+  constructor(private http:HttpClient) { 
     this.URL = environment.URL_BASE;
     this.cachePageProject = { currentPage:1, year: new Date().getFullYear(), startPage:0 }
     this.cachePageFacilitator = { currentPage:1 }
@@ -36,6 +35,17 @@ export class BdService {
 
   getProjects(page=1, startPage = 0, year = new Date().getFullYear()){
     return this.http.get<any>(`${this.URL}/project?page=${page}&year=${year}`).pipe(
+      tap(res => {
+        this.cachePageProject.currentPage = page;
+        this.cachePageProject.startPage = startPage; 
+        this.cachePageProject.year = year; 
+        this.saveLocalStorage('cachePageProject', JSON.stringify(this.cachePageProject));
+      })
+    )
+  }
+
+  getProjectsFromIniaStation(id_inia_station:number, page=1, startPage = 0, year = new Date().getFullYear()){
+    return this.http.get<any>(`${this.URL}/projects-from-inia-station/${id_inia_station}?page=${page}&year=${year}`).pipe(
       tap(res => {
         this.cachePageProject.currentPage = page;
         this.cachePageProject.startPage = startPage; 
@@ -60,7 +70,22 @@ export class BdService {
   deleteProject(id:number):Observable<HttpRes>{
     return this.http.delete<HttpRes>(`${this.URL}/project/${id}`);
   }
-  
+
+    
+  /**
+   * 
+   * Events type endpoint
+   * 
+  */
+
+  createEventType(data:EventProject){
+    return this.http.post<HttpRes>(`${this.URL}/event-type`, data);
+  }
+
+  getEventType(){
+    return this.http.get<HttpRes>(`${this.URL}/event-type`);
+  }
+
   /**
    * 
    * Events endpoint
@@ -71,8 +96,8 @@ export class BdService {
     return this.http.post<HttpRes>(`${this.URL}/event`, data);
   }
 
-  getEventsByProject(id:number, page=1){
-    return this.http.get<HttpRes>(`${this.URL}/get-events-by-project/${id}?page=${page}`);
+  getEventsByProject(id_station:number, id_project:number, page=1){
+    return this.http.get<HttpRes>(`${this.URL}/get-events-by-project-station/${id_station}/${id_project}?page=${page}`);
   }
 
   getParticipantsFromEvent(id:number, page=1){
@@ -80,23 +105,23 @@ export class BdService {
   }
 
   getAllParticipantsFromEvent(id:number){
-    return this.http.get<HttpRes>(`${this.URL}/get_all_participant_from_event/${id}`);
+    return this.http.get<HttpRes>(`${this.URL}/get-all-participant-from-event/${id}`);
   }
 
-  getEvent(id:number){
-    return this.http.get<HttpRes>(`${this.URL}/event/${id}`);
+  getEvent(id_event:number, id_inia_station?:number){
+    return this.http.get<HttpRes>(`${this.URL}/event/${id_event}?id_inia_station=${id_inia_station}`);
   }
 
   deleteEvent(id:number){
     return this.http.delete<HttpRes>(`${this.URL}/event/${id}`);
   }
 
-  editEvent(id:number, data:EventProject){
-    return this.http.patch<HttpRes>(`${this.URL}/event/${id}`, data);
+  editEvent(id_event:number, data:EventProject){
+    return this.http.patch<HttpRes>(`${this.URL}/event/${id_event}`, data);
   }
 
-  searchProjectsReports(cuiid:string){
-    return this.http.get<HttpRes>(`${this.URL}/search-project_report?cui=${cuiid}`);
+  searchProjectsBycui(cuiid:string){
+    return this.http.get<HttpRes>(`${this.URL}/search-project-by-cui?cui=${cuiid}`);
   }
 
   /**
@@ -152,6 +177,15 @@ export class BdService {
 
   /**
    * 
+   * Station endpoints
+   * 
+  */
+  getStation(id_inia_station:number){
+    return this.http.get<HttpRes>(`${this.URL}/inia-station/${id_inia_station}`);
+  }
+
+  /**
+   * 
    * Attendance endpoints
    * 
   */
@@ -191,16 +225,16 @@ export class BdService {
   }
 
   saveLocalStorage(key:string, data:string){
-    this.localStorage.setItem(key, data);
+    sessionStorage.setItem(key, data);
   }
 
   removeLocalStorage(key:string){
-    this.localStorage.removeItem(key);
+    sessionStorage.removeItem(key);
   }
 
   getLocalStorage(key:string){
-    if(this.localStorage.getItem(key)){
-      return JSON.parse(this.localStorage.getItem(key)!);
+    if(sessionStorage.getItem(key)){
+      return JSON.parse(sessionStorage.getItem(key)!);
     }
     return null;
   }
