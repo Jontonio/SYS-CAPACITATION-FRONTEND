@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ResReport } from '../../features/dashboard/interfaces/ResReport';
+import { ResReport } from '../../../features/dashboard/interfaces/ResReport';
 
 @Component({
   selector: 'app-vertical-bar-chart',
@@ -24,10 +24,6 @@ export class VerticalBarChartComponent {
 
   constructor() {
     Object.assign(this, { single:this.data })
-  }
-
-  onSelect(event:any) {
-    console.log(event);
   }
 
 }

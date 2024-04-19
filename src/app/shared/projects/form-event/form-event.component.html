@@ -10,7 +10,7 @@
     </mat-form-field>
     <mat-form-field class="full-width" appearance="outline">
         <mat-label>Tema del evento</mat-label>
-        <textarea matInput formControlName="event_topic" maxlength="50" rows="1"></textarea>
+        <textarea matInput formControlName="event_topic" maxlength="100" rows="1"></textarea>
         <mat-icon matSuffix>id_card</mat-icon>
         <mat-error *ngIf="event_topic.hasError('pattern') && !event_topic.hasError('required')"
                     class="p-error">Digite un tema de evento <strong>válido</strong></mat-error>

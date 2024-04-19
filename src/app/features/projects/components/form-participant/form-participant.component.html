@@ -57,7 +57,7 @@
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Sexo</mat-label>
                 <mat-select formControlName="participant_sex">
-                    <mat-option *ngFor="let s of sexs" [value]="s">{{s.name}}</mat-option>
+                    <mat-option *ngFor="let s of sexs" [value]="s.id">{{s.name}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="participant_sex.hasError('required') && participant_sex.touched"
                             class="p-error">El campo sexo es <strong>requerido</strong></mat-error>

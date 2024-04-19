@@ -11,6 +11,7 @@ import { EventProject } from 'src/app/features/projects/class/Event';
 import { Participant } from 'src/app/features/projects/class/Participant';
 import { Attendance } from 'src/app/features/projects/class/Attendance';
 import { User } from '../interface/User';
+import { FacilitatorEvent } from 'src/app/features/facilitators/class/FacilitatorEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -120,8 +121,12 @@ export class BdService {
     return this.http.patch<HttpRes>(`${this.URL}/event/${id_event}`, data);
   }
 
-  searchProjectsBycui(cuiid:string){
-    return this.http.get<HttpRes>(`${this.URL}/search-project-by-cui?cui=${cuiid}`);
+  searchProjectsBycui(cuiid:string, id_inia_station:number){
+    return this.http.get<HttpRes>(`${this.URL}/search-project-by-cui-inia-station?cui=${cuiid}&id_inia_station=${id_inia_station}`);
+  }
+
+  searchProjectsBycuiAll(cuiid:string){
+    return this.http.get<HttpRes>(`${this.URL}/search-project-by-cui-all?cui=${cuiid}`);
   }
 
   /**
@@ -171,12 +176,6 @@ export class BdService {
 
   /**
    * 
-   * Facilitator endpoints
-   * 
-  */
-
-  /**
-   * 
    * Station endpoints
    * 
   */
@@ -202,6 +201,12 @@ export class BdService {
     return this.http.delete<HttpRes>(`${this.URL}/attendance/${id_attendance}`);
   }
 
+  /**
+   * 
+   * Facilitator endpoints
+   * 
+  */
+
   getFacilitators(page=1){
     return this.http.get<any>(`${this.URL}/facilitator?page=${page}`).pipe(
       tap(res => {
@@ -211,13 +216,16 @@ export class BdService {
     )
   }
 
+  getFacilitator(id_card_facilitator:number){
+    return this.http.get<HttpRes>(`${this.URL}/facilitator/${id_card_facilitator}`);
+  }
 
-  createFacilitadors(data:Facilitator):Observable<HttpRes>{
+  createFacilitador(data:Facilitator):Observable<HttpRes>{
     return this.http.post<HttpRes>(`${this.URL}/facilitator`, data);
   }
 
-  editFacilitadors(id:number, data:Facilitator):Observable<HttpRes>{
-    return this.http.patch<HttpRes>(`${this.URL}/facilitator/${id}`, data);
+  editFacilitador(id_card_facilitator:number, data:Facilitator):Observable<HttpRes>{
+    return this.http.patch<HttpRes>(`${this.URL}/facilitator/${id_card_facilitator}`, data);
   }
 
   deleteFacilitador(id:number):Observable<HttpRes>{
@@ -238,6 +246,26 @@ export class BdService {
     }
     return null;
   }
+
+  /**
+   * 
+   *  Endpoint facilitadors event
+   * 
+  */ 
+
+  assignFacilitadorToEvent(data:FacilitatorEvent):Observable<HttpRes>{
+    return this.http.post<HttpRes>(`${this.URL}/facilitator-event`, data);
+  }
+
+  updateFacilitadorToEvent(id_facilitador_event:number, data:FacilitatorEvent){
+    return this.http.patch<HttpRes>(`${this.URL}/facilitator-event/${id_facilitador_event}`, data);
+  }
+
+  deleteFacilitadorToEvent(id_facilitator_event:number):Observable<HttpRes>{
+    return this.http.delete<HttpRes>(`${this.URL}/facilitator-event/${id_facilitator_event}`);
+  }
+
+
 
   /**
    * 

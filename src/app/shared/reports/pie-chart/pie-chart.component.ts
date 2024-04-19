@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { LegendPosition } from '@swimlane/ngx-charts';
-import { ResReport } from '../../features/dashboard/interfaces/ResReport';
+import { ResReport } from '../../../features/dashboard/interfaces/ResReport';
 
 @Component({
   selector: 'app-pie-chart',
@@ -24,18 +24,6 @@ export class PieChartComponent {
 
   constructor() {
     Object.assign(this, { single:this.data });
-  }
-
-  onSelect(data:any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data:any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data:any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
 }

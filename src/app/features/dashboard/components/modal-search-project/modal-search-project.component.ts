@@ -7,6 +7,9 @@ import { EventProject } from 'src/app/features/projects/class/Event';
 import { Project } from 'src/app/features/projects/class/Project';
 import { MatSelectionListChange } from '@angular/material/list';
 import { MatDialogRef } from '@angular/material/dialog';
+import { CacheProjectDash } from 'src/app/features/Interface/Cache';
+import { CacheService } from 'src/app/core/services/cache.service';
+import { LocalService } from 'src/app/core/services/local.service';
 
 
 @Component({
@@ -23,8 +26,12 @@ export class ModalSearchProjectComponent implements OnInit {
   debouncer = new Subject();
   projectEvents:EventProject[] = [];
   selectedEvent!:EventProject;
-  
-  constructor(private _db:BdService, public dialogRef: MatDialogRef<ModalSearchProjectComponent>) { }
+  selectedProject!:Project;
+
+  constructor(private _db:BdService,
+              private _cache:CacheService, 
+              private _local:LocalService,
+              public dialogRef: MatDialogRef<ModalSearchProjectComponent>) { }
 
   ngOnInit(): void {
 
@@ -48,16 +55,28 @@ export class ModalSearchProjectComponent implements OnInit {
 
   onOptionSelectedProject(event: MatAutocompleteSelectedEvent): void {
     const project = event.option.value as Project;
+    this.selectedProject = project;
     this.projectEvents = project.events;
   }
 
   optionSelectedEvent(event: MatSelectionListChange): void {
+
     this.selectedEvent = event.options[0].value;
-    this.dialogRef.close(this.selectedEvent)
+
+    const data:CacheProjectDash = { 
+      titleProject: this.selectedProject.project_name,
+      cuiProject:this.selectedProject.project_cui,
+      id_project:this.selectedProject.id_project,
+      id_event:this.selectedEvent.id_event, 
+      event_topic:this.selectedEvent.event_topic,
+      location:`${this.selectedEvent.event_region} - ${this.selectedEvent.event_provincie} - ${this.selectedEvent.event_district}`
+    }
+    this._cache.projectDash = data;
+    this.dialogRef.close(data)
   }
 
   searchProject(cuuid:string){
-    this._db.searchProjectsBycui(cuuid).subscribe({
+    this._db.searchProjectsBycui(cuuid, this._local.getStationID()).subscribe({
       next:({ data }) => this.options = data
     })
   }

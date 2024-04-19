@@ -4,19 +4,21 @@ import { FormParticipantComponent } from '../../../features/projects/components/
 
 import * as pdfMake from "pdfmake/build/pdfmake";  
 import * as pdfFonts from "pdfmake/build/vfs_fonts"; 
+
 import { ShowFileComponent } from 'src/app/shared/show-file/show-file.component';
 import { EventProject } from '../../../features/projects/class/Event';
 import { FormEventComponent } from '../form-event/form-event.component';
 import { DataDialog } from 'src/app/core/interface/DataDialog';
 import { BdService } from 'src/app/core/services/bd.service';
-import { ReportAttendance } from '../../../features/projects/class/ReportAttendance';
+import { ReportAttendance } from '../../../features/projects/class/Report';
 import { Attendance } from '../../../features/projects/class/Attendance';
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as moment from "moment";
-import { color, text } from 'd3';
 import { LocalService } from 'src/app/core/services/local.service';
 import { FormFacilitatorComponent } from '../../facilitator/form-facilitator/form-facilitator.component';
+import { ModalEvidenceComponent } from '../../modal-evidence/modal-evidence.component';
+import { fileFooter, fileHeader } from 'src/app/helpers/tructureFileReport';
 moment.locale('es');
 
 (pdfMake.vfs as any) = pdfFonts.pdfMake.vfs;  
@@ -32,6 +34,7 @@ export class BtnActionsEventComponent {
   @Input() event!:EventProject;
 
   @Output() statusEvent = new EventEmitter<boolean>();
+  @Output() statusFacilitador = new EventEmitter<boolean>();
   @Output() statusEventFormParticipant = new EventEmitter<boolean>();
 
   headerTable:any[] = [ 
@@ -126,90 +129,13 @@ export class BtnActionsEventComponent {
 
   }
 
-  getBase64ImageFromURL(url: string) {
+  async generatePDFAttendance({ evento, list, nameStation }:ReportAttendance) {  
     
-    return new Promise((resolve, reject) => {
-      var img = new Image();
-      img.setAttribute("crossOrigin", "anonymous");
-    
-      img.onload = () => {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-    
-        var ctx = canvas.getContext("2d");
-        ctx!.drawImage(img, 0, 0);
-    
-        var dataURL = canvas.toDataURL("image/png");
-    
-        resolve(dataURL);
-      };
-    
-      img.onerror = error => {
-        reject(error);
-      };
-    
-      img.src = url;
-  })}
-
-  async generatePDF({ evento, list }:ReportAttendance) {  
-    console.log(evento)
-    let docDefinition = {  
-      header:
-      {  
-        columns: [  
-            [  
-             {
-              columns: [
-                {
-                  image: await this.getBase64ImageFromURL('./assets/logo-pdf/minagri-inia-1.png'),
-                  width: 300, 
-                  height: 40,
-                  margin: [30,10,10,0]
-                },
-                {
-                  width:"*",
-                  text: this._local.getStation().name_inia_station,
-                  alignment: 'center',
-                  color:"#09351E",
-                  bold:true,
-                  italics: true,
-                  margin: [8,20,0,0]
-                }
-              ]
-             }
-            ],  
-            [  
-              {  
-                image: await this.getBase64ImageFromURL('./assets/logo-pdf/punche-peru.jpg'),
-                width: 150, 
-                height: 40,
-                margin: [0,10,10,0],
-                alignment: 'right' 
-              }
-            ]  
-        ],
-        margin:[0,0,0,40] 
-      },
-      footer: {
-        columns: [
-          { 
-            text: 'FECHA:' + moment().format('DD [de] MMMM [de] YYYY h:mm:ss a'),
-            fontSize: 10, 
-            color:'#2B2B2B',
-            alignment: 'left', 
-            margin: [40,0,0,0],
-          },
-          { 
-            text: 'Reporte generado por SIRDEV',
-            fontSize: 10, 
-            color:'#2B2B2B',
-            alignment: 'right', 
-            margin: [0,0,40,0],
-          }
-        ]
-      },
+    const fileDefinition = {  
+      header: await fileHeader(nameStation),
+      footer: fileFooter(),
       content: [  
+        // Title project
         {
           text: "PROYECTO:",
           margin: [0, 0 ,0, 3],
@@ -218,7 +144,7 @@ export class BtnActionsEventComponent {
         {
           text: evento.project?.project_name,
           margin: [0, 0 ,0, 5]          
-        }, 
+        }, // Event and type Event
         {
           columns:[
             [
@@ -261,7 +187,7 @@ export class BtnActionsEventComponent {
             ]
           ]
         },
-        {
+        { // Location
           columns: [  
             [  
               {  
@@ -320,8 +246,8 @@ export class BtnActionsEventComponent {
                 ]
               }  
             ]
-          ],
-        },
+          ]
+        }, // Date
         {
           columns:[
             {
@@ -338,23 +264,20 @@ export class BtnActionsEventComponent {
               margin: [2,3,0,0],
             }
           ]
-        },
+        }, // Facilitator
         {
           text:"FACILITADORES:",
           bold:true,
           margin: [0,3,0,0],
-        },
+        }, 
         {
-          ul: [
-            "José Antonio Rojas Cusi",
-            "Daira Vanessa Mendoza Yanqui",
-            "Raul Romero Gomez",
-            "Marisol Lizande Medina",
-            "Daniel Rojas Quispe"
-          ],
+          ul:evento.facilitator_event.length>0?evento.facilitator_event.map( fa => {
+            return `${fa.facilitator?.facilitator_first_name} ${fa.facilitator?.facilitator_last_name} ${fa.facilitator?.facilitator_name}`
+          }):['No se registraron facilitadores'],
           fontSize: 11, 
           margin: [0,3, 0, 0]
-        },
+        }, 
+        // Body and table
         {  
           text: 'REGISTRO DE ASISTENCIA',  
           fontSize: 18,  
@@ -377,14 +300,13 @@ export class BtnActionsEventComponent {
     }
    
     return new Promise((resolve) => {
-      pdfMake.createPdf(docDefinition as any).getDataUrl((dataUrl) => {
+      pdfMake.createPdf(fileDefinition as any).getDataUrl((dataUrl) => {
         resolve(dataUrl);
       })
     });
   } 
 
   openDialogFile(){
-
 
     this._loadding.setLoadding(true);
 
@@ -393,6 +315,7 @@ export class BtnActionsEventComponent {
 
         if(data.length==0){
           this._notify.warning('Impresión de datos','Registre al menos un participante en el evento')
+          this._loadding.setLoadding(false);
           return;
         }
         
@@ -417,10 +340,11 @@ export class BtnActionsEventComponent {
 
     const reportAttendance:ReportAttendance = {
       evento: this.event,
-      list:tableBody
+      list:tableBody,
+      nameStation:this._local.getStation().name_inia_station
     };
 
-    this.generatePDF(reportAttendance).then( url => {
+    this.generatePDFAttendance(reportAttendance).then( url => {
 
       const data = { url };
 
@@ -441,16 +365,32 @@ export class BtnActionsEventComponent {
   }
 
   addFacilitator(){
-    
+    const data:DataDialog = { isUpdate:false, data:this.event };
     const dialogRefRegister = this.dialog.open(FormFacilitatorComponent,{
       disableClose:true,
       panelClass:'dialog-class',
+      data
     });
 
     dialogRefRegister.afterClosed().subscribe((result:boolean) => {
       if(result){
-        console.log(result)
-        // this.getFacilitators(this.pageIndex);
+        this.statusFacilitador.emit(result);
+      }
+    });
+
+  }
+
+  addEvidence(){
+    const data:DataDialog = { isUpdate:false, data:this.event };
+    const dialogRefRegister = this.dialog.open(ModalEvidenceComponent,{
+      disableClose:true,
+      panelClass:'dialog-class',
+      data
+    });
+
+    dialogRefRegister.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        // this.statusFacilitador.emit(result);
       }
     });
 

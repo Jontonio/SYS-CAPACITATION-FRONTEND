@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { LoaddingService } from '../services/Loadding.service';
 import { NotificationService } from '../services/notification.service';
 import { AuthenticationService } from '../services/auth.service';
+import { CacheService } from '../services/cache.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class RoleGuard implements CanActivate {
 
   constructor(private spinner: NgxSpinnerService,
     private loadding:LoaddingService,
+    private _cache:CacheService,
     private authService: AuthenticationService) { }
 
 canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
@@ -22,7 +24,7 @@ canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
 
     return new Promise((resolve, reject) => {
         
-        const token = this.authService.getLocalStorage('x-token')
+        const token = this._cache.getSessionStorage('x-token')
 
         if (!token) {
             resolve(false);
@@ -38,7 +40,7 @@ canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
                 resolve(false);
             },
             error:(e) => {
-                this.authService.removeLocalStorage('x-token')
+                this._cache.removeLocalStorage('x-token')
                 this.authService.redirecToLogin();
                 reject(false)
             },

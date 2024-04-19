@@ -56,7 +56,7 @@
                 <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> FECHA Y HORA</th>
                 <td mat-cell class="mat-cell" *matCellDef="let element"> 
                   <p class="chip-1">{{element.event_datetime_start | date:'short' }} </p>
-                  <p class="chip-2">{{element.event_datetime_start | date:'short' }} </p>
+                  <p class="chip-2">{{element.event_datetime_end| date:'short' }} </p>
                 </td>
               </ng-container>
             

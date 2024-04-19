@@ -4,12 +4,14 @@ import { CanActivate, Router } from '@angular/router';
 import { AuthenticationService } from '../services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LoaddingService } from '../services/Loadding.service';
+import { CacheService } from '../services/cache.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
     constructor(private spinner: NgxSpinnerService,
         private loadding:LoaddingService,
+        private _cache:CacheService,
         private authService: AuthenticationService) { }
 
     canActivate(): Promise<boolean> {
@@ -27,7 +29,7 @@ export class AuthGuard implements CanActivate {
                 },
                 error:(e) => {
                     this.spinner.hide();
-                    this.authService.removeLocalStorage('x-token')
+                    this._cache.removeSessionStorage('x-token')
                     this.authService.redirecToLogin();
                     reject(false)
                 },

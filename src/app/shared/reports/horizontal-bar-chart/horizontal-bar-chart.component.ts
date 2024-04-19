@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ResReport } from '../../features/dashboard/interfaces/ResReport';
+import { ResReport } from '../../../features/dashboard/interfaces/ResReport';
 
 @Component({
   selector: 'app-horizontal-bar-chart',
@@ -26,18 +26,6 @@ export class HorizontalBarChartComponent {
 
   constructor() {
     Object.assign(this, { single:this.data });
-  }
-
-  onSelect(data:any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data:any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data:any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
 }

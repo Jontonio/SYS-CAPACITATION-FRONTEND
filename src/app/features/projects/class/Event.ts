@@ -1,3 +1,4 @@
+import { FacilitatorEvent } from "../../facilitators/class/FacilitatorEvent";
 import { EventType } from "./EventType";
 import { Project } from "./Project";
 
@@ -20,6 +21,7 @@ interface EventProject {
   created_at: string;
   id_event: number;
   project?:Project;
+  facilitator_event:FacilitatorEvent[]
 }
 
 export {

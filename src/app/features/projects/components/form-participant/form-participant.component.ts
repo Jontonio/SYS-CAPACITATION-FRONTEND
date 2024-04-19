@@ -75,7 +75,8 @@ export class FormParticipantComponent implements OnInit {
     this.participant_name.setValue(participant.participant_name)
     this.participant_first_name.setValue(participant.participant_first_name)
     this.participant_last_name.setValue(participant.participant_last_name)
-    this.participant_sex.setValue(this.sexs.find((val) => val.id===participant.participant_sex))
+    console.log(participant.participant_sex)
+    this.participant_sex.setValue(participant.participant_sex)
     this.participant_email.setValue(participant.participant_email)
     this.participant_phone.setValue(participant.participant_phone)
     // atthendance information
@@ -215,7 +216,6 @@ export class FormParticipantComponent implements OnInit {
     if(this.isUpdate){
       // actualizar datos participante
       const participant = this.formParticipant.value as Participant;
-      participant.participant_sex = this.participant_sex.value.id;
 
       const data:Attendance = {
         id_attendance:this.dataDialog.data.id_attendance,
@@ -256,7 +256,6 @@ export class FormParticipantComponent implements OnInit {
 
     // registrar participante
     const participant = this.formParticipant.value as Participant;
-    participant.participant_sex = this.participant_sex.value.id;
 
     this._db.createParticipant(participant)
       .pipe(

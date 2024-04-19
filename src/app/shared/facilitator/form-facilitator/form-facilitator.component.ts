@@ -1,10 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { switchMap, tap } from 'rxjs';
+import { DataDialog } from 'src/app/core/interface/DataDialog';
 import { BdService } from 'src/app/core/services/bd.service';
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Facilitator } from 'src/app/features/facilitators/class/Facilitator';
+import { FacilitatorEvent } from 'src/app/features/facilitators/class/FacilitatorEvent';
 
 @Component({
   selector: 'app-form-facilitator',
@@ -21,32 +24,26 @@ export class FormFacilitatorComponent implements OnInit {
               public _loadding:LoaddingService,
               private _notify:NotificationService,
               private dialogRef: MatDialogRef<FormFacilitatorComponent>,
-              @Inject(MAT_DIALOG_DATA) public data:Facilitator) { 
+              @Inject(MAT_DIALOG_DATA) public dataDialog:DataDialog) { 
     this.createForm();
   }
 
   ngOnInit(): void {
-    if(this.data){
-      console.log(this.data)
+    if(this.dataDialog.isUpdate){
+      console.log(this.dataDialog)
       this.isUpdate = true;
-      this.initializateForm(this.data);
+      this.initializateForm(this.dataDialog.data);
     }
   }
 
-  initializateForm({
-    id_card_facilitator,
-    facilitator_name,
-    facilitator_first_name,
-    facilitator_last_name,
-    facilitator_charge,
-    facilitator_profesion,
-  }:Facilitator){
-    this.id_card_facilitator.setValue(id_card_facilitator)
-    this.facilitator_name.setValue(facilitator_name)
-    this.facilitator_first_name.setValue(facilitator_first_name)
-    this.facilitator_last_name.setValue(facilitator_last_name)
-    this.facilitator_charge.setValue(facilitator_charge)
-    this.facilitator_profesion.setValue(facilitator_profesion)
+  initializateForm({ facilitator_charge, facilitator }:FacilitatorEvent){
+    this.id_card_facilitator.setValue(facilitator!.id_card_facilitator);
+    this.facilitator_name.setValue(facilitator!.facilitator_name);
+    this.facilitator_first_name.setValue(facilitator!.facilitator_first_name);
+    this.facilitator_last_name.setValue(facilitator!.facilitator_last_name);
+    this.facilitator_profesion.setValue(facilitator!.facilitator_profesion);
+    // facilitador event
+    this.facilitator_charge.setValue(facilitator_charge);
   }
 
   createForm(){
@@ -94,30 +91,71 @@ export class FormFacilitatorComponent implements OnInit {
 
     const data = this.formFacilitator.value;
 
-    if(this.isUpdate){
-      this.editFacilitator(data);
+    if(this.dataDialog.isUpdate){
+      this.editFacilitator(data, { facilitator_charge: this.facilitator_charge.value } as FacilitatorEvent);
       return;
     }
 
     this.createFacilitator(data);
-
   }
 
-  createFacilitator(data:Facilitator){
+  createFacilitator(facilitador:Facilitator){
     this._loadding.setLoadding(true);
-    this._db.createFacilitadors(data).subscribe({
-      next:({ message }) => {
-        this._notify.success('Registro facilitador', message);
-        this.dialogRef.close(true);
-        this._loadding.setLoadding(false);
+    this._db.getFacilitator(facilitador.id_card_facilitator).subscribe({
+      next:({ data }) => {
+        if(data){
+          // update data facilitator
+          this._db.editFacilitador(this.id_card_facilitator.value, data)
+          .pipe(
+            // assign facilitator to event 
+            switchMap(({ data }) => {
+              const dataAssing:FacilitatorEvent = {
+                'id_card_facilitator':this.id_card_facilitator.value,
+                'id_event':(!this.dataDialog.isUpdate && this.dataDialog.data)?this.dataDialog.data.id_event:0,
+                'facilitator_charge':this.facilitator_charge.value
+              }
+              return this._db.assignFacilitadorToEvent(dataAssing)
+            })
+          )
+          .subscribe({
+            next:({ message }) => {
+              this._notify.success('Asignación de facilitador', message);
+              this.dialogRef.close(true);
+              this._loadding.setLoadding(false);
+            }
+          })
+        }else{
+          // register facilitator and assign to event
+          this._db.createFacilitador(facilitador)
+          .pipe(
+            switchMap(({ data }) => {
+              const dataAssing:FacilitatorEvent = {
+                'id_card_facilitator':data.id_card_facilitator,
+                'id_event':(!this.dataDialog.isUpdate && this.dataDialog.data)?this.dataDialog.data.id_event:0,
+                'facilitator_charge':this.facilitator_charge.value
+              }
+              return this._db.assignFacilitadorToEvent(dataAssing)
+            })
+          )
+          .subscribe({
+            next:({ message }) => {
+              this._notify.success('Asignación de facilitador', message);
+              this.dialogRef.close(true);
+              this._loadding.setLoadding(false);
+            }
+          })
+        }
       }
     })
   }
 
-  editFacilitator(data:Facilitator){
+  editFacilitator(dataFacilitador:Facilitator, dataFacilitadorEvent:FacilitatorEvent){
     this._loadding.setLoadding(true);
-    const { id_card_facilitator } = data;
-    this._db.editFacilitadors(id_card_facilitator, data).subscribe({
+    this._db.editFacilitador(this.id_card_facilitator.value, dataFacilitador)
+    .pipe(
+      switchMap((res) => this._db.updateFacilitadorToEvent(this.dataDialog.data.id_facilitator_event, dataFacilitadorEvent))
+    )
+    .subscribe({
       next:({ message }) => {
         this._notify.success('Actualización de datos facilitador', message);
         this.dialogRef.close(true);

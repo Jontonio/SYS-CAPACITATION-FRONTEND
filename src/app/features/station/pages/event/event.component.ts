@@ -9,11 +9,13 @@ import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { BdService } from 'src/app/core/services/bd.service';
 import { LocalService } from 'src/app/core/services/local.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
+import { FacilitatorEvent } from 'src/app/features/facilitators/class/FacilitatorEvent';
 import { Attendance } from 'src/app/features/projects/class/Attendance';
 import { EventProject } from 'src/app/features/projects/class/Event';
 import { Participant } from 'src/app/features/projects/class/Participant';
 import { FormParticipantComponent } from 'src/app/features/projects/components/form-participant/form-participant.component';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
+import { FormFacilitatorComponent } from 'src/app/shared/facilitator/form-facilitator/form-facilitator.component';
 
 @Component({
   selector: 'app-event',
@@ -95,6 +97,10 @@ export class EventComponent implements OnInit {
     this.getEvent(this.id_event, this._local.getStationID());
   }
 
+  statusFacilitador(status:boolean){
+    this.getEvent(this.id_event, this._local.getStationID());
+  }
+
   statusEventFormParticipant(status:boolean){
     this.getParticipantsFromEvent(this.id_event, this.pageIndex);
   }
@@ -159,6 +165,52 @@ export class EventComponent implements OnInit {
         if(this.length==0){
           this.msg = 'Lista vacia de asistentes al evento'
         }
+      }
+    })
+  }
+
+  editFacilitator(facilitatorEvent:FacilitatorEvent){
+
+    const data:DataDialog = { isUpdate:true, data:facilitatorEvent };
+    const dialogRefRegister = this.dialog.open(FormFacilitatorComponent,{
+      disableClose:true,
+      panelClass:'dialog-class',
+      data
+    });
+
+    dialogRefRegister.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.getEvent(this.id_event, this._local.getStationID());
+      }
+    });
+
+  }
+
+  deleteFacilitator({id_facilitator_event, facilitator }:FacilitatorEvent){
+
+    const deleteRef = this.dialog.open(ConfirmDialogComponent,{
+      disableClose:true,
+      panelClass:'dialog-class',
+      data:{
+        title:'Eliminar facilitador',
+        message:`¿Eliminar al facilitador ${facilitator?.facilitator_name} del evento?`
+      }
+    });
+
+    deleteRef.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.deleteFacilitadorEvent(id_facilitator_event!);
+      }
+    })
+  }
+
+  deleteFacilitadorEvent(id:number){
+    this._loadding.setLoadding(true);
+    this._db.deleteFacilitadorToEvent(id).subscribe({
+      next:({ message }) => {
+        this._notify.success('Eliminación de datos', message)
+        this._loadding.setLoadding(false);
+        this.getEvent(this.id_event, this._local.getStationID());
       }
     })
   }

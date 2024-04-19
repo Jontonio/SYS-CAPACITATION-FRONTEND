@@ -9,15 +9,18 @@ import { tap } from 'rxjs/operators';
 
 import { AuthenticationService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { CacheService } from '../services/cache.service';
  
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private authService: AuthenticationService, private dialog: MatDialog) { }
+    constructor(private _cache:CacheService,
+                private authService: AuthenticationService, 
+                private dialog: MatDialog) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        const token = this.authService.getLocalStorage('x-token')
+        const token = this._cache.getSessionStorage('x-token')
 
         if (token) {
 

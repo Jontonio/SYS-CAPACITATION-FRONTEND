@@ -24,14 +24,15 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
 import { FieldEmptyPipe } from './pipes/field-empty.pipe';
 import { ShowNumberPipe } from './pipes/show-number.pipe';
 import { LineChartComponent } from "./line-chart/line-chart.component";
-import { PieChartComponent } from "./pie-chart/pie-chart.component";
-import { HorizontalBarChartComponent } from "./horizontal-bar-chart/horizontal-bar-chart.component";
-import { VerticalBarChartComponent } from "./vertical-bar-chart/vertical-bar-chart.component";
+import { PieChartComponent } from "./reports/pie-chart/pie-chart.component";
+import { HorizontalBarChartComponent } from "./reports/horizontal-bar-chart/horizontal-bar-chart.component";
+import { VerticalBarChartComponent } from "./reports/vertical-bar-chart/vertical-bar-chart.component";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { CardProjectComponent } from "./card-project/card-project.component";
 import { FormEventComponent } from "./projects/form-event/form-event.component";
 import { BtnActionsEventComponent } from "./projects/btn-actions-event/btn-actions-event.component";
 import { FormFacilitatorComponent } from "./facilitator/form-facilitator/form-facilitator.component";
+import { ModalEvidenceComponent } from './modal-evidence/modal-evidence.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { FormFacilitatorComponent } from "./facilitator/form-facilitator/form-fa
         CardProjectComponent,
         FormEventComponent,
         BtnActionsEventComponent,
-        FormFacilitatorComponent
+        FormFacilitatorComponent,
+        ModalEvidenceComponent
     ],
     exports: [
         FormsModule,
@@ -95,7 +97,8 @@ import { FormFacilitatorComponent } from "./facilitator/form-facilitator/form-fa
         CardProjectComponent,
         FormEventComponent,
         BtnActionsEventComponent,
-        FormFacilitatorComponent
+        FormFacilitatorComponent,
+        ModalEvidenceComponent
     ],
     schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

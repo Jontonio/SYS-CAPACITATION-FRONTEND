@@ -253,10 +253,12 @@ p .mat-icon {
   color: var(--white-color);
 }
 .mat-list-option{
-  color: #FFF !important;
+  background: #f0f0f0;
+  margin-top: 4px;
+  border-radius: 5px;
 }
 .mat-list-option:hover{
-  background: #444D5D;
+  background: #d8d8d8;
 }
 /* Highlight on hover */
 .submitted-timesheet-day:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
@@ -340,6 +342,21 @@ table {
 .text-rotate{
   rotate: 300deg;
 }
+.container-list-facilitador{
+  width: 100%;
+}
+.container-list-facilitador ul li{
+  list-style: none;
+  text-decoration: none;
+  margin-top: 4px;
+  border-radius: 5px;
+  border: 1px solid var(--header-color);
+}
+.icon-list-facilitator{
+  padding: 3px;
+  cursor: pointer;
+}
+
 @keyframes show {
   from {
     opacity: 0;

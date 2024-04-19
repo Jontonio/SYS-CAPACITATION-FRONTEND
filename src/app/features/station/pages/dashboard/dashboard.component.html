@@ -13,27 +13,87 @@
                 </button>
               </div>
             </div>
+            <div *ngIf="projectDash">
+              <mat-divider></mat-divider>
+              <div class="d-flex justify-content-start text-plain-secondary p-2">
+                <b class="m-1">CUI:</b>
+                <p>{{projectDash.cuiProject}}</p>
+              </div>
+              <div class="flex justify-content-between">
+                <div class="d-flex justify-content-start text-plain-secondary p-2">
+                  <b class="m-1">Proyecto:</b>
+                  <p>{{projectDash.titleProject | lowercase}}</p>
+                </div>
+                <div class="d-flex justify-content-start text-plain-secondary p-2 chip-1">
+                  <button mat-button (click)="openDialogFileReport()">
+                    <mat-icon>print</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="d-flex justify-content-start text-plain-secondary p-2">
+                <b class="m-1">Tema:</b>
+                <p>{{projectDash.event_topic | lowercase}}</p>
+              </div>
+              <div class="d-flex justify-content-start text-plain-secondary p-2">
+                <b class="m-1">Lugar de evento:</b>
+                <p>{{projectDash.location}}</p>
+              </div>
+            </div>
           </mat-card>
         </div>
       </div>
       <div class="grid nested-grid">
         <div class="col-6">
           <mat-card>
-            <p>Cantidad de participantes por cargo</p>
-            <app-horizontal-bar-chart [data]="dataHorizonBarChart"></app-horizontal-bar-chart>
+            <div>
+              <div class="flex justify-content-between">
+                <h3><b>{{g1Title}}</b></h3>
+                <button mat-icon-button [matMenuTriggerFor]="menuG2">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menuG2="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>leaderboard</mat-icon>
+                    <span>Descargar reporte</span>
+                  </button>
+                  <button mat-menu-item (click)="downloadImg('g1')">
+                    <mat-icon>download</mat-icon>
+                    <span>Descargar imagen</span>
+                  </button>
+                </mat-menu>
+              </div>
+              <app-horizontal-bar-chart id="g1" [data]="dataHorizonBarChart"></app-horizontal-bar-chart>
+            </div>
           </mat-card>
         </div>
         <div class="col-6">
           <mat-card>
-            <p>Cantidad de hombres y mujeres</p>
-            <app-pie-chart [data]="dataPieChart"></app-pie-chart>
+            <div>
+              <div class="flex justify-content-between">
+                <h3><b>{{g2Title}}</b></h3>
+                <button mat-icon-button [matMenuTriggerFor]="menuG1">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menuG1="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>leaderboard</mat-icon>
+                    <span>Descargar reporte</span>
+                  </button>
+                  <button mat-menu-item (click)="downloadImg('g2')">
+                    <mat-icon>download</mat-icon>
+                    <span>Descargar imagen</span>
+                  </button>
+                </mat-menu>
+              </div>
+              <app-pie-chart id="g2" [data]="dataPieChart"></app-pie-chart>
+            </div>
           </mat-card> 
         </div>
       </div>
       <div class="grid">
         <div class="col-12">
           <mat-card>
-            <p>N° de proyectos por año</p>
+            <h3><b>N° de proyectos por año</b></h3>
             <app-vertical-bar-chart [data]="dataVerticalBarChart"></app-vertical-bar-chart>
           </mat-card>
         </div>

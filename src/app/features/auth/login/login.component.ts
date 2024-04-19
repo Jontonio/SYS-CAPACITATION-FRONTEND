@@ -11,6 +11,7 @@ import { PayloadToken } from 'src/app/core/interface/PayloadToken';
 import jwtDecode from 'jwt-decode';
 import { Role } from 'src/app/core/interface/Role';
 import { LocalService } from 'src/app/core/services/local.service';
+import { CacheService } from 'src/app/core/services/cache.service';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
         private _local:LocalService,
         private spinner:NgxSpinnerService,
         private loaddingService:LoaddingService,
+        private _cache:CacheService,
         private authenticationService: AuthenticationService) {
         }
         
@@ -41,17 +43,17 @@ export class LoginComponent implements OnInit {
 
     completeRememberInfo(){
 
-        if(!this.authenticationService.getLocalStorage('rememberMe')){
+        if(!this._cache.getLocalStorage('rememberMe')){
             return;
         }
 
-        const remember = JSON.parse(this.authenticationService.getLocalStorage('rememberMe')||'') as Remember || {} as Remember;
+        const remember = JSON.parse(this._cache.getLocalStorage('rememberMe')||'') as Remember || {} as Remember;
         
         if(remember){
             this.email.setValue(remember.email);
             this.rememberMe.setValue(remember.rememberMe);
         }else{
-            this.authenticationService.removeLocalStorage('rememberMe')
+            this._cache.removeLocalStorage('rememberMe')
         }
     }
 
@@ -61,7 +63,7 @@ export class LoginComponent implements OnInit {
 
         this.loginForm = this.fb.group({
             email: ['', [Validators.required, Validators.email ]],
-            password:['password', Validators.required],
+            password:['', Validators.required],
             rememberMe:[savedUserEmail !== null]
         });
     }
@@ -90,12 +92,12 @@ export class LoginComponent implements OnInit {
             .subscribe({
                 next:({ data }) => {
                     
-                    const remember:Remember = {email:this.email.value, rememberMe:this.rememberMe.value }
+                    const remember:Remember = { email:this.email.value, rememberMe:this.rememberMe.value }
 
                     if(this.rememberMe.value){
-                        this.authenticationService.saveLocalStorage('rememberMe', JSON.stringify(remember));
+                        this._cache.saveLocalStorage('rememberMe', JSON.stringify(remember));
                     }else{
-                        this.authenticationService.removeLocalStorage('rememberMe')
+                        this._cache.removeLocalStorage('rememberMe')
                     }
 
                     this.redirecToModule(data);
@@ -133,7 +135,7 @@ export class LoginComponent implements OnInit {
             case Role.station:
                 const decoded:PayloadToken = jwtDecode(data.token);
                 this._local.setStationID(decoded.id_inia_station!);
-                this.router.navigate([`/station/${decoded.id_inia_station!}`]);
+                this.router.navigate([`/station/${decoded.id_inia_station!}/dashboard`]);
                 break;
             case Role.viewer:
                 this.router.navigate(['/viewer']);

@@ -78,7 +78,7 @@ export class FormEventComponent implements OnInit {
   }
 
   searchProject(cuuid:string){
-    this._db.searchProjectsBycui(cuuid).subscribe({
+    this._db.searchProjectsBycuiAll(cuuid,).subscribe({
       next:({ data }) => this.projectOptions = data
     })
   }
@@ -147,7 +147,7 @@ export class FormEventComponent implements OnInit {
 
   createForm(){
     this.formEvent = this.fb.group({
-      event_topic:[null,[Validators.required, Validators.maxLength(500)]],
+      event_topic:[null,[Validators.required, Validators.maxLength(100)]],
       event_region:[null,[Validators.required, Validators.maxLength(20)]],
       event_provincie:[null,[Validators.required, Validators.maxLength(20)]],
       event_district:[null,[Validators.required, Validators.maxLength(20)]],

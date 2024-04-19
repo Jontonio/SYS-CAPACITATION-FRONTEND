@@ -8,6 +8,7 @@ import { tap } from 'rxjs/operators';
 import { CurrentUser, UserAuth } from '../interface/AuthRes';
 import { HttpRes } from '../class/HttpRes';
 import { Router } from '@angular/router';
+import { CacheService } from './cache.service';
 
 @Injectable({
     providedIn: 'root'
@@ -19,6 +20,7 @@ export class AuthenticationService {
     private userAuth!:CurrentUser; 
 
     constructor(private http: HttpClient,
+                private _chache:CacheService,
                 private router:Router) {
             this.URL = environment.URL_BASE;
             this.keyToken = 'x-token';
@@ -42,7 +44,7 @@ export class AuthenticationService {
           tap((response:any) => {
             const { data } = response;
             const { token } = data.authorization;
-            this.saveLocalStorage(this.keyToken, token)
+            this._chache.saveSessionStorage(this.keyToken, token)
           }),
           switchMap(res => this.getCurrentUser())
         );
@@ -51,7 +53,7 @@ export class AuthenticationService {
     logout() {
         return this.http.get<HttpRes>(`${this.URL}/logout`).pipe(
             tap((response) => {
-                this.removeLocalStorage(this.keyToken);
+                this._chache.removeLocalStorage(this.keyToken);
             })
         )
     }
@@ -75,16 +77,5 @@ export class AuthenticationService {
     passwordReset(email: string, token: string, password: string, confirmPassword: string): any {
         return of(true).pipe(delay(1000));
     }
-
-    saveLocalStorage(key:string, data:string){
-        sessionStorage.setItem(key, data);
-    }
-
-    removeLocalStorage(key:string){
-        sessionStorage.removeItem(key);
-    }
-
-    getLocalStorage(key:string){
-        return sessionStorage.getItem(key);
-    }
+    
 }

@@ -1,17 +1,16 @@
 <div class="content-chart horizontal-chart">
     <ngx-charts-bar-horizontal
       scheme="forest"
+      legendTitle="Cargos"
       [results]="data"
       [gradient]="gradient"
       [xAxis]="showXAxis"
       [yAxis]="showYAxis"
+      [showDataLabel]="true"
       [legend]="showLegend"
       [showXAxisLabel]="showXAxisLabel"
       [showYAxisLabel]="showYAxisLabel"
       [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel"
-      (select)="onSelect($event)"
-      (activate)="onActivate($event)"
-      (deactivate)="onDeactivate($event)">
+      [yAxisLabel]="yAxisLabel">
     </ngx-charts-bar-horizontal>
 </div>
