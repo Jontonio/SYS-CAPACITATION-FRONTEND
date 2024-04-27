@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DataDialog } from 'src/app/core/interface/DataDialog';
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { BdService } from 'src/app/core/services/bd.service';
@@ -27,7 +27,7 @@ export class EventComponent implements OnInit {
   dataSource = new MatTableDataSource([]);
   id_event!:number;
   event!:EventProject;
-
+  panelOpenState:boolean = false;
   msg:string = '';
 
   length:number = 10;
@@ -58,12 +58,18 @@ export class EventComponent implements OnInit {
               public _local:LocalService,
               private _notify:NotificationService,
               public _loadding:LoaddingService,
+              private router: Router,
               private activeRouter:ActivatedRoute) {
     this.id_event = this.activeRouter.snapshot.params['id_event'];
     this.getEvent(this.id_event, this._local.getStationID());
   }
-
+  
   ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0,0); 
+      }
+    });
     this.getParticipantsFromEvent(this.id_event, this.pageIndex);
   }
 

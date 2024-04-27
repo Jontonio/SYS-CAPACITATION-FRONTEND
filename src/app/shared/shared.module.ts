@@ -33,6 +33,7 @@ import { FormEventComponent } from "./projects/form-event/form-event.component";
 import { BtnActionsEventComponent } from "./projects/btn-actions-event/btn-actions-event.component";
 import { FormFacilitatorComponent } from "./facilitator/form-facilitator/form-facilitator.component";
 import { ModalEvidenceComponent } from './modal-evidence/modal-evidence.component';
+import { FirstLetterCapitalizePipe } from './pipes/first-letter-capitalize.pipe';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { ModalEvidenceComponent } from './modal-evidence/modal-evidence.componen
         FormEventComponent,
         BtnActionsEventComponent,
         FormFacilitatorComponent,
-        ModalEvidenceComponent
+        ModalEvidenceComponent,
+        FirstLetterCapitalizePipe
     ],
     exports: [
         FormsModule,
@@ -98,7 +100,8 @@ import { ModalEvidenceComponent } from './modal-evidence/modal-evidence.componen
         FormEventComponent,
         BtnActionsEventComponent,
         FormFacilitatorComponent,
-        ModalEvidenceComponent
+        ModalEvidenceComponent,
+        FirstLetterCapitalizePipe
     ],
     schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

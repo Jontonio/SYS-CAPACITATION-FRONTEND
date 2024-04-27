@@ -27,7 +27,6 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
       private media: MediaMatcher,
-      private routerActive:ActivatedRoute,
       public spinnerService: SpinnerService,
       private dialog:MatDialog,
       private _db:BdService,
@@ -38,17 +37,15 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
           this._mobileQueryListener = () => changeDetectorRef.detectChanges();
           // tslint:disable-next-line: deprecation
           this.mobileQuery.addListener(this._mobileQueryListener);
-          const id = this.routerActive.snapshot.params['id_inia_station'];
-          this._local.setStationID(id);
-          this.getStation(id)
+          this.getStation(this._local.getStationID())
   }
 
   ngOnInit(): void {
 
-      const user = this.authService.getUserAuth;
+    const user = this.authService.getUserAuth;
 
-      this.userName = user.name;
-
+    this.userName = user.name;
+    window.scrollTo(0,0);
   }
 
   getStation(id_inia_station:number){

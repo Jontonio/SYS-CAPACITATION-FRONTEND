@@ -1,15 +1,20 @@
-<button class="ml-3 btn-secondary" mat-mini-fab (click)="openDialogFile()" [disabled]="_loadding.getLoadding()" matTooltip="Imprimir lista">
+<button class="ml-3 btn-stroked-secondary" mat-stroked-button (click)="openDialogFile()" [disabled]="_loadding.getLoadding()">
     <mat-icon>print</mat-icon>
+    Imprimir lista 
 </button>
-<button class="ml-3 btn-primary" mat-mini-fab color="accent" (click)="addFacilitator()" [disabled]="_loadding.getLoadding()" matTooltip="Nuevo facilitador">
+<button class="ml-3 btn-stroked-primary" mat-stroked-button color="accent" (click)="addFacilitator()" [disabled]="_loadding.getLoadding()">
     <mat-icon>diversity_3</mat-icon>
+    Nuevo facilitador
 </button>
-<button class="ml-3 btn-secondary" mat-mini-fab color="primary" (click)="openDialogEditEvent()" [disabled]="_loadding.getLoadding()" matTooltip="Editar evento">
+<button class="ml-3 btn-stroked-secondary" mat-stroked-button color="primary" (click)="openDialogEditEvent()" [disabled]="_loadding.getLoadding()">
     <mat-icon>edit_note</mat-icon>
+    Editar evento
 </button>
-<button class="ml-3 btn-primary" mat-mini-fab color="primary" (click)="openDialogParticipant()" [disabled]="_loadding.getLoadding()" matTooltip="Registrar nuevo asistente">
+<button class="ml-3 btn-stroked-primary" mat-stroked-button color="primary" (click)="openDialogParticipant()" [disabled]="_loadding.getLoadding()">
     <mat-icon>person_add</mat-icon>
+    Nuevo asistente
 </button>
-<button class="ml-3" mat-mini-fab color="primary" (click)="addEvidence()" [disabled]="_loadding.getLoadding()" matTooltip="Registrar evidencias">
+<button class="ml-3 btn-stroked-secondary" mat-stroked-button color="primary" (click)="addEvidence()" [disabled]="_loadding.getLoadding()">
     <mat-icon>add_photo_alternate</mat-icon>
+    Agregar evidencia
 </button>

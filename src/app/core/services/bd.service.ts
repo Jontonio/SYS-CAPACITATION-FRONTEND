@@ -151,6 +151,10 @@ export class BdService {
     return this.http.get<HttpRes>(`${this.URL}/count-projects-of-year`);
   }
 
+  getReportEventsFromStation(id_inia_station:number){
+    return this.http.get<HttpRes>(`${this.URL}/graph-event-month/${id_inia_station}`);
+  }
+
   searchTable(table:string, term:string, id:number = 1){
     return this.http.get<HttpRes>(`${this.URL}/search-table?table=${table}&term=${term}&id=${id}`);
   }

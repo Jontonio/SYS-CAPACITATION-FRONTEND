@@ -43,7 +43,6 @@ export class ProjectComponent implements OnInit {
     private _db:BdService,
     public _local:LocalService,
     public _loadding:LoaddingService,
-    private activeRoute:ActivatedRoute,
     private router:Router
   ) { 
 
@@ -56,9 +55,8 @@ export class ProjectComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.titleService.setTitle('SIRDEV - projects');
-    const id = this.activeRoute.snapshot.parent!.params['id_inia_station'];
-    this.getProjects(id, this.pageIndex, this.startPage, this.year);
+    this.titleService.setTitle('SIRDAN - proyectos');
+    this.getProjects(this._local.getStationID(), this.pageIndex, this.startPage, this.year);
   }
 
   pageEvent(evn:PageEvent){

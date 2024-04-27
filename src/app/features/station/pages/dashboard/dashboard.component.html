@@ -8,6 +8,9 @@
                 <h2>Dashboard</h2>
               </div>
               <div class="flex justify-content-center align-items-center">
+                <button *ngIf="projectDash" mat-icon-button (click)="openDialogFileReport()">
+                  <mat-icon>print</mat-icon>
+                </button>
                 <button mat-icon-button (click)="dialogSearch()">
                   <mat-icon>search</mat-icon>
                 </button>
@@ -15,28 +18,21 @@
             </div>
             <div *ngIf="projectDash">
               <mat-divider></mat-divider>
-              <div class="d-flex justify-content-start text-plain-secondary p-2">
-                <b class="m-1">CUI:</b>
-                <p>{{projectDash.cuiProject}}</p>
+              <div class=" text-plain-secondary p-1 mt-3">
+                <b class="m-0">CUI:</b>
+                <p class="m-0">{{projectDash.cuiProject}}</p>
               </div>
-              <div class="flex justify-content-between">
-                <div class="d-flex justify-content-start text-plain-secondary p-2">
-                  <b class="m-1">Proyecto:</b>
-                  <p>{{projectDash.titleProject | lowercase}}</p>
-                </div>
-                <div class="d-flex justify-content-start text-plain-secondary p-2 chip-1">
-                  <button mat-button (click)="openDialogFileReport()">
-                    <mat-icon>print</mat-icon>
-                  </button>
-                </div>
+              <div class="text-plain-secondary p-1">
+                <b class="m-0">Proyecto:</b>
+                <p class="m-0">{{projectDash.titleProject | firstLetter}}</p>
               </div>
-              <div class="d-flex justify-content-start text-plain-secondary p-2">
-                <b class="m-1">Tema:</b>
-                <p>{{projectDash.event_topic | lowercase}}</p>
+              <div class="text-plain-secondary p-1">
+                <b class="m-0">Tema:</b>
+                <p class="m-0">{{projectDash.event_topic | firstLetter}}</p>
               </div>
-              <div class="d-flex justify-content-start text-plain-secondary p-2">
-                <b class="m-1">Lugar de evento:</b>
-                <p>{{projectDash.location}}</p>
+              <div class="text-plain-secondary p-1">
+                <b class="m-0">Lugar de evento:</b>
+                <p class="m-0">{{projectDash.location}}</p>
               </div>
             </div>
           </mat-card>
@@ -52,10 +48,6 @@
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menuG2="matMenu">
-                  <button mat-menu-item>
-                    <mat-icon>leaderboard</mat-icon>
-                    <span>Descargar reporte</span>
-                  </button>
                   <button mat-menu-item (click)="downloadImg('g1')">
                     <mat-icon>download</mat-icon>
                     <span>Descargar imagen</span>
@@ -75,10 +67,6 @@
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menuG1="matMenu">
-                  <button mat-menu-item>
-                    <mat-icon>leaderboard</mat-icon>
-                    <span>Descargar reporte</span>
-                  </button>
                   <button mat-menu-item (click)="downloadImg('g2')">
                     <mat-icon>download</mat-icon>
                     <span>Descargar imagen</span>
@@ -93,10 +81,18 @@
       <div class="grid">
         <div class="col-12">
           <mat-card>
-            <h3><b>N° de proyectos por año</b></h3>
+            <h3><b>Total de eventos por mes</b></h3>
             <app-vertical-bar-chart [data]="dataVerticalBarChart"></app-vertical-bar-chart>
           </mat-card>
         </div>
       </div>
+      <!-- <div class="grid">
+        <div class="col-12">
+          <mat-card>
+            <h3><b>N° de proyectos por año</b></h3>
+            <app-vertical-bar-chart [data]="dataVerticalBarChart"></app-vertical-bar-chart>
+          </mat-card>
+        </div>
+      </div> -->
     </div>
   </div>

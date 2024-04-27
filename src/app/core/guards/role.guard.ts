@@ -5,6 +5,9 @@ import { LoaddingService } from '../services/Loadding.service';
 import { NotificationService } from '../services/notification.service';
 import { AuthenticationService } from '../services/auth.service';
 import { CacheService } from '../services/cache.service';
+import { PayloadToken } from '../interface/PayloadToken';
+import jwtDecode from 'jwt-decode';
+import { LocalService } from '../services/local.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,7 @@ export class RoleGuard implements CanActivate {
   constructor(private spinner: NgxSpinnerService,
     private loadding:LoaddingService,
     private _cache:CacheService,
+    private _local:LocalService,
     private authService: AuthenticationService) { }
 
 canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
@@ -33,7 +37,8 @@ canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
 
         this.authService.getCurrentUser().subscribe({
             next:({ data }) => {
-                // const decoded:PayloadToken = jwtDecode(data.token)
+                const decoded:PayloadToken = jwtDecode(data.token)
+                decoded.id_inia_station?this._local.setStationID(decoded.id_inia_station):'';
                 data.roles.forEach( role => {
                     resolve(Boolean(rolesPermitidos.includes(role.name)))
                 })

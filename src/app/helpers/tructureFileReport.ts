@@ -51,7 +51,7 @@ const fileFooter = () => {
         margin: [40,0,0,0],
       },
       { 
-        text: 'Reporte generado por SIRDEV',
+        text: 'Reporte generado por SIRDAN',
         fontSize: 10, 
         color:'#2B2B2B',
         alignment: 'right', 

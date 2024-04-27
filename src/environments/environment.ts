@@ -10,5 +10,5 @@ export const environment = {
   logLevel: NgxLoggerLevel.TRACE,
   serverLogLevel: NgxLoggerLevel.OFF,
   URL_API_RENIEC:'https://api.apis.net.pe/v1/dni?numero=',
-  URL_BASE:'http://127.0.0.1:8000/api'
+  URL_BASE:'https://sys-asistencia-server.ceidbot.com/api'
 };

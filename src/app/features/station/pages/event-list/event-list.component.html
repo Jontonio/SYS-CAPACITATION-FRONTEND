@@ -25,7 +25,7 @@
               <!-- event_topic Column -->
               <ng-container matColumnDef="event_topic">
                 <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> TEMA DEL EVENTO</th>
-                <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.event_topic | lowercase}} </td>
+                <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.event_topic | firstLetter}} </td>
               </ng-container>
               <!-- event_topic Column -->
               <ng-container matColumnDef="event_type">

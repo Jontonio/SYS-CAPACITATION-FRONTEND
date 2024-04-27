@@ -1,10 +1,11 @@
 <div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
     <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
         <mat-card>
-            <mat-card-title class="text-plain-secondary">Sistema <b>SIRDEV</b></mat-card-title>
-            <mat-card-subtitle class="text-color-primary">Inice sesión para continuar</mat-card-subtitle>
             <mat-card-content>
-
+                <div class="flex justify-content-center pb-2">
+                    <img class="img-logo-sis" src="assets/logo/sirdan-2.png" alt="" srcset="">
+                </div>
+                <p class="text-color-primary">Inice sesión para continuar</p>
                 <mat-form-field class="full-width mt-1" appearance="outline">
                     <mat-label>Email</mat-label>
                     <input id="email" 

@@ -56,7 +56,7 @@ export class ProjectListComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.titleService.setTitle('SIRDEV - projects');
+    window.scrollTo(0,0);
   }
 
   getYearsEvent(){

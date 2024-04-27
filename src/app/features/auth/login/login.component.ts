@@ -7,10 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { Remember } from 'src/app/core/interface/Remember';
 import { CurrentUser } from 'src/app/core/interface/AuthRes';
-import { PayloadToken } from 'src/app/core/interface/PayloadToken';
-import jwtDecode from 'jwt-decode';
 import { Role } from 'src/app/core/interface/Role';
-import { LocalService } from 'src/app/core/services/local.service';
 import { CacheService } from 'src/app/core/services/cache.service';
 
 
@@ -27,7 +24,6 @@ export class LoginComponent implements OnInit {
     constructor(private router: Router,
         private titleService: Title,
         private fb:FormBuilder,
-        private _local:LocalService,
         private spinner:NgxSpinnerService,
         private loaddingService:LoaddingService,
         private _cache:CacheService,
@@ -35,7 +31,7 @@ export class LoginComponent implements OnInit {
         }
         
         ngOnInit() {
-            this.titleService.setTitle('SIRDEV - Login');
+            this.titleService.setTitle('SIRDAN - Login');
             this.authenticationService.logout();
             this.createForm();
             this.completeRememberInfo()
@@ -133,9 +129,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/admin']);
                 break;
             case Role.station:
-                const decoded:PayloadToken = jwtDecode(data.token);
-                this._local.setStationID(decoded.id_inia_station!);
-                this.router.navigate([`/station/${decoded.id_inia_station!}/dashboard`]);
+                this.router.navigate([`/station/dashboard`]);
                 break;
             case Role.viewer:
                 this.router.navigate(['/viewer']);

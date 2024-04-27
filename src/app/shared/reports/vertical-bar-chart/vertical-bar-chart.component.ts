@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ResReport } from '../../../features/dashboard/interfaces/ResReport';
+import { LegendPosition } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-vertical-bar-chart',
@@ -16,11 +17,12 @@ export class VerticalBarChartComponent {
   showXAxis = true;
   showYAxis = true;
   gradient = true;
-  showLegend = true;
+  showLegend = false;
   showXAxisLabel = true;
-  xAxisLabel = 'AÑOS';
+  xAxisLabel = 'Meses';
   showYAxisLabel = true;
-  yAxisLabel = 'Número de proyectos';
+  yAxisLabel = 'Total de eventos';
+  legendPosition: LegendPosition = LegendPosition.Below;
 
   constructor() {
     Object.assign(this, { single:this.data })

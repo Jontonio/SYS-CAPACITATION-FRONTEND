@@ -13,10 +13,10 @@ export class PieChartComponent {
 
   // options
   gradient: boolean = true;
-  showLegend: boolean = true;
+  showLegend: boolean = false;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-  legendPosition:LegendPosition = LegendPosition.Right;
+  legendPosition: LegendPosition = LegendPosition.Right;
 
   colorScheme:any= {
     domain: ['#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226']

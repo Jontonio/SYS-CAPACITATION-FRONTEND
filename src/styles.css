@@ -38,7 +38,15 @@ body {
   background-color: var(--btn-color) !important;
   color: var(--white-color) !important;
 }
+.btn-stroked-primary{
+  color: var(--btn-color) !important;
+  border-radius: 20px !important;
+}
 .btn-primary:disabled{
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+.btn-stroked-primary:disabled{
   opacity: 0.5;
   cursor: not-allowed !important;
 }
@@ -46,9 +54,17 @@ body {
   opacity: 0.5;
   cursor: not-allowed !important;
 }
+.btn-stroked-secondary:disabled{
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
 .btn-secondary{
   background-color: var(--btn-secondary-color) !important;
   color: var(--white-color) !important;
+}
+.btn-stroked-secondary{
+  color: var(--btn-secondary-color) !important;
+  border-radius: 20px !important;
 }
 .btn-link-primary{
   color: var(--color-primay);
@@ -101,7 +117,10 @@ body {
 .mb-1{
   margin-bottom: 0.5rem;
 }
-
+.img-logo-sis{
+  width: 150px;
+  margin: 0 auto;
+}
 .full-width {
   width: 100%;
 }
@@ -287,7 +306,7 @@ p .mat-icon {
 .mat-form-field-appearance-outline .mat-form-field-outline {
   color: var(--color-secondary) !important;
 }
-mat-card, mat-paginator, .mat-table{
+mat-card, mat-paginator, .mat-table, .mat-expansion-panel{
   background-color: var(--background-color-a) !important;
   color: var(--color-secondary) !important;
   border-radius: var(--border-radius) !important;

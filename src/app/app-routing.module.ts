@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     data:{ rolesPermitidos:['admin'] }
   },
   {
-    path:'station/:id_inia_station',
+    path:'station',
     loadChildren: () => import('./features/station/station.module').then(m => m.StationModule),
     canActivate: [AuthGuard, RoleGuard],
     data:{ rolesPermitidos:['station'] }

@@ -16,6 +16,8 @@ import { ShowFileComponent } from 'src/app/shared/show-file/show-file.component'
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { LocalService } from 'src/app/core/services/local.service';
 import { ReportMain } from 'src/app/features/projects/class/Report';
+import { getBase64ImageFromURL } from 'src/app/helpers/convertFileToBase64';
+import { text } from 'd3';
 var SvgSaver = require('svgsaver');                
 
 (pdfMake.vfs as any) = pdfFonts.pdfMake.vfs;  
@@ -45,13 +47,13 @@ export class DashboardComponent implements OnInit {
     private _local:LocalService,
     private _cache:CacheService,
     private titleService: Title) {
-      this.getReportCountProjectsOfYears();
+      this.getReportEvents();
   }
 
   ngOnInit() {
 
     this.currentUser = this.authService.getCurrentUser();
-    this.titleService.setTitle('SIRDEV - dashboard');
+    this.titleService.setTitle('SIRDAN - panel principal');
 
     if(this._cache.projectDash){
       this.projectDash = this._cache.projectDash;
@@ -95,11 +97,11 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  getReportCountProjectsOfYears(){
-    this._db.getReportCountProjectsOfYears().pipe(
+  getReportEvents(){
+    this._db.getReportEventsFromStation(this._local.getStationID()).pipe(
       map( (res) => {
         res.data = res.data.map((val:ResReport) => {
-          val.name = val.name.toString()
+          val.name = val.name.charAt(0).toUpperCase() + val.name.slice(1).toLowerCase()
           return val
         })
         return res;
@@ -111,34 +113,72 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  saverLibraryIMG(id:string, donwload:boolean = false, fileName:string = 'IMG-SIRDEV') {
+  getSvgAsBase64(id: string): Promise<string> {
 
-    const svgsaver = new SvgSaver();   
-    console.log(svgsaver)                  
-    const svg = document.querySelector(`#${id}`);  
+    return new Promise((resolve, reject) => {
+      const svgSaver = new SvgSaver();
+      const svg = document.querySelector(`#${id}`) as HTMLElement;
+      // Obtener el SVG clonado
+      const clonedSvg = svgSaver.cloneSVG(svg);
 
-    if(donwload){
-      svgsaver.asPng(svg, `${fileName}.png`);  
-      return;
-    }   
+      // Crear un contenedor div para el SVG clonado
+      const container = document.createElement('div');
+      container.appendChild(clonedSvg);
 
-    return svgsaver.getUri(svg);  
+      // Crear una imagen temporal
+      const img = new Image();
+
+      // Cuando la imagen se cargue, la convertiremos a JPG y la codificaremos en base64
+      img.onload = () => {
+        // Crear un lienzo (canvas) para convertir la imagen a JPG
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Dibujar la imagen en el lienzo
+        ctx!.drawImage(img, 0, 0);
+
+        // Obtener la imagen como un blob en formato JPG
+        canvas.toBlob((blob) => {
+          // Convertir el blob a base64
+          const reader = new FileReader();
+          reader.readAsDataURL(blob!);
+          reader.onloadend = () => {
+            // Resolver la promesa con la imagen en formato JPG codificada en base64
+            const jpgBase64 = reader.result as string;
+            resolve(jpgBase64);
+          };
+        }, 'image/png', 1); // 'image/jpeg' es el tipo MIME y 1 es la calidad (0-1)
+      };
+
+      // Establecer la URI de la imagen como la URI del SVG clonado
+      img.src = svgSaver.getUri(container.firstChild as HTMLElement);
+    });
+  }
+
+  saveImgAsPng(id:string, fileName:string = 'IMG-SIRDEV') {
+    const svgsaver = new SvgSaver();
+    const svg = document.querySelector(`#${id}`);
+    const name = fileName.trim().toLowerCase().replace(' ','-');
+    svgsaver.asPng(svg, `${name}.png`);  
   }
 
   downloadImg(g:string){
     switch (g) {
       case 'g1':
-        this.saverLibraryIMG(g, true, this.g1Title.replace(' ','-'))
+        this.saveImgAsPng(g, this.g1Title)
         break;
       case 'g2':
-        this.saverLibraryIMG(g,true, this.g2Title.replace(' ','-'))
+        this.saveImgAsPng(g, this.g2Title)
         break;
       default:
         break;
     }
   }
   
-  async generatePDFAllReport({ eventProject, nameStation }:ReportMain) {  
+  async generatePDFAllReport({ eventProject, nameStation, dataGraphics}:ReportMain) {  
     
     const fileDefinition = {  
       header: await fileHeader(nameStation),
@@ -274,18 +314,18 @@ export class DashboardComponent implements OnInit {
             }
           ]
         }, // Facilitator
-        {
-          text:"FACILITADORES:",
-          bold:true,
-          margin: [0,3,0,0],
-        }, 
-        {
-          ul:eventProject.facilitator_event.length>0?eventProject.facilitator_event.map( fa => {
-            return `${fa.facilitator?.facilitator_first_name} ${fa.facilitator?.facilitator_last_name} ${fa.facilitator?.facilitator_name}`
-          }):['No se registraron facilitadores'],
-          fontSize: 11, 
-          margin: [0,3, 0, 0]
-        },
+        // {
+        //   text:"FACILITADORES:",
+        //   bold:true,
+        //   margin: [0,3,0,0],
+        // }, 
+        // {
+        //   ul:eventProject.facilitator_event.length>0?eventProject.facilitator_event.map( fa => {
+        //     return `${fa.facilitator?.facilitator_first_name} ${fa.facilitator?.facilitator_last_name} ${fa.facilitator?.facilitator_name}`
+        //   }):['No se registraron facilitadores'],
+        //   fontSize: 11, 
+        //   margin: [0,3, 0, 0]
+        // },
         {  
           text: 'REPORTE DE DETALLADO',  
           fontSize: 13,  
@@ -295,13 +335,109 @@ export class DashboardComponent implements OnInit {
           margin:[0,5,0,5]
         },
         {
-          text:'Cantidad de participantes por cargo',
-          fontSize:10
+          columns:[
+            {
+              text:dataGraphics[0].tableTitle,
+              fontSize:13,
+              margin:[0,8,0,8],
+            },
+            {
+              text:dataGraphics[0].imgTitle,
+              fontSize:13,
+              margin:[0,8,0,8],
+            },
+          ]
+        },
+        {
+          columns:[
+            {
+              table: {
+                headerRows: 1,
+                widths: [150, 150],
+                body: [
+                  [
+                    {
+                      text:'Cargo',
+                      bold:true,
+                      fillColor: '#BFBFBF',
+                    }, 
+                    {
+                      text:'Número de asistentes',
+                      bold:true,
+                      fillColor: '#BFBFBF',
+                    }
+                  ],
+                  ...dataGraphics[0].tableData.map(data => {
+                    return [ data.name, data.value ]
+                  })
+                ]
+              },
+              bodyStyles: {
+                valign: 'middle',
+              }
+            },
+            {
+              image:dataGraphics[0].img,
+              fit: [350, 350],
+              alignment: 'center',
+            }
+          ]
+        },
+        { text: '\n', pageBreak: 'after' },
+        {
+          columns:[
+            {
+              text:dataGraphics[1].tableTitle,
+              fontSize:13,
+              margin:[0,8,0,8],
+            },
+            {
+              text:dataGraphics[1].imgTitle,
+              fontSize:13,
+              margin:[0,8,0,8],
+            },
+          ]
+        },
+        {
+          columns:[
+            {
+              table: {
+                headerRows: 1,
+                widths: [150, 150],
+                body: [
+                  [
+                    {
+                      text:'Género',
+                      bold:true,
+                      fillColor: '#BFBFBF',
+                    }, 
+                    {
+                      text:'Cantidad total',
+                      bold:true,
+                      fillColor: '#BFBFBF',
+                    }
+                  ],
+                  ...dataGraphics[1].tableData.map(data => {
+                    return [ data.name, data.value ]
+                  })
+                ]
+              },
+              bodyStyles: {
+                valign: 'middle',
+              }
+            },
+            {
+              image:dataGraphics[1].img,
+              // height: 280,
+              // width: 350,
+              fit: [350, 350],
+              alignment: 'center',
+            }
+          ]
         }
-      
       ],
-      pageOrientation: 'portrait',
-      pageMargins: [ 30, 65, 30, 50 ],
+      pageOrientation: 'landscape',
+      pageMargins: [ 40, 65, 40, 60 ],
     }
    
     return new Promise((resolve) => {
@@ -311,18 +447,38 @@ export class DashboardComponent implements OnInit {
     });
   } 
 
-  openDialogFileReport(){
+  async openDialogFileReport(){
 
     if(!this.projectDash){
       return;
     }
 
+    const g1 = await this.getSvgAsBase64('g1');
+    const g2 = await this.getSvgAsBase64('g2');
+
     this._db.getEvent(this.projectDash.id_event, this._local.getStationID()).subscribe({
       next:({ data }) => {
-        
         const mainReport:ReportMain = {
           eventProject:data,
-          nameStation: this._local.getStation().name_inia_station
+          nameStation: this._local.getStation().name_inia_station,
+          dataGraphics:[
+            {
+              tableTitle: this.g1Title,
+              tableDescription:'',
+              img: g1,
+              imgTitle:'Gráfica de ' + this.g1Title.toLowerCase(),
+              imgDescription:'',
+              tableData:this.dataHorizonBarChart
+            },
+            {
+              tableTitle: this.g2Title,
+              tableDescription:'',
+              img: g2,
+              imgTitle:'Gráfica de ' + this.g2Title.toLowerCase(),
+              imgDescription:'',
+              tableData:this.dataPieChart
+            }
+          ]
         }
 
         this.generatePDFAllReport(mainReport).then( url => {
