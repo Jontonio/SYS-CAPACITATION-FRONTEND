@@ -16,8 +16,8 @@ import { ShowFileComponent } from 'src/app/shared/show-file/show-file.component'
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { LocalService } from 'src/app/core/services/local.service';
 import { ReportMain } from 'src/app/features/projects/class/Report';
-import { getBase64ImageFromURL } from 'src/app/helpers/convertFileToBase64';
-import { text } from 'd3';
+import { tap } from 'rxjs';
+
 var SvgSaver = require('svgsaver');                
 
 (pdfMake.vfs as any) = pdfFonts.pdfMake.vfs;  
@@ -82,7 +82,20 @@ export class DashboardComponent implements OnInit {
   }
 
   getReportSexParticipants(id_event:number){
-    this._db.getReportSexParticipants(id_event).subscribe({
+    this._db.getReportSexParticipants(id_event)
+    .pipe(
+      map( val => {
+         let suma = 0;
+         val.data.map((element: ResReport) => suma += Number(element.value));
+         val.data = val.data.map((element: ResReport) => {
+          const newItem = {...element, percentage: `${((element.value/suma)*100).toFixed(1)}%` } as ResReport;
+          element = newItem;
+          return element;
+        })
+        return val;
+      })
+    ) 
+    .subscribe({
       next:({ data }) => {
         this.dataPieChart = data;
       }
@@ -90,7 +103,20 @@ export class DashboardComponent implements OnInit {
   }
 
   getReportChargesParticipants(id_event:number){
-    this._db.getReportChargesParticipants(id_event).subscribe({
+    this._db.getReportChargesParticipants(id_event)
+      .pipe(
+        map( val => {
+           let suma = 0;
+           val.data.map((element: ResReport) => suma += Number(element.value));
+           val.data = val.data.map((element: ResReport) => {
+            const newItem = {...element, percentage: `${((element.value/suma)*100).toFixed(1)}%` } as ResReport;
+            element = newItem;
+            return element;
+          })
+          return val;
+        })
+      )  
+      .subscribe({
       next:({ data }) => {
         this.dataHorizonBarChart = data;
       }
@@ -313,19 +339,7 @@ export class DashboardComponent implements OnInit {
               margin: [2,3,0,0],
             }
           ]
-        }, // Facilitator
-        // {
-        //   text:"FACILITADORES:",
-        //   bold:true,
-        //   margin: [0,3,0,0],
-        // }, 
-        // {
-        //   ul:eventProject.facilitator_event.length>0?eventProject.facilitator_event.map( fa => {
-        //     return `${fa.facilitator?.facilitator_first_name} ${fa.facilitator?.facilitator_last_name} ${fa.facilitator?.facilitator_name}`
-        //   }):['No se registraron facilitadores'],
-        //   fontSize: 11, 
-        //   margin: [0,3, 0, 0]
-        // },
+        },
         {  
           text: 'REPORTE DE DETALLADO',  
           fontSize: 13,  
@@ -353,7 +367,7 @@ export class DashboardComponent implements OnInit {
             {
               table: {
                 headerRows: 1,
-                widths: [150, 150],
+                widths: [150, 75, 75],
                 body: [
                   [
                     {
@@ -365,10 +379,15 @@ export class DashboardComponent implements OnInit {
                       text:'Número de asistentes',
                       bold:true,
                       fillColor: '#BFBFBF',
+                    },
+                    {
+                      text:'Porcentaje',
+                      bold:true,
+                      fillColor: '#BFBFBF',
                     }
                   ],
                   ...dataGraphics[0].tableData.map(data => {
-                    return [ data.name, data.value ]
+                    return [ data.name, data.value, data.percentage ]
                   })
                 ]
               },
@@ -378,7 +397,7 @@ export class DashboardComponent implements OnInit {
             },
             {
               image:dataGraphics[0].img,
-              fit: [350, 350],
+              fit: [320, 320],
               alignment: 'center',
             }
           ]
@@ -403,7 +422,7 @@ export class DashboardComponent implements OnInit {
             {
               table: {
                 headerRows: 1,
-                widths: [150, 150],
+                widths: [150, 75, 75],
                 body: [
                   [
                     {
@@ -415,10 +434,15 @@ export class DashboardComponent implements OnInit {
                       text:'Cantidad total',
                       bold:true,
                       fillColor: '#BFBFBF',
+                    },
+                    {
+                      text:'Porcentaje',
+                      bold:true,
+                      fillColor: '#BFBFBF',
                     }
                   ],
                   ...dataGraphics[1].tableData.map(data => {
-                    return [ data.name, data.value ]
+                    return [ data.name, data.value, data.percentage ]
                   })
                 ]
               },
@@ -428,8 +452,6 @@ export class DashboardComponent implements OnInit {
             },
             {
               image:dataGraphics[1].img,
-              // height: 280,
-              // width: 350,
               fit: [350, 350],
               alignment: 'center',
             }

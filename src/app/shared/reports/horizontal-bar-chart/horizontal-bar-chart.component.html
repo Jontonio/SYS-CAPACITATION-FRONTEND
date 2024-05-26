@@ -1,6 +1,6 @@
 <div class="content-chart horizontal-chart">
     <ngx-charts-bar-horizontal
-      scheme="forest"
+      [scheme]="_local.getTypeStyle()"
       legendTitle="Cargos"
       [results]="data"
       [gradient]="gradient"

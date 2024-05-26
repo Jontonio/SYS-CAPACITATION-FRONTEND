@@ -36,6 +36,7 @@ export class FormParticipantComponent implements OnInit {
               private _notify:NotificationService,
               private dialogRef:MatDialogRef<FormParticipantComponent>,
               @Inject(MAT_DIALOG_DATA) private dataDialog:DataDialog) { 
+    this.createForm();
     this.getCharges();
   }
   
@@ -44,7 +45,6 @@ export class FormParticipantComponent implements OnInit {
   
   ngOnInit(): void {
 
-    this.createForm();
 
     if(this.dataDialog.isUpdate){
       this.isUpdate =  true;
@@ -75,7 +75,6 @@ export class FormParticipantComponent implements OnInit {
     this.participant_name.setValue(participant.participant_name)
     this.participant_first_name.setValue(participant.participant_first_name)
     this.participant_last_name.setValue(participant.participant_last_name)
-    console.log(participant.participant_sex)
     this.participant_sex.setValue(participant.participant_sex)
     this.participant_email.setValue(participant.participant_email)
     this.participant_phone.setValue(participant.participant_phone)

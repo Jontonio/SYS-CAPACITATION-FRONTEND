@@ -1,0 +1,8 @@
+<p><mat-icon><span class="material-symbols-outlined">border_color</span></mat-icon> Cambiar el color de gráfico</p>
+<div>
+    <mat-list>
+        <mat-selection-list #shoes [multiple]="false">
+            <mat-list-option *ngFor="let type of typesStyles" (click)="selectedStyle(type)">{{type}}</mat-list-option>
+          </mat-selection-list>
+    </mat-list>
+</div>

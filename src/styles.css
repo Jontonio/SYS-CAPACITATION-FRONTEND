@@ -1,6 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'ngx-toastr/toastr';
 
+/* Light mode */
 :root{
   --background-color-a:#F6F6F6;
   --background-color-b:#FFFF;
@@ -12,9 +13,43 @@
   --btn-secondary-color:#2828289f;
   --color-secondary:#2828289f;
   --white-color:#ffffff;
-  --border-radius:16px;
+  --border-radius:10px;
   --black-color:#0000;
 }
+.light-mode {
+  --background-color-a:#F6F6F6;
+  --background-color-b:#FFFF;
+  --menu-color:#5a5a5a;
+  --border-color:#bebebe;
+  --header-color:#ababab;
+  --btn-color:#0caf71;
+  --color-primay:#0caf71;
+  --btn-secondary-color:#2828289f;
+  --color-secondary:#2828289f;
+  --white-color:#ffffff;
+  --border-radius:10px;
+  --black-color:#0000;
+  --color-label-char: #000;
+}
+
+/* Dark mode */
+.dark-mode {
+  --background-color-a:#040B00;
+  --background-color-b:#061200;
+  --menu-color:#8f8f8f;
+  --border-color:#060D03;
+  --header-color:#ababab;
+  --btn-color:#4288227b;
+  --color-primay:#4288227b;
+  --btn-secondary-color:#2828289f;
+  --color-secondary:#afafaf9f;
+  --white-color:#969696;
+  --border-radius:10px;
+  --black-color:#f0f0f000;
+  --color-label-char: #757575;
+}
+
+.ngx-charts, text { fill: var(--color-label-char) }
 
 html{
   background: var(--background-color-b) ;
@@ -375,7 +410,10 @@ table {
   padding: 3px;
   cursor: pointer;
 }
-
+.img-evidence{
+  width: 400px;
+  object-fit: cover;
+}
 @keyframes show {
   from {
     opacity: 0;
@@ -384,4 +422,27 @@ table {
   to {
     opacity: 1;
   }
+}
+
+/* Styles for mobile  */
+@media only screen and (max-width: 767px) {
+  /* Estilos aplicados solo a dispositivos con un ancho de pantalla máximo de 767px, que suele ser el caso de la mayoría de los teléfonos celulares en modo vertical */
+  .spacer-flex{
+    display: flex;
+    flex-direction: column;
+  }
+  .full-width-mobile {
+    width: 100%;
+  }
+  .table-responsive{
+    overflow-x: scroll;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos aplicados a dispositivos con un ancho de pantalla de 768px a 1023px, que suele ser el caso de algunos teléfonos celulares en modo horizontal o dispositivos con pantallas de tamaño mediano */
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Estilos aplicados a dispositivos con un ancho de pantalla mínimo de 1024px, que suele ser el caso de tabletas y dispositivos con pantallas más grandes */
 }

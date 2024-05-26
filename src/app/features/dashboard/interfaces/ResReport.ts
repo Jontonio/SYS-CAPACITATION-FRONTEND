@@ -2,6 +2,7 @@
 interface ResReport {
   name: string;
   value: number;
+  percentage?: string;
 }
 
 interface ResReportSeries{

@@ -111,7 +111,6 @@ export class LoginComponent implements OnInit {
     }
 
     redirecToModule(data:CurrentUser){
-
     
         if( data.roles.length == 0){ // user has not a role
             this.router.navigate(['/has-no-role']);

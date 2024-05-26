@@ -39,8 +39,8 @@
         </div>
       </div>
       <div class="grid nested-grid">
-        <div class="col-6">
-          <mat-card>
+        <div class="col-12 md:col-6 sm:col-12">
+          <mat-card *ngIf="projectDash">
             <div>
               <div class="flex justify-content-between">
                 <h3><b>{{g1Title}}</b></h3>
@@ -58,8 +58,8 @@
             </div>
           </mat-card>
         </div>
-        <div class="col-6">
-          <mat-card>
+        <div class="col-12 md:col-6 sm:col-12">
+          <mat-card *ngIf="projectDash">
             <div>
               <div class="flex justify-content-between">
                 <h3><b>{{g2Title}}</b></h3>
@@ -73,7 +73,7 @@
                   </button>
                 </mat-menu>
               </div>
-              <app-pie-chart id="g2" [data]="dataPieChart"></app-pie-chart>
+              <app-vertical-bar-chart yAxisLabel="TOTAL" xAxisLabel="GÉNERO" id="g2" [data]="dataPieChart"></app-vertical-bar-chart>
             </div>
           </mat-card> 
         </div>

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ResReport } from '../../../features/dashboard/interfaces/ResReport';
 import { LegendPosition } from '@swimlane/ngx-charts';
+import { LocalService } from 'src/app/core/services/local.service';
 
 @Component({
   selector: 'app-horizontal-bar-chart',
@@ -14,7 +15,7 @@ export class HorizontalBarChartComponent {
   // options
   showXAxis: boolean = true;
   showYAxis: boolean = true;
-  gradient: boolean = true;
+  gradient: boolean = false;
   showLegend: boolean = false;
   showXAxisLabel: boolean = true;
   yAxisLabel: string = 'CARGOS';
@@ -26,7 +27,7 @@ export class HorizontalBarChartComponent {
     domain: ['#ca6702','#bb3e03','#ae2012','#9b2226']
   };
 
-  constructor() {
+  constructor(public _local:LocalService) {
     Object.assign(this, { single:this.data });
   }
 

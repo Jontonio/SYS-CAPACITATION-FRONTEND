@@ -1,9 +1,76 @@
-<h2 mat-dialog-title>Sección de evidencias en desarrollo</h2>
+<h2 class="mb-2" mat-dialog-title>Sección de evidencias en desarrollo</h2>
 <mat-dialog-content class="mat-typography">
-  <p>Learn one way to build applications with Angular and reuse your code and abilities to build
-    apps for any deployment target. For web, mobile web, native mobile and native desktop.</p>
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="mr-2">description</mat-icon>
+        Registrar nueva evidencia
+      </ng-template>
+      <div class="mt-2">
+        <form [formGroup]="formEvidencie" method="post" enctype="multipart/form-data">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Titulo de evidencia</mat-label>
+            <input matInput formControlName="evidence_title" maxlength="100">
+            <mat-error id="requiredEmailError" *ngIf="evidence_title.hasError('required')">
+              El titulo de la evidencia es
+              <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Descripción de evidencia (Opcional)</mat-label>
+            <textarea matInput formControlName="evidence_description" maxlength="350"></textarea>
+          </mat-form-field>
+    
+          <div>
+            <input (change)="onFileSelected($event)" 
+                    #fileInput 
+                    type="file" 
+                    id="file" 
+                    name="file" 
+                    accept="image/png, image/jpeg"
+                    formControlName="file">
+            <mat-error id="file" *ngIf="file.hasError('required') && file.touched">
+              La fotografía como evidencia es
+              <strong>requerido</strong>
+            </mat-error>
+          </div>
+          <div class="mt-3">
+            <button mat-raised-button 
+                    id="login" 
+                    class="btn-primary" 
+                    type="button"
+                    [disabled]="_loading.getLoadding()"
+                    (click)="save()">Registrar</button>
+            <button mat-button 
+                  class="ml-1"
+                  [disabled]="_loading.getLoadding()"
+                  mat-dialog-close>Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </mat-tab>
+  
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="mr-2">photo_library</mat-icon>
+        Lista de evidencias
+      </ng-template>
+      <div class="mt-2">
+        <mat-card class="mb-2" *ngFor="let evidence of evidences">
+          <p *ngIf="evidence.evidence_title">{{evidence.evidence_title}}</p>
+          <div class="flex justify-content-center align-items-center flex-column">
+            <img class="img-evidence" [src]="evidence.evidence_url" alt="" srcset="">
+            <p class="m-0 m-2">
+              <span *ngIf="evidence.evidence_description">{{evidence.evidence_description}}</span>
+            </p>
+            <button mat-mini-fab class="btn-primary" (click)="openDialogDelete(evidence.id_evidence)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+        <p *ngIf="!_loading.getLoadding() && evidences.length===0"><b>Lista de evidencia vacia</b></p>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
-</mat-dialog-actions>

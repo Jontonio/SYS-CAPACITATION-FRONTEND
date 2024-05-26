@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, of, switchMap } from 'rxjs';
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
@@ -17,11 +18,14 @@ import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-di
 })
 export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  @ViewChild('drawerPalette') drawerPalette!: MatDrawer;
   private _mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
   showSpinner: boolean = false;
   userName: string = "";
   isAdmin: boolean = false;
+  lightMode: boolean = true;
+  isOpen:boolean = false;
 
   private autoLogoutSubscription: Subscription = new Subscription;
 
@@ -41,11 +45,14 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-
     const user = this.authService.getUserAuth;
-
     this.userName = user.name;
     window.scrollTo(0,0);
+  }
+
+  togglePalette(){
+    this.drawerPalette.toggle();
+    this.isOpen = !this.isOpen;
   }
 
   getStation(id_inia_station:number){
@@ -93,6 +100,18 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
               }
           }
       });
+  }
+
+  changeMode(){
+    this.lightMode = !this.lightMode
+
+    if (this.lightMode) {
+        document.body.classList.remove("dark-mode");
+        document.body.classList.add("light-mode");
+    } else {
+        document.body.classList.remove("light-mode");
+        document.body.classList.add("dark-mode");
+    }
   }
 
 }

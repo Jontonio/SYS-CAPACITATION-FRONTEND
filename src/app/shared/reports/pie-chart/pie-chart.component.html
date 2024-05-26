@@ -1,6 +1,6 @@
 <div class="content-chart pie-chart">
     <ngx-charts-pie-chart
-      scheme="forest"
+      [scheme]="_local.getTypeStyle()"
       [results]="data"
       [gradient]="gradient"
       [legend]="showLegend"

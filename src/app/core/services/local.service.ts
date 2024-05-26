@@ -13,6 +13,7 @@ import { Station } from "src/app/features/station/class/Station";
 })
 export class LocalService{
 
+    private styleSelected:string = 'forest';
     URL:string;
     project!:Project;
     event!:EventProject;
@@ -47,6 +48,14 @@ export class LocalService{
     }
     setStationID(id:number){
         this.id_inia_station = id;
+    }
+
+    getTypeStyle(){
+        return this.styleSelected;
+    }
+
+    setTypeStyle(newStyle:string){
+        this.styleSelected = newStyle;
     }
 
     getEvent(){

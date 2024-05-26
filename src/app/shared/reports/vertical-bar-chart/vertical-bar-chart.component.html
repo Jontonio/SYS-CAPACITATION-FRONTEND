@@ -1,6 +1,6 @@
 <div class="content-chart vertical-chart">
     <ngx-charts-bar-vertical
-      scheme="forest"
+      [scheme]="_local.getTypeStyle()"
       [results]="data"
       [gradient]="gradient"
       [xAxis]="showXAxis"

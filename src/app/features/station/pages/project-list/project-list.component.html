@@ -2,7 +2,7 @@
   <div fxFlex="98%">
 
     <mat-card class="mb-2">
-      <div class="spacer-flex">
+      <div class="flex justify-content-between">
         <h2 class="text-color-primary d-flex">
           <mat-icon>business</mat-icon>
           <p mat-line class="m-1">Proyectos</p>
@@ -17,58 +17,56 @@
     <mat-card>
       <mat-card-content>
         <div class="spacer-flex">
-          <div>
-            <mat-form-field name="year" appearance="outline">
-              <mat-label>Año</mat-label>
-              <mat-select (selectionChange)="selectedYear($event)" [value]="year">
-                <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div>
-            <app-input-search placeholder="Buscar por CUI | NOMBRE" (textSearch)="searchProject($event)"></app-input-search>
-          </div>
+          <mat-form-field name="year" appearance="outline" class="full-width-mobile">
+            <mat-label>Año</mat-label>
+            <mat-select (selectionChange)="selectedYear($event)" [value]="year">
+              <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <app-input-search class="full-width-mobile" placeholder="Buscar por CUI | NOMBRE" (textSearch)="searchProject($event)"></app-input-search>
         </div>
 
-        <table mat-table [dataSource]="dataSource" matSort class="mat-table">
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" matSort class="mat-table">
 
-          <!-- id project Column -->
-          <ng-container matColumnDef="id_project">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> No. </th>
-            <td mat-cell 
-                class="mat-cell" 
-                *matCellDef="let element; let i = index">
-                <div *ngIf="!_loadding.getLoadding(); else skeletonIndex">{{i+1 + startPage}}</div>
-                <ng-template #skeletonIndex>...</ng-template>
-            </td>
-          </ng-container>
-        
-          <!-- project cui Column -->
-          <ng-container matColumnDef="project_cui">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> CUI DEL PROYECTO </th>
-            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_cui}} </td>
-          </ng-container>
-        
-          <!-- project_name Column -->
-          <ng-container matColumnDef="project_name">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> NOMBRE DEL PROYECTO </th>
-            <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_name | slice:0:100}}... </td>
-          </ng-container>
-        
-          <!-- action Column -->
-          <ng-container matColumnDef="action">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> EVENTO </th>
-            <td mat-cell class="mat-cell" *matCellDef="let element">
-              <button mat-button class="btn-link-secondary" [routerLink]="['../'+element.id_project]">
-                <mat-icon>event</mat-icon> Eventos
-              </button>
-            </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- id project Column -->
+            <ng-container matColumnDef="id_project">
+              <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> No. </th>
+              <td mat-cell 
+                  class="mat-cell" 
+                  *matCellDef="let element; let i = index">
+                  <div *ngIf="!_loadding.getLoadding(); else skeletonIndex">{{i+1 + startPage}}</div>
+                  <ng-template #skeletonIndex>...</ng-template>
+              </td>
+            </ng-container>
           
-        </table>
+            <!-- project cui Column -->
+            <ng-container matColumnDef="project_cui">
+              <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> CUI DEL PROYECTO </th>
+              <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_cui}} </td>
+            </ng-container>
+          
+            <!-- project_name Column -->
+            <ng-container matColumnDef="project_name">
+              <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> NOMBRE DEL PROYECTO </th>
+              <td mat-cell class="mat-cell" *matCellDef="let element"> {{element.project_name | slice:0:100}}... </td>
+            </ng-container>
+          
+            <!-- action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> EVENTO </th>
+              <td mat-cell class="mat-cell" *matCellDef="let element">
+                <button mat-button class="btn-link-secondary" [routerLink]="['../'+element.id_project]">
+                  <mat-icon>event</mat-icon> Eventos
+                </button>
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+          </table>
+        </div>
 
         <div *ngIf="_loadding.getLoadding() && dataSource.data.length===0">
           <app-spinner-loadding></app-spinner-loadding>

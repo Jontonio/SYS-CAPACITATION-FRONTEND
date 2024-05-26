@@ -307,4 +307,21 @@ export class BdService {
     return this.http.get<HttpRes>(`${this.URL}/get-roles`);
   }
 
+    /**
+   * 
+   *  Endpoint Evidence
+   * 
+  */
+  addEvidence(data:FormData){
+    return this.http.post<HttpRes>(`${this.URL}/evidence`, data);
+  }
+
+  deleteEvidence(id_evidence:number){
+    return this.http.delete<HttpRes>(`${this.URL}/evidence/${id_evidence}`);
+  }
+
+  getEvidenceFromEvent(id_event:number){
+    return this.http.get<HttpRes>(`${this.URL}/evidence-from-event/${id_event}`);
+  }
+
 }

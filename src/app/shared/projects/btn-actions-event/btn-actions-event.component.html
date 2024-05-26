@@ -1,20 +1,32 @@
-<button class="ml-3 btn-stroked-secondary" mat-stroked-button (click)="openDialogFile()" [disabled]="_loadding.getLoadding()">
-    <mat-icon>print</mat-icon>
-    Imprimir lista 
-</button>
-<button class="ml-3 btn-stroked-primary" mat-stroked-button color="accent" (click)="addFacilitator()" [disabled]="_loadding.getLoadding()">
-    <mat-icon>diversity_3</mat-icon>
-    Nuevo facilitador
-</button>
-<button class="ml-3 btn-stroked-secondary" mat-stroked-button color="primary" (click)="openDialogEditEvent()" [disabled]="_loadding.getLoadding()">
-    <mat-icon>edit_note</mat-icon>
-    Editar evento
-</button>
-<button class="ml-3 btn-stroked-primary" mat-stroked-button color="primary" (click)="openDialogParticipant()" [disabled]="_loadding.getLoadding()">
-    <mat-icon>person_add</mat-icon>
-    Nuevo asistente
-</button>
-<button class="ml-3 btn-stroked-secondary" mat-stroked-button color="primary" (click)="addEvidence()" [disabled]="_loadding.getLoadding()">
-    <mat-icon>add_photo_alternate</mat-icon>
-    Agregar evidencia
-</button>
+<div class="flex flex-wrap">
+    <div class="m-1">
+        <button class="btn-stroked-secondary" mat-stroked-button (click)="openDialogFile()" [disabled]="_loadding.getLoadding()">
+            <mat-icon>print</mat-icon>
+            Imprimir lista 
+        </button>
+    </div>
+    <div class="m-1">
+        <button class="btn-stroked-primary" mat-stroked-button color="accent" (click)="addFacilitator()" [disabled]="_loadding.getLoadding()">
+            <mat-icon>diversity_3</mat-icon>
+            Nuevo facilitador
+        </button>
+    </div>
+    <div class="m-1">
+        <button class="btn-stroked-secondary" mat-stroked-button color="primary" (click)="openDialogEditEvent()" [disabled]="_loadding.getLoadding()">
+            <mat-icon>edit_note</mat-icon>
+            Editar evento
+        </button>
+    </div>
+    <div class="m-1">
+        <button class="btn-stroked-primary" mat-stroked-button color="primary" (click)="openDialogParticipant()" [disabled]="_loadding.getLoadding()">
+            <mat-icon>person_add</mat-icon>
+            Nuevo asistente
+        </button>
+    </div>
+    <div class="m-1">
+        <button class="btn-stroked-secondary" mat-stroked-button color="primary" (click)="addEvidence()" [disabled]="_loadding.getLoadding()">
+            <mat-icon>add_photo_alternate</mat-icon>
+            Agregar evidencia
+        </button>
+    </div>
+</div>

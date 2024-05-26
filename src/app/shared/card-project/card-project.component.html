@@ -1,13 +1,15 @@
 <mat-card class="mb-2">
-    <div class="spacer-flex flex justify-content-between">
+    <div class="flex justify-content-between">
 
-      <h2 class="text-color-primary d-flex">
+      <h2 class="text-color-primary flex">
         <mat-icon>home_work</mat-icon>
         <p mat-line class="m-1">Proyecto</p>
       </h2>
 
-      <div class="container-cui" *ngIf="_local.getProject(); else skeletonCUI">
-        <b>CUI - </b>{{_local.getProject().project_cui}}
+      <div class="flex justify-content-center align-items-center">
+        <div class="container-cui" *ngIf="_local.getProject(); else skeletonCUI">
+          <b>CUI - </b>{{_local.getProject().project_cui}}
+        </div>
       </div>
 
       <ng-template #skeletonCUI>

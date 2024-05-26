@@ -34,6 +34,7 @@ import { BtnActionsEventComponent } from "./projects/btn-actions-event/btn-actio
 import { FormFacilitatorComponent } from "./facilitator/form-facilitator/form-facilitator.component";
 import { ModalEvidenceComponent } from './modal-evidence/modal-evidence.component';
 import { FirstLetterCapitalizePipe } from './pipes/first-letter-capitalize.pipe';
+import { ItemMenuPaletteComponent } from './item-menu-palette/item-menu-palette.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { FirstLetterCapitalizePipe } from './pipes/first-letter-capitalize.pipe'
         BtnActionsEventComponent,
         FormFacilitatorComponent,
         ModalEvidenceComponent,
-        FirstLetterCapitalizePipe
+        FirstLetterCapitalizePipe,
+        ItemMenuPaletteComponent
     ],
     exports: [
         FormsModule,
@@ -101,7 +103,8 @@ import { FirstLetterCapitalizePipe } from './pipes/first-letter-capitalize.pipe'
         BtnActionsEventComponent,
         FormFacilitatorComponent,
         ModalEvidenceComponent,
-        FirstLetterCapitalizePipe
+        FirstLetterCapitalizePipe,
+        ItemMenuPaletteComponent
     ],
     schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

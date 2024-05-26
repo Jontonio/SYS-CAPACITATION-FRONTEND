@@ -3,7 +3,7 @@
       <mat-accordion>
         <mat-expansion-panel [expanded]="0" hideToggle class="mat-expansion-panel">
           <mat-expansion-panel-header>
-            <mat-panel-title class="spacer-flex m-0">
+            <mat-panel-title class="flex justify-content-between m-0">
               <h3 class="text-color-primary d-flex">
                 <mat-icon>event</mat-icon>
                 <p mat-line class="m-1">Evento</p>
@@ -20,7 +20,7 @@
           <div class="mb-2">
             <mat-card-content>
               <div class="flex grid" *ngIf="_local.getEvent(); else skeletonCard">
-                <div class="col-6">
+                <div class="col-12 md:col-6 sm:col-12">
                   <div class="d-flex justify-content-start text-plain-secondary p-2">
                     <b class="m-1">Tema:</b>
                     <p>{{_local.getEvent().event_topic | firstLetter}}</p>
@@ -41,7 +41,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="col-12 md:col-6 sm:col-12">
                   <div class="d-flex justify-content-start text-plain-secondary mt-2 mb-2">
                     <b>Facilitadores</b>
                   </div>
@@ -103,13 +103,14 @@
       </mat-accordion>
       <div class="mb-3"></div>
       <mat-card>
-          <mat-card-content>
-            <div class="spacer-flex">
-              <div class="text-plain-secondary">
-                <h2>Participantes registrados</h2>
-              </div>
-              <app-input-search (textSearch)="searchAttendance($event)" placeholder="Buscar por nombre o DNI"></app-input-search>
+        <mat-card-content>
+          <div class="spacer-flex">
+            <div class="text-plain-secondary">
+              <h2>Participantes registrados</h2>
             </div>
+            <app-input-search class="full-width-mobile" (textSearch)="searchAttendance($event)" placeholder="Buscar por nombre o DNI"></app-input-search>
+          </div>
+          <div class="table-responsive">
             <table mat-table [dataSource]="dataSource" matSort class="mat-table">
               <!-- index Column -->
               <ng-container matColumnDef="index">
@@ -181,21 +182,21 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
             </table>
-    
-            <div *ngIf="_loadding.getLoadding() && dataSource.data?.length===0">
-              <app-spinner-loadding></app-spinner-loadding>
-            </div>
-            <div *ngIf="!_loadding.getLoadding() && length===0">
-              <app-message-table [msg]="msg"></app-message-table>
-            </div>
-            
-            <mat-paginator  [length]="length"
-                            [pageSize]="10"
-                            [pageIndex]="pageIndex - 1"
-                            (page)="pageEvent($event)"
-                            aria-label="Select page"></mat-paginator>
+          </div>
+          <div *ngIf="_loadding.getLoadding() && dataSource.data?.length===0">
+            <app-spinner-loadding></app-spinner-loadding>
+          </div>
+          <div *ngIf="!_loadding.getLoadding() && length===0">
+            <app-message-table [msg]="msg"></app-message-table>
+          </div>
+          
+          <mat-paginator  [length]="length"
+                          [pageSize]="10"
+                          [pageIndex]="pageIndex - 1"
+                          (page)="pageEvent($event)"
+                          aria-label="Select page"></mat-paginator>
 
-          </mat-card-content>
+        </mat-card-content>
       </mat-card>
     </div>
   </div>
