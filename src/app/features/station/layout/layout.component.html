@@ -80,17 +80,17 @@
         </mat-sidenav>
     
         <!-- Main content -->
-        <mat-sidenav-content class="sidenav-content">
-    
-          <div class="progress-bar-container">
-            <mat-progress-bar class="custom-mat-progress-bar" mode="indeterminate" *ngIf="spinnerService.visibility | async">
-            </mat-progress-bar>
+        <mat-sidenav-content>
+          <div class="outlet-container">
+            <div class="progress-bar-container">
+              <mat-progress-bar class="custom-mat-progress-bar" mode="indeterminate" *ngIf="spinnerService.visibility | async">
+              </mat-progress-bar>
+            </div>
+      
+            <div class="ml-1 mr-1">
+              <router-outlet></router-outlet>
+            </div>
           </div>
-    
-          <div class="ml-1 mr-1">
-            <router-outlet></router-outlet>
-          </div>
-    
         </mat-sidenav-content>
       </mat-sidenav-container>
     </mat-drawer-container>

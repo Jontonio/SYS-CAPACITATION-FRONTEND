@@ -7,9 +7,9 @@
           <mat-icon>business</mat-icon>
           <p mat-line class="m-1">Proyectos</p>
         </h2>
-        <button mat-button>
-          <mat-icon>event</mat-icon>
-          Nuevo evento
+        <button mat-button (click)="openDialogRegisProject()">
+          <mat-icon>add</mat-icon>
+           Proyecto
         </button>
       </div>
     </mat-card>
@@ -57,11 +57,25 @@
         
           <!-- action Column -->
           <ng-container matColumnDef="action">
-            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> EVENTO </th>
+            <th mat-header-cell class="mat-header-cell" *matHeaderCellDef mat-sort-header> OPERACIÓN </th>
             <td mat-cell class="mat-cell" *matCellDef="let element">
-              <button mat-raised-button color="primary" (click)="goEvents(element)" >
-                <mat-icon>event</mat-icon> Eventos
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
               </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="'./project/'+element.id_project+'/list-events'">
+                  <mat-icon>event</mat-icon>
+                  <span>Eventos</span>
+                </button>
+                <button mat-menu-item (click)="edit(element)">
+                  <mat-icon>edit</mat-icon>
+                  <span>Editar evento</span>
+                </button>
+                <button mat-menu-item (click)="delete(element)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Eliminar evento</span>
+                </button>
+              </mat-menu>
             </td>
           </ng-container>
         

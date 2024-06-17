@@ -5,13 +5,7 @@ import { LayoutComponent } from 'src/app/features/main/layout/layout.component';
 import { facilitatorListComponent } from './pages/facilitator-list/facilitator-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-      { path: '', component: facilitatorListComponent },
-    ]
-  }
+    { path: '', component: facilitatorListComponent },
 ];
 
 @NgModule({

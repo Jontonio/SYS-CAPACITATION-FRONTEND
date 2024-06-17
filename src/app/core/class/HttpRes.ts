@@ -1,4 +1,4 @@
-import { Facilitator } from "src/app/features/facilitators/class/Facilitator";
+import { Facilitator } from "src/app/features/admin/class/Facilitator";
 import { Project } from "src/app/features/projects/class/Project";
 
 class HttpRes {

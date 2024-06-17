@@ -6,12 +6,12 @@ import { CachePageFacilitator, CachePageProject } from '../interface/Cache';
 import { Project } from 'src/app/features/projects/class/Project';
 import { Observable } from 'rxjs';
 import { HttpRes } from '../class/HttpRes';
-import { Facilitator } from 'src/app/features/facilitators/class/Facilitator';
+import { Facilitator } from 'src/app/features/admin/class/Facilitator';
 import { EventProject } from 'src/app/features/projects/class/Event';
 import { Participant } from 'src/app/features/projects/class/Participant';
 import { Attendance } from 'src/app/features/projects/class/Attendance';
 import { User } from '../interface/User';
-import { FacilitatorEvent } from 'src/app/features/facilitators/class/FacilitatorEvent';
+import { FacilitatorEvent } from 'src/app/features/admin/class/FacilitatorEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -97,8 +97,12 @@ export class BdService {
     return this.http.post<HttpRes>(`${this.URL}/event`, data);
   }
 
-  getEventsByProject(id_station:number, id_project:number, page=1){
+  getEventsByProjectStation(id_station:number, id_project:number, page=1){
     return this.http.get<HttpRes>(`${this.URL}/get-events-by-project-station/${id_station}/${id_project}?page=${page}`);
+  }
+
+  getEventsByProject(id_project:number, page=1){
+    return this.http.get<HttpRes>(`${this.URL}/get-events-by-project/${id_project}?page=${page}`);
   }
 
   getParticipantsFromEvent(id:number, page=1){

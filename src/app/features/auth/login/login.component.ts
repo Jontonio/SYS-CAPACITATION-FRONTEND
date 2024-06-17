@@ -121,7 +121,6 @@ export class LoginComponent implements OnInit {
         
         switch (role.name) {
             case Role.root:
-                console.log("root")
                 this.router.navigate(['/root']);
                 break;
             case Role.admin:

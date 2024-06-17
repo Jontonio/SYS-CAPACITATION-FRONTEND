@@ -1,4 +1,4 @@
-import { FacilitatorEvent } from "../../facilitators/class/FacilitatorEvent";
+import { FacilitatorEvent } from "../../admin/class/FacilitatorEvent";
 import { EventType } from "./EventType";
 import { Project } from "./Project";
 

@@ -153,7 +153,7 @@ export class CustomerListComponent implements OnInit {
   goEvents({id_project}:Project){
     // esconde la url donde cambio
     // this.router.navigateByUrl(`projects/project-id/${Id_project}`, {skipLocationChange:true})
-    this.router.navigateByUrl(`main/10/projects/project/${id_project}/list-events`)
+    this.router.navigateByUrl(`./project/${id_project}/list-events`)
   }
 
   searchProject(text:string){

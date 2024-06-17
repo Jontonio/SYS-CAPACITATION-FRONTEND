@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { District, Provincie, Region } from '../../../features/projects/class/Ubigeo';
 import { LocalService } from 'src/app/core/services/local.service';
 import { debounceTime, map } from "rxjs/operators";
-import { Facilitator } from 'src/app/features/facilitators/class/Facilitator';
+import { Facilitator } from 'src/app/features/admin/class/Facilitator';
 import { BdService } from 'src/app/core/services/bd.service';
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { FormProjectComponent } from '../../../features/projects/components/form-project/form-project.component';

@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
@@ -6,7 +5,6 @@ import { HttpRequest } from '@angular/common/http';
 import { HttpHandler } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-
 import { AuthenticationService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CacheService } from '../services/cache.service';
@@ -36,7 +34,6 @@ export class AuthInterceptor implements HttpInterceptor {
                     }
                 }
             }));
-
         } 
         
         return next.handle(req);

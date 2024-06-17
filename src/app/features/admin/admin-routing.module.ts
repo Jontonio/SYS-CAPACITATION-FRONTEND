@@ -6,6 +6,16 @@ const routes: Routes = [
   {
     path:'',
     component:LayoutComponent,
+    children:[
+      { 
+        path:'facilitators',
+        loadChildren: () => import('../facilitators/facilitators.module').then(m => m.facilitatorsModule),
+      },
+      { 
+        path:'projects',
+        loadChildren: () => import('../projects/projects.module').then(m => m.projectsModule),
+      }
+    ]
   }
 ];
 

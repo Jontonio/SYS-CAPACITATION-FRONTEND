@@ -7,6 +7,7 @@
     background-color: var(--background-color-a);
     box-shadow:2px 2px 0px var(--background-color-b);
     color: var(--menu-color);
+    height: 60px;
   }
   
   .navbar-brand {
@@ -25,7 +26,7 @@
   }
   
   .navbar-is-mobile .navbar {
-    position: fixed;
+    /* position: fixed; */
     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
     z-index: 2;
   }
@@ -34,7 +35,7 @@
     /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
              causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
     flex: 1;
-    height: 100vh;
+    height: calc(100vh - 60px);
     background: var(--background-color-b);
   }
   
@@ -42,6 +43,11 @@
     /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
              `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
+  }
+
+  .outlet-container{
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
   }
   
   /*Set sidenav width*/

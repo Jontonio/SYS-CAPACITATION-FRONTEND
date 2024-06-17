@@ -74,7 +74,7 @@ export class EventListComponent {
       .pipe(
         switchMap( (res) => {
           this.project = res.data;
-          return this._bd.getEventsByProject(this.id_inia_station, id_project, this.pageIndex);
+          return this._bd.getEventsByProjectStation(this.id_inia_station, id_project, this.pageIndex);
         })
       )
       .subscribe({
@@ -89,7 +89,7 @@ export class EventListComponent {
   }
 
   getEventsProject(id_project:number, page:number){
-    this._bd.getEventsByProject(this._local.getStationID(), id_project, page).subscribe({
+    this._bd.getEventsByProjectStation(this._local.getStationID(), id_project, page).subscribe({
       next:({ data }) => {
         console.log(data)
         this.dataSource.data = data.data;

@@ -6,8 +6,8 @@ import { DataDialog } from 'src/app/core/interface/DataDialog';
 import { BdService } from 'src/app/core/services/bd.service';
 import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { Facilitator } from 'src/app/features/facilitators/class/Facilitator';
-import { FacilitatorEvent } from 'src/app/features/facilitators/class/FacilitatorEvent';
+import { Facilitator } from 'src/app/features/admin/class/Facilitator';
+import { FacilitatorEvent } from 'src/app/features/admin/class/FacilitatorEvent';
 
 @Component({
   selector: 'app-form-facilitator',

@@ -9,7 +9,7 @@ import { LoaddingService } from 'src/app/core/services/Loadding.service';
 import { BdService } from 'src/app/core/services/bd.service';
 import { LocalService } from 'src/app/core/services/local.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { FacilitatorEvent } from 'src/app/features/facilitators/class/FacilitatorEvent';
+import { FacilitatorEvent } from 'src/app/features/admin/class/FacilitatorEvent';
 import { Attendance } from 'src/app/features/projects/class/Attendance';
 import { EventProject } from 'src/app/features/projects/class/Event';
 import { Participant } from 'src/app/features/projects/class/Participant';

@@ -8,28 +8,22 @@ import { ListEventsComponent } from './pages/list-events/list-events.component';
 import { ViewEventComponent } from './pages/view-event/view-event.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-      { 
-        path: '', component: CustomerListComponent 
+  { 
+    path: '', component: CustomerListComponent 
+  },
+  { 
+    path: 'project/:id_project', component: ViewProjectComponent,
+    children:[
+      {
+        path:'list-events',
+        component:ListEventsComponent
       },
-      { 
-        path: 'project/:id_project', component: ViewProjectComponent,
-        children:[
-          {
-            path:'list-events',
-            component:ListEventsComponent
-          },
-          {
-            path:'event/:id_event',
-            component:ViewEventComponent
-          }
-        ]
-      },
+      {
+        path:'event/:id_event',
+        component:ViewEventComponent
+      }
     ]
-  }
+  },
 ];
 
 @NgModule({
